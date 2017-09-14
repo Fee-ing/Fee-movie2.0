@@ -1,0 +1,40 @@
+<% include header.ejs %>
+
+<div class="two-wrapper">
+	<a class="tip tip1" target="_blank" href="http://www.quzhuanpan.com/source/loadSourceList.do?type=1">更多资源，移步官网</a>
+	<div class="list-wrapper">
+		<table border="1" cellspacing="0" cellpadding="0">
+		  	<thead>
+			    <tr>
+			      	<th class="width400">资源名称</th>
+			      	<th>更新日期</th>
+			      	<th>下载方式</th>
+			      	<th>操作</th>
+			    </tr>
+		  	</thead>
+		  	<tbody>
+			  	<% movieData.forEach(function(movie){ %>
+			    	<tr>
+			    		<td class="width400"><%= movie.title %></td>
+			    		<td><%= movie.time %></td>
+			    		<td><%= movie.type %></td>
+			    		<td><a class="btn" target="_blank" href="<%= movie.href %>">前往下载</a></td>
+			    	</tr>
+			    <% }) %>
+			</tbody>
+		</table>
+	</div>
+	<div class="pagination-wrapper">
+		<div class="pagination">
+			<% if(page === '1') { %>
+				<a class="pagination-item page-first" href="/six/1">首页</a>
+			<% } else{ %>
+				<a class="pagination-item" href="/six/<%= (+page-1).toString() %>">上一页</a>
+			<% } %>
+			<span class="page-on">第<%= page %>页</span>
+			<a class="pagination-item" href="/six/<%= (+page+1).toString() %>">下一页</a>
+	    </div>
+	</div>
+</div>
+
+<% include footer.ejs %>

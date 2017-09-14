@@ -1,0 +1,133 @@
+<% include header.ejs %>
+
+<div class="two-wrapper">
+	<a class="tip tip1" target="_blank" href="http://www.dytt8.net/index.htm">更多资源，移步官网</a>
+	<h2 class="movie-title">最新电影</h2>
+	<div class="list-wrapper">
+		<table border="1" cellspacing="0" cellpadding="0">
+		  	<thead>
+			    <tr>
+			      	<th>资源名称</th>
+			      	<th>更新日期</th>
+			      	<th>操作</th>
+			    </tr>
+		  	</thead>
+		  	<tbody>
+			  	<% newData.forEach(function(movie){ %>
+			    	<tr>
+			    		<td><%= movie.title %></td>
+			    		<td><%= movie.time %></td>
+			    		<td><a class="btn" target="_blank" href="/twodetail/<%= movie.href %>">前往下载</a></td>
+			    	</tr>
+			    <% }) %>
+			</tbody>
+		</table>
+	</div>
+	<h2 class="movie-title">热门电影</h2>
+	<div class="list-wrapper">
+		<table border="1" cellspacing="0" cellpadding="0">
+		  	<thead>
+			    <tr>
+			      	<th>资源名称</th>
+			      	<th>更新日期</th>
+			      	<th>操作</th>
+			    </tr>
+		  	</thead>
+		  	<tbody>
+			  	<% thunderData.forEach(function(movie){ %>
+			    	<tr>
+			    		<td><%= movie.title %></td>
+			    		<td><%= movie.time %></td>
+			    		<td><a class="btn" target="_blank" href="/twodetail/<%= movie.href %>">前往下载</a></td>
+			    	</tr>
+			    <% }) %>
+			</tbody>
+		</table>
+	</div>
+	<h2 class="movie-title">华语电视剧</h2>
+	<div class="list-wrapper">
+		<table border="1" cellspacing="0" cellpadding="0">
+		  	<thead>
+			    <tr>
+			      	<th>资源名称</th>
+			      	<th>更新日期</th>
+			      	<th>操作</th>
+			    </tr>
+		  	</thead>
+		  	<tbody>
+			  	<% chmovieData.forEach(function(movie){ %>
+			    	<tr>
+			    		<td><%= movie.title %></td>
+			    		<td><%= movie.time %></td>
+			    		<td><a class="btn" target="_blank" href="/twodetail/<%= movie.href %>">前往下载</a></td>
+			    	</tr>
+			    <% }) %>
+			</tbody>
+		</table>
+	</div>
+	<h2 class="movie-title">欧美电视剧</h2>
+	<div class="list-wrapper">
+		<table border="1" cellspacing="0" cellpadding="0">
+		  	<thead>
+			    <tr>
+			      	<th>资源名称</th>
+			      	<th>更新日期</th>
+			      	<th>操作</th>
+			    </tr>
+		  	</thead>
+		  	<tbody>
+			  	<% enmovieData.forEach(function(movie){ %>
+			    	<tr>
+			    		<td><%= movie.title %></td>
+			    		<td><%= movie.time %></td>
+			    		<td><a class="btn" target="_blank" href="/twodetail/<%= movie.href %>">前往下载</a></td>
+			    	</tr>
+			    <% }) %>
+			</tbody>
+		</table>
+	</div>
+	<h2 class="movie-title">热门综艺</h2>
+	<div class="list-wrapper">
+		<table border="1" cellspacing="0" cellpadding="0">
+		  	<thead>
+			    <tr>
+			      	<th>资源名称</th>
+			      	<th>更新日期</th>
+			      	<th>操作</th>
+			    </tr>
+		  	</thead>
+		  	<tbody>
+			  	<% varietyData.forEach(function(movie){ %>
+			    	<tr>
+			    		<td><%= movie.title %></td>
+			    		<td><%= movie.time %></td>
+			    		<td><a class="btn" target="_blank" href="/twodetail/<%= movie.href %>">前往下载</a></td>
+			    	</tr>
+			    <% }) %>
+			</tbody>
+		</table>
+	</div>
+	<h2 class="movie-title">热门动漫</h2>
+	<div class="list-wrapper">
+		<table border="1" cellspacing="0" cellpadding="0">
+		  	<thead>
+			    <tr>
+			      	<th>资源名称</th>
+			      	<th>更新日期</th>
+			      	<th>操作</th>
+			    </tr>
+		  	</thead>
+		  	<tbody>
+			  	<% comicData.forEach(function(movie){ %>
+			    	<tr>
+			    		<td><%= movie.title %></td>
+			    		<td><%= movie.time %></td>
+			    		<td><a class="btn" target="_blank" href="/twodetail/<%= movie.href %>">前往下载</a></td>
+			    	</tr>
+			    <% }) %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<% include footer.ejs %>

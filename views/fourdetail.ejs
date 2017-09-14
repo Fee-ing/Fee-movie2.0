@@ -1,0 +1,47 @@
+<% include header.ejs %>
+
+<div class="detail-wrapper fourdetail-wrapper">
+	<h1 class="detail-title"><%= detail.title %></h1>
+	<div class="info-wrapper flexbox">
+		<div class="info-left">
+			<img src="<%= detail.poster %>">
+		</div>
+		<div class="info-right flex1">
+			<%- detail.info %>
+		</div>
+	</div>
+	<div class="detail-item">
+		<div class="detail-item-title">剧情简介：</div>
+		<div class="detail-item-content"><%- detail.description %></div>
+	</div>
+	<div class="detail-item">
+		<div class="detail-item-title detail-item-title1">资源下载：</div>
+		<div class="detail-item-content">
+			<table border="1" cellspacing="0" cellpadding="0">
+			  	<thead>
+				    <tr>
+				      	<th>资源名称</th>
+				      	<th>清晰度</th>
+				      	<th>大小</th>
+				      	<th>操作</th>
+				    </tr>
+			  	</thead>
+			  	<tbody>
+				  	<% detail.download.forEach(function(movie){ %>
+				    	<tr>
+				    		<td><%= movie.name %></td>
+				    		<td><%= movie.type %></td>
+				    		<td><%= movie.size %></td>
+				    		<td>
+				    			<a href="<%= movie.link1 %>" class="btn">种子下载</a>
+				    			<a href="<%= movie.link2 %>" class="btn">磁力链接</a>
+				    		</td>
+				    	</tr>
+				    <% }) %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<% include footer.ejs %>

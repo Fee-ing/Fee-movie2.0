@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Fee's Movie</title>
+<link rel='stylesheet' href='/css/reset.css' />
+<link rel='stylesheet' href='/css/common.css' />
+<link rel='stylesheet' href='/css/main.css' />
+<link rel='stylesheet' href='/css/pace-theme-minimal.css' />
+</head>
+<body>
+<div class="app">
+	<div class="movie-wrapper">
+		<div class="movie-heading centerVertical">
+  			<div class="movie-search-wrapper">
+  				<form class="search-form flexbox" method="post" action="/search/<%= type %>/1">
+					<input type="text" name="keyword" value="<%= keyword ? keyword : '' %>" class="search-input flex1" placeholder="想看什么就搜一搜吧">
+	  				<button class="option-button search-btn" type="submit">搜索</button>
+  				</form>
+  			</div>
+  		</div>
+		<div class="movie-content flexbox flex-column">
+			<div class="movie-tabbar flexbox">
+				<a class="tabbar-item flex1 <%= type==='1' ? 'active' : '' %>" href="/">80s</a>
+				<a class="tabbar-item flex1 <%= type==='2' ? 'active' : '' %>" href="/two">电影天堂</a>
+				<a class="tabbar-item flex1 <%= type==='4' ? 'active' : '' %>" href="/four/1">高清电台</a>
+				<a class="tabbar-item flex1 <%= type==='3' ? 'active' : '' %>" href="/three/<%= page %>">海盗湾</a>
+				<a class="tabbar-item flex1 <%= type==='5' ? 'active' : '' %>" href="/five">电影港</a>
+				<a class="tabbar-item flex1 <%= type==='6' ? 'active' : '' %>" href="/six/1">去转盘网</a>
+			</div>
+			<div class="movie-container flex1">

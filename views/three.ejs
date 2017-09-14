@@ -1,0 +1,24 @@
+<% include header.ejs %>
+
+<div class="three-wrapper">
+	<a class="tip tip1" target="_blank" href="http://www.hdwan.net">更多资源，移步官网</a>
+	<div class="block-wrapper">
+		<% movieData.data.forEach(function(movie){ %>
+		    <a class="block-item block-item1" target="_blank" href="/threedetail/<%= movie.id %>">
+		    	<div class="item-poster equalHeight">
+		    		<img src="<%= movie.poster %>" alt="">
+		    	</div>
+		    	<h4 class="item-title item-title1" title="<%= movie.title %>"><%= movie.title %></h4>
+		    </a>
+	    <% }) %>
+	</div>
+	<div class="pagination-wrapper">
+		<div class="pagination">
+			<% movieData.pageData.forEach(function(page){ %>
+			    <a class="pagination-item <%= page.isCurrent ? 'active' : '' %>" href="/three/<%= page.page %>"><%= page.name %></a>
+		    <% }) %>
+	    </div>
+	</div>
+</div>
+
+<% include footer.ejs %>
