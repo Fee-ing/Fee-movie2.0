@@ -1,0 +1,33 @@
+{
+  /**
+   * Application configuration section
+   * PM2 - Application Declaration
+   */
+  apps : [
+    // First application
+    {
+      name      : "Fee-movie",
+      script    : "./bin/www",
+      env: {
+        COMMON_VARIABLE: "true"
+      },
+      env_production : {
+        NODE_ENV: "production"
+      }
+    }
+  ],
+  /**
+   * Deployment section
+   * PM2 - Deployment
+   */
+  deploy : {
+    production : {
+      user : 'fee',
+      host : '118.31.10.63',
+      ref  : 'origin/master',
+      repo : 'git@github.com:Fee-ing/Fee-movie.git',
+      path : '/home/fee/www/production',
+      'post-deploy' : 'npm install && pm2 startOrRestart ecosystem.json --env production'
+    }
+  }
+}
