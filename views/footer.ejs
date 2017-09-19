@@ -12,27 +12,27 @@
 		let explorer = window.navigator.userAgent.toLowerCase();
 	 	if (explorer.indexOf("msie") >= 0) {		//ie 
 		   	let ver = explorer.match(/msie ([\d.]+)/)[1].slice(0,3);
-		   	if (+ver < 10) {
+		   	if (+ver < 11) {
 		   		return false;
 		   	}
 		} else if (explorer.indexOf("firefox") >= 0) {		//firefox 
 		   	let ver = explorer.match(/firefox\/([\d.]+)/)[1].slice(0,3);
-		   	if (+ver < 18) {
+		   	if (+ver < 31) {
 		   		return false;
 		   	}
 		} else if(explorer.indexOf("chrome") >= 0){		//Chrome
 			let ver = explorer.match(/chrome\/([\d.]+)/)[1].slice(0,3);
-		   	if (+ver < 21) {
+		   	if (+ver < 36) {
 		   		return false;
 		   	}
 		} else if(explorer.indexOf("opera") >= 0){		//Opera
 			let ver = explorer.match(/opera.([\d.]+)/)[1].slice(0,3);
-			if (+ver < 17) {
+			if (+ver < 29) {
 		   		return false;
 		   	}
 		} else if(explorer.indexOf("Safari") >= 0){		//Safari
 			let ver = explorer.match(/version\/([\d.]+)/)[1].slice(0,3);
-			if (+ver < 6.1) {
+			if (+ver < 8) {
 		   		return false;
 		   	}
 		}
