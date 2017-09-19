@@ -431,13 +431,13 @@ router.get('/threedetail/:id', function(req, res, next) {
       		var $ = cheerio.load(sres.text, {decodeEntities: false});
       		var detail = {
       			title: $('.article_container h1').html(),
-      			poster: $('#post_content img').eq(0).attr('src'),
+      			poster: $('#post_content .aligncenter.size-full').eq(0).attr('src'),
       			info: $('#post_content p').eq(1).html(),
       			description: $('#post_content p').eq(2).html().replace(/\s+/g, ''),
       			imgs: [],
       			href: ''
       		};
-      		$('#post_content img').each(function (idx, element) {
+      		$('#post_content .aligncenter.size-full').each(function (idx, element) {
       			if(idx > 0) {
       				var $element = $(element);
 		        	detail.imgs.push($element.attr('src'));

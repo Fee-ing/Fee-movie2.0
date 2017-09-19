@@ -45,17 +45,17 @@
 					    		<td><%= movie.size[1] %></td>
 					    		<td>
 					    			<a href="<%= movie.href %>" class="btn">点击下载</a>
-					    			<a data-clipboard-text="<%= movie.href %>" class="btn copy-btn">复制链接</a>
+					    			<a data-clipboard-text="<%= movie.href %>" class="btn copy-btn">复制下载链接</a>
 					    		</td>
 					    	</tr>
 	  					<% } else{ %>
 	  						<tr>
-					    		<td><%= movie.size[0] %></td>
+					    		<td><%= movie.size[0] ? movie.size[0] : '磁力' %></td>
 					    		<td><%= detail.title %></td>
 					    		<td><%= movie.size[1] %>：<%= movie.size[2] %></td>
 					    		<td>
 					    			<a href="<%= movie.href %>" target="_blank" class="btn">前往下载</a>
-					    			<a data-clipboard-text="<%= movie.href %>" class="btn copy-btn">复制链接</a>
+					    			<a data-clipboard-text="<%= movie.href %>" class="btn copy-btn">复制网盘链接</a>
 					    		</td>
 					    	</tr>
 	  					<% } %>

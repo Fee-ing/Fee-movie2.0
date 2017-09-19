@@ -300,6 +300,10 @@
 .twodetail-wrapper p{
   background-color: transparent !important;
 }
+.threedetail-wrapper .copy-btn{
+  margin-left: 15px;
+  font-weight: bold;
+}
 .fourdetail-wrapper .badge{
   color: #333 !important;
 }
