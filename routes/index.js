@@ -508,7 +508,7 @@ router.get('/fivedetail/:id', function(req, res, next) {
       			obj.name = $element.find('a').html();
       			obj.href = $element.find('a').attr('href');
       			$element.find('a').remove();
-      			obj.size = $element.html().replace(/(&nbsp;\()|(\))/g, '').split('：');
+      			obj.size = $element.html().replace(/(\()|(\))/g, ' ').split('：');
       			detail.download.push(obj);
 	      	});
       		res.render('fivedetail', { type: '5', page: '1', keyword: '', detail: detail });

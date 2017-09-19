@@ -7,40 +7,23 @@
 	</div>
 </div>
 <script src="/js/pace.min.js"></script>
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/common.js"></script>
 <script>
-	var explorerVersion = function() {
-		let explorer = window.navigator.userAgent.toLowerCase();
-	 	if (explorer.indexOf("msie") >= 0) {		//ie 
-		   	let ver = explorer.match(/msie ([\d.]+)/)[1].slice(0,3);
-		   	if (+ver < 11) {
-		   		return false;
-		   	}
-		} else if (explorer.indexOf("firefox") >= 0) {		//firefox 
-		   	let ver = explorer.match(/firefox\/([\d.]+)/)[1].slice(0,3);
-		   	if (+ver < 31) {
-		   		return false;
-		   	}
-		} else if(explorer.indexOf("chrome") >= 0){		//Chrome
-			let ver = explorer.match(/chrome\/([\d.]+)/)[1].slice(0,3);
-		   	if (+ver < 36) {
-		   		return false;
-		   	}
-		} else if(explorer.indexOf("opera") >= 0){		//Opera
-			let ver = explorer.match(/opera.([\d.]+)/)[1].slice(0,3);
-			if (+ver < 29) {
-		   		return false;
-		   	}
-		} else if(explorer.indexOf("Safari") >= 0){		//Safari
-			let ver = explorer.match(/version\/([\d.]+)/)[1].slice(0,3);
-			if (+ver < 8) {
-		   		return false;
-		   	}
-		}
-		return true;
-	}
-	if(!explorerVersion()) {
+	if(!FUNC.explorerVersion()) {
 		document.getElementById('tip').style.display = 'block';
 	}
+
+	var clipboard = new Clipboard('.copy-btn');
+
+	clipboard.on('success', function(e) {
+	    FUNC.toast('复制链接成功');
+	    e.clearSelection();
+	});
+
+	clipboard.on('error', function(e) {
+	    FUNC.toast('复制链接失败');
+	});
 </script>
 </body>
 </html>

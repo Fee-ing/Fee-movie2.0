@@ -29,6 +29,7 @@
 		<div class="detail-item-content">
 			<% if(detail.href) { %>
 				<a href="<%= detail.href %>"><%= detail.title %></a>
+				<a data-clipboard-text="<%= detail.href %>" class="btn copy-btn">复制下载链接</a>
 			<% } else{ %>
 				<p>暂无资源或资源已被和谐</p>
 			<% } %>
