@@ -1,0 +1,63 @@
+<% include header.ejs %>
+
+<div class="seven-wrapper">
+	<a class="tip tip1" target="_blank" href="http://www.zimuzu.tv/">更多资源，移步人人影视官网</a>
+	<h2 class="movie-title">24小时热门</h2>
+	<div class="list-wrapper">
+		<table border="1" cellspacing="0" cellpadding="0">
+		  	<thead>
+			    <tr>
+			      	<th>资源名称</th>
+			      	<th>类型</th>
+			      	<th>操作</th>
+			    </tr>
+		  	</thead>
+		  	<tbody>
+			  	<% tvData1.forEach(function(movie){ %>
+			    	<tr>
+			    		<td><%= movie.title %></td>
+			    		<td><%= movie.subTitle %></td>
+			    		<td><a class="btn" target="_blank" href="<%= movie.id %>">查看详情</a></td>
+			    	</tr>
+			    <% }) %>
+			</tbody>
+		</table>
+	</div>
+	<h2 class="movie-title">最新发布</h2>
+	<div class="block-wrapper">
+		<% tvData2.forEach(function(movie){ %>
+		    <a class="block-item block-item1" target="_blank" href="<%= movie.id %>">
+		    	<div class="item-poster equalHeight">
+		    		<img src="<%= movie.poster %>" alt="">
+		    	</div>
+		    	<h4 class="item-title" title="<%= movie.title %>"><%= movie.title %></h4>
+		    	<h5 class="item-subTitle"><%= movie.subTitle %></h5>
+		    </a>
+	    <% }) %>
+	</div>
+	<h2 class="movie-title">最后更新</h2>
+	<div class="block-wrapper">
+		<% tvData3.forEach(function(movie){ %>
+		    <a class="block-item block-item2" target="_blank" href="<%= movie.id %>">
+		    	<div class="item-poster equalHeight">
+		    		<img src="<%= movie.poster %>" alt="">
+		    	</div>
+		    	<h4 class="item-title" title="<%= movie.title %>"><%= movie.title %></h4>
+		    	<h5 class="item-subTitle"><%= movie.subTitle %></h5>
+		    </a>
+	    <% }) %>
+	</div>
+	<h2 class="movie-title">新剧推荐</h2>
+	<div class="block-wrapper">
+		<% tvData4.forEach(function(movie){ %>
+		    <a class="block-item block-item1" target="_blank" href="<%= movie.id %>">
+		    	<div class="item-poster equalHeight">
+		    		<img src="<%= movie.poster %>" alt="">
+		    	</div>
+		    	<h4 class="item-title" title="<%= movie.title %>"><%= movie.title %></h4>
+		    </a>
+	    <% }) %>
+	</div>
+</div>
+
+<% include footer.ejs %>

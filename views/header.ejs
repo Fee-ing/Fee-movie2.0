@@ -15,6 +15,11 @@
 		<div class="movie-heading centerVertical">
   			<div class="movie-search-wrapper">
   				<form class="search-form flexbox" method="post" action="/search/<%= type %>/1">
+  					<!-- <select class="search-select" name="searchTpye">
+  						<option value="1" selected="">默认搜索</option>
+  						<option value="2">人人搜索</option>
+  						<option value="3">韩饭搜索</option>
+  					</select> -->
 					<input type="text" name="keyword" value="<%= keyword ? keyword : '' %>" class="search-input flex1" placeholder="想看什么就搜一搜吧">
 	  				<button class="option-button search-btn" type="submit">搜索</button>
   				</form>
@@ -29,5 +34,7 @@
 				<a class="tabbar-item flex1 <%= type==='3' ? 'active' : '' %>" href="/three/<%= page %>">海盗湾</a>
 				<a class="tabbar-item flex1 <%= type==='5' ? 'active' : '' %>" href="/five">电影港</a>
 				<a class="tabbar-item flex1 <%= type==='6' ? 'active' : '' %>" href="/six/1">去转盘网</a>
+				<a class="tabbar-item flex1 <%= type==='7' ? 'active' : '' %>" href="/seven">人人影视</a>
+				<a class="tabbar-item flex1 <%= type==='8' ? 'active' : '' %>" href="/eight/<%= page %>">韩饭网</a>
 			</div>
 			<div class="movie-container flex1">

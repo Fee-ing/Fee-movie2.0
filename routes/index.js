@@ -326,6 +326,117 @@ router.get('/six/:page', function(req, res, next) {
 	    });
 });
 
+router.get('/seven', function(req, res, next) {
+  	superagent.get('http://www.zimuzu.tv/')
+	    .end(function (err, sres) {
+	      	if (err) {
+	        	return next(err);
+	      	}
+	      	var $ = cheerio.load(sres.text, {decodeEntities: false});
+	      	var tvData1 = [], tvData2 = [], tvData3 = [], tvData4 = [];
+	      	$('.top24 .top').each(function (idx, element) {
+	        	var $element = $(element);
+		        tvData1.push({
+		          	title: $element.find('.fl-info a').html(),
+		          	subTitle: $element.find('.fl-info p').eq(0).html(),
+		          	id: 'http://www.zimuzu.tv'+($element.find('.fl-img a').attr('href'))
+		        });
+	      	});
+	      	$('.top24 li').each(function (idx, element) {
+	        	var $element = $(element);
+	        	if(!$element.hasClass('top')) {
+	        		tvData1.push({
+			          	title: $element.find('a').html(),
+			          	subTitle: $element.find('em').html(),
+			          	id: 'http://www.zimuzu.tv'+($element.find('a').attr('href'))
+			        });
+	        	}
+	      	});
+	      	$('.lastest-release li').each(function (idx, element) {
+	        	var $element = $(element);
+		        tvData2.push({
+		          	title: $element.find('p a').html(),
+		          	subTitle: $element.find('.f4').eq(0).html(),
+		          	id: 'http://www.zimuzu.tv'+($element.find('.imglink').attr('href').replace(/resource/g, 'gresource')),
+		          	poster: $element.find('.imglink img').attr('src')
+		        });
+	      	});
+	      	$('.top-update li').each(function (idx, element) {
+	        	var $element = $(element);
+		        tvData3.push({
+		          	title: $element.find('.t .f14 a strong').html(),
+		          	subTitle: $element.find('.t .f14').html().split('<')[0],
+		          	id: 'http://www.zimuzu.tv'+($element.find('.img a').attr('href')),
+		          	poster: $element.find('.img img').attr('src')
+		        });
+	      	});
+	      	$('.top-tv li').each(function (idx, element) {
+	        	var $element = $(element);
+		        tvData4.push({
+		          	title: $element.find('.fl-info h3 a').html(),
+		          	id: 'http://www.zimuzu.tv'+($element.find('.fl-img a').attr('href').replace(/http:\/\/www.zimuzu.tv/g, '')),
+		          	poster: $element.find('.fl-img img').attr('src')
+		        });
+	      	});
+	      	
+	      	let data = {
+	      		type: '7', 
+	      		page: '1',
+	      		keyword: '',
+	      		tvData1: tvData1, 
+	      		tvData2: tvData2, 
+	      		tvData3: tvData3, 
+	      		tvData4: tvData4
+	      	}
+	      	res.render('seven', data);
+	    });
+});
+
+router.get('/eight/:page', function(req, res, next) {
+	superagent.get('http://www.hanfan.cc/page/'+req.params.page)
+    	.end(function (err, sres) {
+      		if (err) {
+        		return next(err);
+      		}
+      		var $ = cheerio.load(sres.text, {decodeEntities: false});
+      		var movieData = {
+      			data: [],
+      			pageData: []
+      		};
+      		$('.excerpt').each(function (idx, element) {
+	        	var $element = $(element);
+		        movieData.data.push({
+		          	title: $element.find('.focus img').attr('alt'),
+		          	subTitle: $element.find('.meta .pv').html(),
+		          	poster: $element.find('.focus img').attr('data-src'),
+		          	href: $element.find('.focus').attr('href')
+		        });
+	      	});
+	      	$('.pagination li').each(function (idx, element) {
+	        	var $element = $(element);
+	        	if($element.hasClass('active')) {
+	        		movieData.pageData.push({
+			          	page: $element.find('span').html(),
+			          	name: $element.find('span').html(),
+			          	isCurrent: true
+			        });
+	        	}else {
+	        		if($element.children().is('a')) {
+	        			let page = $element.find('a').attr('href').replace(/http:\/\/www.hanfan.cc\//g, '').replace(/page\//g, '').replace(/\//g, '')
+	        			page ? page : page = '1';
+	        			movieData.pageData.push({
+				          	page: page,
+				          	name: $element.find('a').html(),
+				          	isCurrent: false
+				        });
+	        		}
+	        	}
+	      	});
+	      	movieData.totalPage = $('.pagination li').last().find('span').html();
+      		res.render('eight', { type: '8', page: req.params.page, keyword: '', movieData: movieData });
+    	});
+});
+
 router.get('/onedetail/:type/:id', function(req, res, next) {
     superagent.get('https://www.80s.tt/movie/'+req.params.id)
     	.end(function (err, sres) {

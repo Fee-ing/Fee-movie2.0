@@ -1,22 +1,24 @@
 <% include header.ejs %>
 
-<div class="three-wrapper">
-	<a class="tip tip1" target="_blank" href="http://www.hdwan.net">更多资源，移步海盗湾官网</a>
+<div class="nine-wrapper">
+	<a class="tip tip1" target="_blank" href="http://www.hanfan.cc">更多资源，移步韩饭网官网</a>
 	<div class="block-wrapper">
 		<% movieData.data.forEach(function(movie){ %>
-		    <a class="block-item block-item1" target="_blank" href="/threedetail/<%= movie.id %>">
+		    <a class="block-item block-item2" target="_blank" href="<%= movie.href %>">
 		    	<div class="item-poster equalHeight">
 		    		<img src="<%= movie.poster %>" alt="">
 		    	</div>
 		    	<h4 class="item-title item-title1" title="<%= movie.title %>"><%= movie.title %></h4>
+		    	<h5 class="item-subTitle"><%- movie.subTitle %></h5>
 		    </a>
 	    <% }) %>
 	</div>
 	<div class="pagination-wrapper">
 		<div class="pagination">
 			<% movieData.pageData.forEach(function(page){ %>
-			    <a class="pagination-item <%= page.isCurrent ? 'active' : '' %>" href="/three/<%= page.page %>"><%= page.name %></a>
+			    <a class="pagination-item <%= page.isCurrent ? 'active' : '' %>" href="/nine/<%= page.page %>"><%= page.name %></a>
 		    <% }) %>
+		    <a class="pagination-item"><%= movieData.totalPage %></a>
 	    </div>
 	</div>
 </div>
