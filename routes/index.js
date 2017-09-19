@@ -3,7 +3,6 @@ var cheerio = require('cheerio');
 var superagent = require('superagent');
 require('superagent-charset')(superagent);
 
-var FUNC = require('../public/js/common');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
@@ -516,87 +515,121 @@ router.get('/fivedetail/:id', function(req, res, next) {
     	});
 });
 
+
+//80s搜索
+function searchOne(req){
+    let p = new Promise(function(resolve, reject){
+        let searchData1 = [];
+        superagent.post('https://www.80s.tt/search')
+	    	.send({keyword: req.body.keyword} )
+	    	.end(function (err, sres) {
+	      		if (!err) {
+	        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+			      	$('.movie-item').each(function (idx, element) {
+			        	let $element = $(element);
+				        searchData1.push({
+				          	title: $element.find('.title h4 a').html(),
+				          	subTitle: $element.find('.title em').html(),
+				          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
+				          	poster: $element.find('.poster img').attr('data-original')
+				        });
+			      	});
+	      		}
+	      		resolve(searchData1);
+	      	});
+    });
+    return p;            
+}
+//海盗湾搜索
+function searchTwo(req){
+    let p = new Promise(function(resolve, reject){
+        let searchData2 = [];
+        superagent.get('http://www.hdwan.net/')
+			.query({s: req.body.keyword})
+	    	.end(function (err, sres) {
+	      		if (!err) {
+	        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+			      	$('#post_container .post').each(function (idx, element) {
+		        		let $element = $(element);
+				        searchData2.push({
+				          	title: $element.find('img').attr('alt'),
+				          	poster: $element.find('img').attr('src'),
+				          	id: $element.find('.zoom').attr('href').replace(/http:\/\/www.hdwan.net\//g, '').replace(/\.html/g, '')
+				        });
+			      	});
+	      		}
+	      		resolve(searchData2);
+	      	});
+    });
+    return p;            
+}
+//高清电影网搜索
+function searchThree(req){
+    let p = new Promise(function(resolve, reject){
+        let searchData3 = [];
+        superagent.get('https://gaoqing.fm/s.php')
+			.query({q: req.body.keyword})
+	    	.end(function (err, sres) {
+	      		if (!err) {
+	        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+			      	$('#result1 .row').each(function (idx, element) {
+		        		let $element = $(element);
+				        searchData3.push({
+				          	title: $element.find('.x-m-poster img').attr('alt'),
+				          	poster: $element.find('.x-m-poster img').attr('src'),
+				          	id: $element.find('.x-m-side>a').attr('href').replace(/https:\/\/gaoqing.fm\/view\//g, '')
+				        });
+			      	});
+	      		}
+	      		resolve(searchData3);
+	      	});
+    });
+    return p;            
+}
+//去转盘网搜索
+function searchFour(req){
+    let p = new Promise(function(resolve, reject){
+        let searchData4 = [];
+        superagent.get('http://www.quzhuanpan.com/source/search.action')
+			.query({q: req.body.keyword, currentPage: req.params.page})
+	    	.end(function (err, sres) {
+	      		if (!err) {
+	        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+			      	$('.search-classic.visible-desktop').each(function (idx, element) {
+		        		let $element = $(element);
+				        searchData4.push({
+				          	title: $element.find('.source-title').attr('title'),
+				          	href: 'http://www.quzhuanpan.com' + $element.find('.source-title').attr('href'),
+				          	size: $element.find('.next-row').eq(2).html().split('|')
+				        });
+			      	});
+	      		}
+	      		resolve(searchData4);
+	      	});
+    });
+    return p;            
+}
+
 var searchObj = {};
 router.post('/search/:type/:page', function(req, res, next) {
 	searchObj = {};
-	var searchData1 = [], searchData2 = [], searchData3 = [], searchData4 = [], searchData5 = [], searchData6 = [];
-	let data = {
-    	type: req.params.type,
-    	page: req.params.page,
-    	keyword: req.body.keyword,
-    	searchData1: searchData1,
-    	searchData2: searchData2,
-    	searchData3: searchData3,
-    	searchData4: searchData4
-    };
-	superagent.post('https://www.80s.tt/search')
-    	.send({keyword: req.body.keyword} )
-    	.end(function (err, sres) {
-      		if (!err) {
-        		let $ = cheerio.load(sres.text, {decodeEntities: false});
-		      	$('.movie-item').each(function (idx, element) {
-		        	let $element = $(element);
-			        searchData1.push({
-			          	title: $element.find('.title h4 a').html(),
-			          	subTitle: $element.find('.title em').html(),
-			          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
-			          	poster: $element.find('.poster img').attr('data-original')
-			        });
-		      	});
-      		}
-      		
-	      	superagent.get('http://www.hdwan.net/')
-				.query({s: req.body.keyword})
-		    	.end(function (err, sres) {
-		      		if (!err) {
-		        		let $ = cheerio.load(sres.text, {decodeEntities: false});
-				      	$('#post_container .post').each(function (idx, element) {
-			        		let $element = $(element);
-					        searchData2.push({
-					          	title: $element.find('img').attr('alt'),
-					          	poster: $element.find('img').attr('src'),
-					          	id: $element.find('.zoom').attr('href').replace(/http:\/\/www.hdwan.net\//g, '').replace(/\.html/g, '')
-					        });
-				      	});
-		      		}
-		      		
-			      	superagent.get('https://gaoqing.fm/s.php')
-						.query({q: req.body.keyword})
-				    	.end(function (err, sres) {
-				      		if (!err) {
-				        		let $ = cheerio.load(sres.text, {decodeEntities: false});
-						      	$('#result1 .row').each(function (idx, element) {
-					        		let $element = $(element);
-							        searchData3.push({
-							          	title: $element.find('.x-m-poster img').attr('alt'),
-							          	poster: $element.find('.x-m-poster img').attr('src'),
-							          	id: $element.find('.x-m-side>a').attr('href').replace(/https:\/\/gaoqing.fm\/view\//g, '')
-							        });
-						      	});
-				      		}
-				      		
-					      	superagent.get('http://www.quzhuanpan.com/source/search.action')
-								.query({q: req.body.keyword, currentPage: req.params.page})
-						    	.end(function (err, sres) {
-						      		if (!err) {
-						        		let $ = cheerio.load(sres.text, {decodeEntities: false});
-								      	$('.search-classic.visible-desktop').each(function (idx, element) {
-							        		let $element = $(element);
-									        searchData4.push({
-									          	title: $element.find('.source-title').attr('title'),
-									          	href: 'http://www.quzhuanpan.com' + $element.find('.source-title').attr('href'),
-									          	size: $element.find('.next-row').eq(2).html().split('|')
-									        });
-								      	});
-						      		}
-						      		
-						      		searchObj = data;
-							      	res.render('search', data);
-						      	});
-				      	});
-		      	});
-      	});
+	Promise
+	.all([searchOne(req), searchTwo(req), searchThree(req), searchFour(req)])
+	.then(function(results){
+		let data = {
+	    	type: req.params.type,
+	    	page: req.params.page,
+	    	keyword: req.body.keyword,
+	    	searchData1: results[0],
+	    	searchData2: results[1],
+	    	searchData3: results[2],
+	    	searchData4: results[3]
+	    };
+	    searchObj = data;
+	  	res.render('search', data);
+	});
 });
+//去转盘网搜索详情
 router.get('/search/:type/:page/:keyword', function(req, res, next) {
 	superagent.get('http://www.quzhuanpan.com/source/search.action')
 		.query({q: req.params.keyword, currentPage: req.params.page})

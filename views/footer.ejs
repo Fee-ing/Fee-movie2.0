@@ -1,7 +1,46 @@
 			</div>
 		</div>
+		<div class="movie-footer centerVertical flex-column">
+			<p>本网页所提供的信息，只供学习参考之用，详情请移步各官网</p>
+			<p>联系作者：微信（kuihuabaozai），QQ（2809750987） (经费不足，求打赏)</p>
+		</div>
 	</div>
 </div>
 <script src="/js/pace.min.js"></script>
+<script>
+	var explorerVersion = function() {
+		let explorer = window.navigator.userAgent.toLowerCase();
+	 	if (explorer.indexOf("msie") >= 0) {		//ie 
+		   	let ver = explorer.match(/msie ([\d.]+)/)[1].slice(0,3);
+		   	if (+ver < 10) {
+		   		return false;
+		   	}
+		} else if (explorer.indexOf("firefox") >= 0) {		//firefox 
+		   	let ver = explorer.match(/firefox\/([\d.]+)/)[1].slice(0,3);
+		   	if (+ver < 18) {
+		   		return false;
+		   	}
+		} else if(explorer.indexOf("chrome") >= 0){		//Chrome
+			let ver = explorer.match(/chrome\/([\d.]+)/)[1].slice(0,3);
+		   	if (+ver < 21) {
+		   		return false;
+		   	}
+		} else if(explorer.indexOf("opera") >= 0){		//Opera
+			let ver = explorer.match(/opera.([\d.]+)/)[1].slice(0,3);
+			if (+ver < 17) {
+		   		return false;
+		   	}
+		} else if(explorer.indexOf("Safari") >= 0){		//Safari
+			let ver = explorer.match(/version\/([\d.]+)/)[1].slice(0,3);
+			if (+ver < 6.1) {
+		   		return false;
+		   	}
+		}
+		return true;
+	}
+	if(!explorerVersion()) {
+		document.getElementById('tip').style.display = 'block';
+	}
+</script>
 </body>
 </html>
