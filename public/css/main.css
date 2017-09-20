@@ -50,6 +50,19 @@
 .movie-heading .movie-search-wrapper .search-webname{
   width: 100px;
 }
+.movie-heading .movie-search-wrapper .search-select{
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: auto;
+  padding: 0 2%;
+  height: 100%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.movie-heading .movie-search-wrapper .search-select option{
+  text-align: center;
+}
 .movie-heading .movie-search-wrapper .search-input{
 	border: none;
 	outline: none;

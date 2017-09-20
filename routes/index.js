@@ -90,6 +90,7 @@ router.get('/', function(req, res, next) {
 	      	let data = {
 	      		type: '1', 
 	      		page: '1',
+	      		searchType: '1',
 	      		keyword: '',
 	      		movieHotData: movieHotData, 
 	      		tvHotData: tvHotData, 
@@ -176,6 +177,7 @@ router.get('/two', function(req, res, next) {
 	      	let data = {
 	      		type: '2',
 	      		page: '1',
+	      		searchType: '1',
 	      		keyword: '',
 	      		newData: newData,
 	      		thunderData: thunderData,
@@ -219,7 +221,7 @@ router.get('/three/:page', function(req, res, next) {
 		          	isCurrent: isCurrent
 		        });
 	      	});
-      		res.render('three', { type: '3', page: req.params.page, keyword: '', movieData: movieData });
+      		res.render('three', { type: '3', page: req.params.page, searchType: '1', keyword: '', movieData: movieData });
     	});
 });
 
@@ -258,7 +260,7 @@ router.get('/four/:page', function(req, res, next) {
 		      	});
 	      		page = req.params.page;
 	      	}
-	      	res.render('four', { type: '4', page: req.params.page, keyword: '', movieData: movieData });
+	      	res.render('four', { type: '4', page: req.params.page, searchType: '1', keyword: '', movieData: movieData });
 	    });
 });
 
@@ -295,7 +297,7 @@ router.get('/five', function(req, res, next) {
 		          	id: encodeURIComponent($element.parent().attr('href').replace(/http:\/\/www.dygang.net\//g, ''))
 		        });
 	      	});
-	      	res.render('five', { type: '5', page: '1', keyword: '', movieData: movieData, tvData: tvData, highMovieData: highMovieData });
+	      	res.render('five', { type: '5', page: '1', searchType: '1', keyword: '', movieData: movieData, tvData: tvData, highMovieData: highMovieData });
 	    });
 });
 
@@ -322,7 +324,7 @@ router.get('/six/:page', function(req, res, next) {
 		          	type: $element.find('.source-download-times').next().next().html()
 		        });
 	      	});
-	      	res.render('six', { type: '6', page: req.params.page, keyword: '', movieData: movieData });
+	      	res.render('six', { type: '6', page: req.params.page, searchType: '1', keyword: '', movieData: movieData });
 	    });
 });
 
@@ -382,6 +384,7 @@ router.get('/seven', function(req, res, next) {
 	      	let data = {
 	      		type: '7', 
 	      		page: '1',
+	      		searchType: '1',
 	      		keyword: '',
 	      		tvData1: tvData1, 
 	      		tvData2: tvData2, 
@@ -433,7 +436,7 @@ router.get('/eight/:page', function(req, res, next) {
 	        	}
 	      	});
 	      	movieData.totalPage = $('.pagination li').last().find('span').html();
-      		res.render('eight', { type: '8', page: req.params.page, keyword: '', movieData: movieData });
+      		res.render('eight', { type: '8', page: req.params.page, searchType: '1', keyword: '', movieData: movieData });
     	});
 });
 
@@ -506,7 +509,7 @@ router.get('/onedetail/:type/:id', function(req, res, next) {
 		      		});
 	        	}
       		});
-      		res.render('onedetail', {type: req.params.type, page: '1', keyword: '', detail: detail});
+      		res.render('onedetail', {type: req.params.type, page: '1', searchType: '1', keyword: '', detail: detail});
     	});
 })
 
@@ -529,7 +532,7 @@ router.get('/twodetail/:link', function(req, res, next) {
       		var detail = {
       			content: html.join('img').replace(/下载地址/g, '下载地址（复制后用迅雷打开）')
       		};
-      		res.render('twodetail', { type: '2', page: '1', keyword: '', detail: detail });
+      		res.render('twodetail', { type: '2', page: '1', searchType: '1', keyword: '', detail: detail });
     	});
 });
 
@@ -557,7 +560,7 @@ router.get('/threedetail/:id', function(req, res, next) {
 	      	if($('.dw-box.dw-box-info a')){
 	      		detail.href = $('.dw-box.dw-box-info a').eq(0).attr('href');
 	      	}
-      		res.render('threedetail', { type: '3', page: '1', keyword: '', detail: detail });
+      		res.render('threedetail', { type: '3', page: '1', searchType: '1', keyword: '', detail: detail });
     	});
 });
 
@@ -586,7 +589,7 @@ router.get('/fourdetail/:id', function(req, res, next) {
 	        		link2: $element.find('a.btn-primary.btn-sm').attr('href')
 	        	});
 	      	});
-      		res.render('fourdetail', { type: '4', page: '1', keyword: '', detail: detail });
+      		res.render('fourdetail', { type: '4', page: '1', searchType: '1', keyword: '', detail: detail });
     	});
 });
 
@@ -622,7 +625,7 @@ router.get('/fivedetail/:id', function(req, res, next) {
       			obj.size = $element.html().replace(/(\()|(\))/g, ' ').split('：');
       			detail.download.push(obj);
 	      	});
-      		res.render('fivedetail', { type: '5', page: '1', keyword: '', detail: detail });
+      		res.render('fivedetail', { type: '5', page: '1', searchType: '1', keyword: '', detail: detail });
     	});
 });
 
@@ -720,47 +723,143 @@ function searchFour(req){
     });
     return p;            
 }
+//韩饭网搜索
+function searchSix(req, c_page){
+    let p = new Promise(function(resolve, reject){
+        let searchData6 = {
+        	data: [],
+        	pageData: [],
+        	totalPage: '1'
+        };
+        superagent.get('http://www.hanfan.cc/')
+			.query({s: req.body.keyword})
+	    	.end(function (err, sres) {
+	      		if (!err) {
+	        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+			      	$('.excerpt').each(function (idx, element) {
+		        		let $element = $(element);
+				        searchData6.data.push({
+				          	title: $element.find('.focus img').attr('alt'),
+				          	subTitle: $element.find('.meta .pv').html(),
+				          	poster: $element.find('.focus img').attr('data-src'),
+				          	href: $element.find('.focus').attr('href')
+				        });
+			      	});
+			      	$('.pagination li').each(function (idx, element) {
+			        	var $element = $(element);
+			        	if($element.hasClass('active')) {
+			        		searchData6.pageData.push({
+					          	page: $element.find('span').html(),
+					          	name: $element.find('span').html(),
+					          	isCurrent: true
+					        });
+			        	}else {
+			        		if($element.children().is('a')) {
+			        			let page = $element.find('a').attr('href').replace(/http:\/\/www.hanfan.cc\//g, '').replace(/page\//g, '').replace(/\//g, '').replace(/\?.*/g, '');
+			        			page ? page : page = '1';
+			        			searchData6.pageData.push({
+						          	page: page,
+						          	name: $element.find('a').html(),
+						          	isCurrent: false
+						        });
+			        		}
+			        	}
+			      	});
+			      	searchData6.totalPage = $('.pagination li').last().find('span').html();
+	      		}
+	      		resolve(searchData6);
+	      	});
+    });
+    return p;            
+}
 
 var searchObj = {};
 router.post('/search/:type/:page', function(req, res, next) {
 	searchObj = {};
-	Promise
-	.all([searchOne(req), searchTwo(req), searchThree(req), searchFour(req)])
-	.then(function(results){
-		let data = {
-	    	type: req.params.type,
-	    	page: req.params.page,
-	    	keyword: req.body.keyword,
-	    	searchData1: results[0],
-	    	searchData2: results[1],
-	    	searchData3: results[2],
-	    	searchData4: results[3]
-	    };
-	    searchObj = data;
-	  	res.render('search', data);
-	});
+	let data = {
+    	type: req.params.type,
+    	page: req.params.page,
+    	keyword: req.body.keyword,
+    	searchType: req.body.searchType,
+    	searchData1: [],
+    	searchData2: [],
+    	searchData3: [],
+    	searchData4: [],
+    	searchData6: null
+    };
+	if(req.body.searchType === '1') {
+		Promise
+		.all([searchOne(req), searchTwo(req), searchThree(req), searchFour(req)])
+		.then(function(results){
+			data.searchData1 = results[0];
+			data.searchData2 = results[1];
+			data.searchData3 = results[2];
+			data.searchData4 = results[3];
+			searchObj = data;
+			res.render('search', data);
+		});
+	} else if(req.body.searchType === '2') {
+		searchSix(req, req.params.page).then(function(result){
+			data.searchData6 = result;
+			searchObj = data;
+			res.render('search', data);
+		})
+	}else if(req.body.searchType === '3') {
+		searchSix(req, req.params.page).then(function(result){
+			data.searchData6 = result;
+			searchObj = data;
+			res.render('search', data);
+		})
+	}
+	
 });
-//去转盘网搜索详情
+//韩饭网搜索详情
 router.get('/search/:type/:page/:keyword', function(req, res, next) {
-	superagent.get('http://www.quzhuanpan.com/source/search.action')
-		.query({q: req.params.keyword, currentPage: req.params.page})
+	superagent.get('http://www.hanfan.cc/page/'+req.params.page+'/')
+		.query({s: req.params.keyword})
     	.end(function (err, sres) {
-      		if (err) {
-        		return next(err);
+    		let searchData6 = {
+	        	data: [],
+	        	pageData: [],
+	        	totalPage: '1'
+	        };
+      		if (!err) {
+        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+		      	$('.excerpt').each(function (idx, element) {
+	        		let $element = $(element);
+			        searchData6.data.push({
+			          	title: $element.find('.focus img').attr('alt'),
+			          	subTitle: $element.find('.meta .pv').html(),
+			          	poster: $element.find('.focus img').attr('data-src'),
+			          	href: $element.find('.focus').attr('href')
+			        });
+		      	});
+		      	$('.pagination li').each(function (idx, element) {
+		        	var $element = $(element);
+		        	if($element.hasClass('active')) {
+		        		searchData6.pageData.push({
+				          	page: $element.find('span').html(),
+				          	name: $element.find('span').html(),
+				          	isCurrent: true
+				        });
+		        	}else {
+		        		if($element.children().is('a')) {
+		        			let page = $element.find('a').attr('href').replace(/http:\/\/www.hanfan.cc\//g, '').replace(/page\//g, '').replace(/\//g, '').replace(/\?.*/g, '');
+		        			page ? page : page = '1';
+		        			searchData6.pageData.push({
+					          	page: page,
+					          	name: $element.find('a').html(),
+					          	isCurrent: false
+					        });
+		        		}
+		        	}
+		      	});
+		      	searchData6.totalPage = $('.pagination li').last().find('span').html();
       		}
-      		var $ = cheerio.load(sres.text, {decodeEntities: false});
-	      	var searchData = [];
-	      	$('.search-classic.visible-desktop').each(function (idx, element) {
-        		var $element = $(element);
-		        searchData.push({
-		          	title: $element.find('.source-title').attr('title'),
-		          	href: 'http://www.quzhuanpan.com' + $element.find('.source-title').attr('href'),
-		          	size: $element.find('.next-row').eq(2).html().split('|')
-		        });
-	      	});
-	      	searchObj.type = req.params.type;
+      		searchObj.type = req.params.type;
 	      	searchObj.page = req.params.page;
-	      	searchObj.searchData4 = searchObj.searchData4.concat(searchData);
+	      	searchObj.searchType = '3';
+	      	searchObj.searchData6 = searchData6;
 	      	res.render('search', searchObj);
       	});
 });

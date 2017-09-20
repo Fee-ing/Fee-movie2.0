@@ -65,7 +65,29 @@
 			<a class="tip" target="_blank" href="http://www.quzhuanpan.com/source/search.action?q=<%= keyword %>&currentPage=<%= +page+1 %>">更多结果请前往官网</a>
 		</div>
 	<% } %>
-	<% if(searchData1.length === 0 && searchData2.length === 0 && searchData3.length === 0 && searchData4.length === 0) { %>
+	<% if(searchData6) { %>
+		<h2 class="movie-title">韩饭网搜索结果</h2>
+		<div class="block-wrapper">
+			<% searchData6.data.forEach(function(movie){ %>
+			    <a class="block-item block-item2" target="_blank" href="<%= movie.href %>">
+			    	<div class="item-poster equalHeight">
+			    		<img src="<%= movie.poster %>" alt="">
+			    	</div>
+			    	<h4 class="item-title item-title1" title="<%= movie.title %>"><%= movie.title %></h4>
+			    	<h5 class="item-subTitle"><%- movie.subTitle %></h5>
+			    </a>
+		    <% }) %>
+		</div>
+		<div class="pagination-wrapper">
+			<div class="pagination">
+				<% searchData6.pageData.forEach(function(page){ %>
+				    <a class="pagination-item <%= page.isCurrent ? 'active' : '' %>" href="/search/<%= type %>/<%= page.page %>/<%= keyword %>"><%= page.name %></a>
+			    <% }) %>
+			    <a class="pagination-item"><%= searchData6.totalPage %></a>
+		    </div>
+		</div>
+	<% } %>
+	<% if(searchData1.length === 0 && searchData2.length === 0 && searchData3.length === 0 && searchData4.length === 0 && !searchData6) { %>
 		<p class="search-tip">未找到相关资源</p>
 	<% } %>
 </div>
