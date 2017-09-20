@@ -723,6 +723,60 @@ function searchFour(req){
     });
     return p;            
 }
+//DiggBT搜索
+function searchFive(req){
+    let p = new Promise(function(resolve, reject){
+        let searchData5 = {
+        	data: [],
+        	pageData: [],
+        	totalPage: '1'
+        };
+        superagent.post('http://diggbt.fyi/')
+	    	.send({keyword: req.body.keyword} )
+	    	.type('form')
+	    	.end(function (err, sres) {
+	      		if (!err) {
+	        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+			      	$('.list-area .item').each(function (idx, element) {
+			        	let $element = $(element);
+				        searchData5.data.push({
+				          	title: $element.find('.item-title a').html(),
+				          	subTitle: $element.find('.item-title .category').html(),
+				          	href: $element.find('.item-title a').attr('href'),
+				          	download: $element.find('.item-detail span').eq(0).find('a').attr('href'),
+				          	downloadType: $element.find('.item-detail span').eq(0).find('a').html(),
+				          	time: $element.find('.item-detail span').eq(1).html().replace(/收录日期:/g, ''),
+				          	size: $element.find('.item-detail span').eq(2).html().replace(/大小:/g, ''),
+				          	num: $element.find('.item-detail span').eq(3).html().replace(/文件数:/g, ''),
+				          	speed: $element.find('.item-detail span').eq(4).html().replace(/速度:/g, '')
+				        });
+			      	});
+			      	$('.pagination').children().each(function (idx, element) {
+			        	let $element = $(element);
+			        	if(idx === 0) {
+			        		searchData5.totalPage = $element.html();
+			        	}
+			        	if($element.is('a')) {
+			        		searchData5.pageData.push({
+					          	name: $element.html().replace(/»/g, '尾页'),
+					          	link: encodeURIComponent($element.attr('href').replace(/http:\/\/diggbt.fyi/g, '').replace(/\.html/g, '')),
+					          	isCurrent: false
+					        });
+			        	}
+				        if($element.is('strong')) {
+			        		searchData5.pageData.push({
+					          	name: $element.html(),
+					          	link: '',
+					          	isCurrent: true
+					        });
+			        	}
+			      	});
+	      		}
+	      		resolve(searchData5);
+	      	});
+    });
+    return p;            
+}
 //韩饭网搜索
 function searchSix(req, c_page){
     let p = new Promise(function(resolve, reject){
@@ -785,6 +839,7 @@ router.post('/search/:type/:page', function(req, res, next) {
     	searchData2: [],
     	searchData3: [],
     	searchData4: [],
+    	searchData5: null,
     	searchData6: null
     };
 	if(req.body.searchType === '1') {
@@ -799,8 +854,8 @@ router.post('/search/:type/:page', function(req, res, next) {
 			res.render('search', data);
 		});
 	} else if(req.body.searchType === '2') {
-		searchSix(req, req.params.page).then(function(result){
-			data.searchData6 = result;
+		searchFive(req).then(function(result){
+			data.searchData5 = result;
 			searchObj = data;
 			res.render('search', data);
 		})
@@ -814,54 +869,104 @@ router.post('/search/:type/:page', function(req, res, next) {
 	
 });
 //韩饭网搜索详情
-router.get('/search/:type/:page/:keyword', function(req, res, next) {
-	superagent.get('http://www.hanfan.cc/page/'+req.params.page+'/')
-		.query({s: req.params.keyword})
-    	.end(function (err, sres) {
-    		let searchData6 = {
-	        	data: [],
-	        	pageData: [],
-	        	totalPage: '1'
-	        };
-      		if (!err) {
-        		let $ = cheerio.load(sres.text, {decodeEntities: false});
-		      	$('.excerpt').each(function (idx, element) {
-	        		let $element = $(element);
-			        searchData6.data.push({
-			          	title: $element.find('.focus img').attr('alt'),
-			          	subTitle: $element.find('.meta .pv').html(),
-			          	poster: $element.find('.focus img').attr('data-src'),
-			          	href: $element.find('.focus').attr('href')
-			        });
-		      	});
-		      	$('.pagination li').each(function (idx, element) {
-		        	var $element = $(element);
-		        	if($element.hasClass('active')) {
-		        		searchData6.pageData.push({
-				          	page: $element.find('span').html(),
-				          	name: $element.find('span').html(),
-				          	isCurrent: true
+router.get('/search/:searchType/:type/:page/:keyword', function(req, res, next) {
+	searchObj.type = req.params.type;
+	searchObj.page = req.params.page;
+  	searchObj.searchType = req.params.searchType;
+	if(req.params.searchType === '2') {
+		superagent.get('http://diggbt.fyi'+decodeURIComponent(req.params.page)+'.html')
+	    	.end(function (err, sres) {
+	    		let searchData5 = {
+		        	data: [],
+		        	pageData: [],
+		        	totalPage: '1'
+		        };
+	      		if (!err) {
+	        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+			      	$('.list-area .item').each(function (idx, element) {
+			        	let $element = $(element);
+				        searchData5.data.push({
+				          	title: $element.find('.item-title a').html(),
+				          	subTitle: $element.find('.item-title .category').html(),
+				          	href: $element.find('.item-title a').attr('href'),
+				          	download: $element.find('.item-detail span').eq(0).find('a').attr('href'),
+				          	downloadType: $element.find('.item-detail span').eq(0).find('a').html(),
+				          	time: $element.find('.item-detail span').eq(1).html().replace(/收录日期:/g, ''),
+				          	size: $element.find('.item-detail span').eq(2).html().replace(/大小:/g, ''),
+				          	num: $element.find('.item-detail span').eq(3).html().replace(/文件数:/g, ''),
+				          	speed: $element.find('.item-detail span').eq(4).html().replace(/速度:/g, '')
 				        });
-		        	}else {
-		        		if($element.children().is('a')) {
-		        			let page = $element.find('a').attr('href').replace(/http:\/\/www.hanfan.cc\//g, '').replace(/page\//g, '').replace(/\//g, '').replace(/\?.*/g, '');
-		        			page ? page : page = '1';
-		        			searchData6.pageData.push({
-					          	page: page,
-					          	name: $element.find('a').html(),
+			      	});
+			      	$('.pagination').children().each(function (idx, element) {
+			        	let $element = $(element);
+			        	if(idx === 0) {
+			        		searchData5.totalPage = $element.html();
+			        	}
+			        	if($element.is('a')) {
+			        		searchData5.pageData.push({
+					          	name: $element.html().replace(/»/g, '尾页').replace(/«/g, '首页'),
+					          	link: encodeURIComponent($element.attr('href').replace(/http:\/\/diggbt.fyi/g, '').replace(/\.html/g, '')),
 					          	isCurrent: false
 					        });
-		        		}
-		        	}
-		      	});
-		      	searchData6.totalPage = $('.pagination li').last().find('span').html();
-      		}
-      		searchObj.type = req.params.type;
-	      	searchObj.page = req.params.page;
-	      	searchObj.searchType = '3';
-	      	searchObj.searchData6 = searchData6;
-	      	res.render('search', searchObj);
-      	});
+			        	}
+				        if($element.is('strong')) {
+			        		searchData5.pageData.push({
+					          	name: $element.html(),
+					          	link: '',
+					          	isCurrent: true
+					        });
+			        	}
+			      	});
+	      		}
+		      	searchObj.searchData5 = searchData5;
+		      	res.render('search', searchObj);
+	      	});
+	}else if(req.params.searchType === '3') {
+		superagent.get('http://www.hanfan.cc/page/'+req.params.page+'/')
+			.query({s: req.params.keyword})
+	    	.end(function (err, sres) {
+	    		let searchData6 = {
+		        	data: [],
+		        	pageData: [],
+		        	totalPage: '1'
+		        };
+	      		if (!err) {
+	        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+			      	$('.excerpt').each(function (idx, element) {
+		        		let $element = $(element);
+				        searchData6.data.push({
+				          	title: $element.find('.focus img').attr('alt'),
+				          	subTitle: $element.find('.meta .pv').html(),
+				          	poster: $element.find('.focus img').attr('data-src'),
+				          	href: $element.find('.focus').attr('href')
+				        });
+			      	});
+			      	$('.pagination li').each(function (idx, element) {
+			        	var $element = $(element);
+			        	if($element.hasClass('active')) {
+			        		searchData6.pageData.push({
+					          	page: $element.find('span').html(),
+					          	name: $element.find('span').html(),
+					          	isCurrent: true
+					        });
+			        	}else {
+			        		if($element.children().is('a')) {
+			        			let page = $element.find('a').attr('href').replace(/http:\/\/www.hanfan.cc\//g, '').replace(/page\//g, '').replace(/\//g, '').replace(/\?.*/g, '');
+			        			page ? page : page = '1';
+			        			searchData6.pageData.push({
+						          	page: page,
+						          	name: $element.find('a').html(),
+						          	isCurrent: false
+						        });
+			        		}
+			        	}
+			      	});
+			      	searchData6.totalPage = $('.pagination li').last().find('span').html();
+	      		}
+		      	searchObj.searchData6 = searchData6;
+		      	res.render('search', searchObj);
+	      	});
+	}
 });
 
 module.exports = router;

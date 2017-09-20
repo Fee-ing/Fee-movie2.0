@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<title>Fee's Movie</title>
+<title>Fee's Movie<%= keyword ? ' - '+keyword : '' %></title>
 <link rel='shortcut icon' href='/fee.ico' />
 <link rel='stylesheet' href='/css/reset.css' />
 <link rel='stylesheet' href='/css/common.css' />
@@ -17,7 +17,7 @@
   				<form class="search-form flexbox" method="post" target="_blank" action="/search/<%= type %>/1">
   					<select class="search-select" name="searchType">
   						<option value="1" <%= searchType === '1' ? 'selected' : '' %>>默认搜索</option>
-  						<!-- <option value="2" <%= searchType === '2' ? 'selected' : '' %>>人人搜索</option> -->
+  						<option value="2" <%= searchType === '2' ? 'selected' : '' %>>DiggBT搜索</option>
   						<option value="3" <%= searchType === '3' ? 'selected' : '' %>>韩饭搜索</option>
   					</select>
 					<input type="text" name="keyword" value="<%= keyword ? keyword : '' %>" class="search-input flex1" placeholder="想看什么就搜一搜吧">
