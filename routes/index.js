@@ -8,84 +8,84 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   	superagent.get('https://www.80s.tt/')
 	    .end(function (err, sres) {
-	      	if (err) {
-	        	return next(err);
+	    	let movieHotData = [], tvHotData = [], varietyHotData = [], comicHotData = [];
+	      	let movieData = [], tvData = [],varietyData = [], comicData = [];
+	      	if (!err) {
+	        	let $ = cheerio.load(sres.text, {decodeEntities: false});
+	      	
+		      	$('.mlm1 .movie-item').each(function (idx, element) {
+		        	let $element = $(element);
+			        movieHotData.push({
+			          	title: $element.find('.title h4 a').html(),
+			          	subTitle: $element.find('.title em').html(),
+			          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
+			          	poster: $element.find('.poster img').attr('data-original')
+			        });
+		      	});
+		      	$('.mlm2 .movie-item').each(function (idx, element) {
+		        	let $element = $(element);
+			        tvHotData.push({
+			          	title: $element.find('.title h4 a').html(),
+			          	subTitle: $element.find('.title em').html(),
+			          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
+			          	poster: $element.find('.poster img').attr('data-original')
+			        });
+		      	});
+		      	$('.mlm3 .movie-item').each(function (idx, element) {
+		        	let $element = $(element);
+			        varietyHotData.push({
+			          	title: $element.find('.title h4 a').html(),
+			          	subTitle: $element.find('.title em').html(),
+			          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
+			          	poster: $element.find('.poster img').attr('data-original')
+			        });
+		      	});
+		      	$('.mlm4 .movie-item').each(function (idx, element) {
+		        	let $element = $(element);
+			        comicHotData.push({
+			          	title: $element.find('.title h4 a').html(),
+			          	subTitle: $element.find('.title em').html(),
+			          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
+			          	poster: $element.find('.poster img').attr('data-original')
+			        });
+		      	});
+		      	$('.mlm5 .movie-item').each(function (idx, element) {
+		        	let $element = $(element);
+			        movieData.push({
+			          	title: $element.find('.title h4 a').html(),
+			          	subTitle: $element.find('.title em').html(),
+			          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
+			          	poster: $element.find('.poster img').attr('data-original')
+			        });
+		      	});
+		      	$('.mlm6 .movie-item').each(function (idx, element) {
+		        	let $element = $(element);
+			        tvData.push({
+			          	title: $element.find('.title h4 a').html(),
+			          	subTitle: $element.find('.title em').html(),
+			          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
+			          	poster: $element.find('.poster img').attr('data-original')
+			        });
+		      	});
+		      	$('.mlm7 .movie-item').each(function (idx, element) {
+		        	let $element = $(element);
+			        varietyData.push({
+			          	title: $element.find('.title h4 a').html(),
+			          	subTitle: $element.find('.title em').html(),
+			          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
+			          	poster: $element.find('.poster img').attr('data-original')
+			        });
+		      	});
+		      	$('.mlm8 .movie-item').each(function (idx, element) {
+		        	let $element = $(element);
+			        comicData.push({
+			          	title: $element.find('.title h4 a').html(),
+			          	subTitle: $element.find('.title em').html(),
+			          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
+			          	poster: $element.find('.poster img').attr('data-original')
+			        });
+		      	});
 	      	}
-	      	var $ = cheerio.load(sres.text, {decodeEntities: false});
-	      	var movieHotData = [], tvHotData = [], varietyHotData = [], comicHotData = [];
-	      	var movieData = [], tvData = [],varietyData = [], comicData = [];
-	      	$('.mlm1 .movie-item').each(function (idx, element) {
-	        	var $element = $(element);
-		        movieHotData.push({
-		          	title: $element.find('.title h4 a').html(),
-		          	subTitle: $element.find('.title em').html(),
-		          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
-		          	poster: $element.find('.poster img').attr('data-original')
-		        });
-	      	});
-	      	$('.mlm2 .movie-item').each(function (idx, element) {
-	        	var $element = $(element);
-		        tvHotData.push({
-		          	title: $element.find('.title h4 a').html(),
-		          	subTitle: $element.find('.title em').html(),
-		          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
-		          	poster: $element.find('.poster img').attr('data-original')
-		        });
-	      	});
-	      	$('.mlm3 .movie-item').each(function (idx, element) {
-	        	var $element = $(element);
-		        varietyHotData.push({
-		          	title: $element.find('.title h4 a').html(),
-		          	subTitle: $element.find('.title em').html(),
-		          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
-		          	poster: $element.find('.poster img').attr('data-original')
-		        });
-	      	});
-	      	$('.mlm4 .movie-item').each(function (idx, element) {
-	        	var $element = $(element);
-		        comicHotData.push({
-		          	title: $element.find('.title h4 a').html(),
-		          	subTitle: $element.find('.title em').html(),
-		          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
-		          	poster: $element.find('.poster img').attr('data-original')
-		        });
-	      	});
-	      	$('.mlm5 .movie-item').each(function (idx, element) {
-	        	var $element = $(element);
-		        movieData.push({
-		          	title: $element.find('.title h4 a').html(),
-		          	subTitle: $element.find('.title em').html(),
-		          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
-		          	poster: $element.find('.poster img').attr('data-original')
-		        });
-	      	});
-	      	$('.mlm6 .movie-item').each(function (idx, element) {
-	        	var $element = $(element);
-		        tvData.push({
-		          	title: $element.find('.title h4 a').html(),
-		          	subTitle: $element.find('.title em').html(),
-		          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
-		          	poster: $element.find('.poster img').attr('data-original')
-		        });
-	      	});
-	      	$('.mlm7 .movie-item').each(function (idx, element) {
-	        	var $element = $(element);
-		        varietyData.push({
-		          	title: $element.find('.title h4 a').html(),
-		          	subTitle: $element.find('.title em').html(),
-		          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
-		          	poster: $element.find('.poster img').attr('data-original')
-		        });
-	      	});
-	      	$('.mlm8 .movie-item').each(function (idx, element) {
-	        	var $element = $(element);
-		        comicData.push({
-		          	title: $element.find('.title h4 a').html(),
-		          	subTitle: $element.find('.title em').html(),
-		          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
-		          	poster: $element.find('.poster img').attr('data-original')
-		        });
-	      	});
 	      	
 	      	let data = {
 	      		type: '1', 
@@ -109,71 +109,72 @@ router.get('/two', function(req, res, next) {
 	superagent.get('http://www.dytt8.net/index.htm')
 		.charset('gbk') 
 	    .end(function (err, sres) {
-	      	if (err) {
-	        	return next(err);
+	    	let newData = [], thunderData = [], chmovieData = [], enmovieData = [], varietyData = [], comicData = [];
+	      	if (!err) {
+	        	let $ = cheerio.load(sres.text, {decodeEntities: false});
+	      	
+		      	$('.bd3r').eq(0).find('.bd3rl .co_area2').eq(0).find('ul').find('a').each(function (idx, element) {
+		        	let $element = $(element);
+		        	if(idx%2 !== 0) {
+		        		newData.push({
+			          		title: $element.html(),
+			          		href: encodeURIComponent($element.attr('href')),
+			          		time: $element.parent().next().find('font').html()
+			        	});
+		        	}
+		      	});
+		      	$('.bd3r').eq(0).find('.bd3rl .co_area2').eq(1).find('ul').find('a').each(function (idx, element) {
+		        	let $element = $(element);
+		        	if(idx%2 !== 0) {
+		        		thunderData.push({
+			          		title: $element.html(),
+			          		href: encodeURIComponent($element.attr('href')),
+			          		time: $element.parent().next().find('font').html()
+			        	});
+		        	}
+		      	});
+		      	$('.bd3r').eq(0).find('.bd3rl .co_area2').eq(2).find('ul').find('a').each(function (idx, element) {
+		        	let $element = $(element);
+		        	if(idx%2 !== 0) {
+		        		chmovieData.push({
+			          		title: $element.html(),
+			          		href: encodeURIComponent($element.attr('href')),
+			          		time: $element.parent().next().find('font').html()
+			        	});
+		        	}
+		      	});
+		      	$('.bd3r').eq(0).find('.bd3rl .co_area2').eq(3).find('ul').find('a').each(function (idx, element) {
+		        	let $element = $(element);
+		        	if(idx%2 !== 0) {
+		        		enmovieData.push({
+			          		title: $element.html(),
+			          		href: encodeURIComponent($element.attr('href')),
+			          		time: $element.parent().next().find('font').html()
+			        	});
+		        	}
+		      	});
+		      	$('.bd3r').eq(1).find('.bd3rl .co_area2').eq(0).find('ul').find('a').each(function (idx, element) {
+		        	let $element = $(element);
+		        	if(idx%2 !== 0) {
+		        		varietyData.push({
+			          		title: $element.html(),
+			          		href: encodeURIComponent($element.attr('href')),
+			          		time: $element.parent().next().find('font').html()
+			        	});
+		        	}
+		      	});
+		      	$('.bd3r').eq(1).find('.bd3rl .co_area2').eq(1).find('ul').find('a').each(function (idx, element) {
+		        	let $element = $(element);
+		        	if(idx%2 !== 0) {
+		        		comicData.push({
+			          		title: $element.html(),
+			          		href: encodeURIComponent($element.attr('href')),
+			          		time: $element.parent().next().find('font').html()
+			        	});
+		        	}
+		      	});
 	      	}
-	      	var $ = cheerio.load(sres.text, {decodeEntities: false});
-	      	var newData = [], thunderData = [], chmovieData = [], enmovieData = [], varietyData = [], comicData = [];
-	      	$('.bd3r').eq(0).find('.bd3rl .co_area2').eq(0).find('ul').find('a').each(function (idx, element) {
-	        	var $element = $(element);
-	        	if(idx%2 !== 0) {
-	        		newData.push({
-		          		title: $element.html(),
-		          		href: encodeURIComponent($element.attr('href')),
-		          		time: $element.parent().next().find('font').html()
-		        	});
-	        	}
-	      	});
-	      	$('.bd3r').eq(0).find('.bd3rl .co_area2').eq(1).find('ul').find('a').each(function (idx, element) {
-	        	var $element = $(element);
-	        	if(idx%2 !== 0) {
-	        		thunderData.push({
-		          		title: $element.html(),
-		          		href: encodeURIComponent($element.attr('href')),
-		          		time: $element.parent().next().find('font').html()
-		        	});
-	        	}
-	      	});
-	      	$('.bd3r').eq(0).find('.bd3rl .co_area2').eq(2).find('ul').find('a').each(function (idx, element) {
-	        	var $element = $(element);
-	        	if(idx%2 !== 0) {
-	        		chmovieData.push({
-		          		title: $element.html(),
-		          		href: encodeURIComponent($element.attr('href')),
-		          		time: $element.parent().next().find('font').html()
-		        	});
-	        	}
-	      	});
-	      	$('.bd3r').eq(0).find('.bd3rl .co_area2').eq(3).find('ul').find('a').each(function (idx, element) {
-	        	var $element = $(element);
-	        	if(idx%2 !== 0) {
-	        		enmovieData.push({
-		          		title: $element.html(),
-		          		href: encodeURIComponent($element.attr('href')),
-		          		time: $element.parent().next().find('font').html()
-		        	});
-	        	}
-	      	});
-	      	$('.bd3r').eq(1).find('.bd3rl .co_area2').eq(0).find('ul').find('a').each(function (idx, element) {
-	        	var $element = $(element);
-	        	if(idx%2 !== 0) {
-	        		varietyData.push({
-		          		title: $element.html(),
-		          		href: encodeURIComponent($element.attr('href')),
-		          		time: $element.parent().next().find('font').html()
-		        	});
-	        	}
-	      	});
-	      	$('.bd3r').eq(1).find('.bd3rl .co_area2').eq(1).find('ul').find('a').each(function (idx, element) {
-	        	var $element = $(element);
-	        	if(idx%2 !== 0) {
-	        		comicData.push({
-		          		title: $element.html(),
-		          		href: encodeURIComponent($element.attr('href')),
-		          		time: $element.parent().next().find('font').html()
-		        	});
-	        	}
-	      	});
+	      	
 	      	let data = {
 	      		type: '2',
 	      		page: '1',
@@ -193,34 +194,35 @@ router.get('/two', function(req, res, next) {
 router.get('/three/:page', function(req, res, next) {
 	superagent.get('http://www.hdwan.net/page/'+req.params.page)
     	.end(function (err, sres) {
-      		if (err) {
-        		return next(err);
-      		}
-      		var $ = cheerio.load(sres.text, {decodeEntities: false});
-      		var movieData = {
+    		let movieData = {
       			data: [],
       			pageData: []
       		};
-      		$('#post_container .post').each(function (idx, element) {
-	        	var $element = $(element);
-		        movieData.data.push({
-		          	title: $element.find('img').attr('alt'),
-		          	poster: $element.find('img').attr('src'),
-		          	id: $element.find('.zoom').attr('href').replace(/http:\/\/www.hdwan.net\//g, '').replace(/\.html/g, '')
-		        });
-	      	});
-	      	$('.pagination a').each(function (idx, element) {
-	        	var $element = $(element);
-	        	let page = $element.attr('href').replace(/http:\/\/www.hdwan.net\//g, '').replace(/page\//g, '');
-	        	page === '' ? page = '1' : page = page;
-	        	let isCurrent = false;
-	        	$element.hasClass('current') ? isCurrent = true : isCurrent = false;
-		        movieData.pageData.push({
-		          	page: page,
-		          	name: $element.html(),
-		          	isCurrent: isCurrent
-		        });
-	      	});
+      		if (!err) {
+        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+      		
+	      		$('#post_container .post').each(function (idx, element) {
+		        	let $element = $(element);
+			        movieData.data.push({
+			          	title: $element.find('img').attr('alt'),
+			          	poster: $element.find('img').attr('src'),
+			          	id: $element.find('.zoom').attr('href').replace(/http:\/\/www.hdwan.net\//g, '').replace(/\.html/g, '')
+			        });
+		      	});
+		      	$('.pagination a').each(function (idx, element) {
+		        	let $element = $(element);
+		        	let page = $element.attr('href').replace(/http:\/\/www.hdwan.net\//g, '').replace(/page\//g, '');
+		        	page === '' ? page = '1' : page = page;
+		        	let isCurrent = false;
+		        	$element.hasClass('current') ? isCurrent = true : isCurrent = false;
+			        movieData.pageData.push({
+			          	page: page,
+			          	name: $element.html(),
+			          	isCurrent: isCurrent
+			        });
+		      	});
+      		}
+      		
       		res.render('three', { type: '3', page: req.params.page, searchType: '1', keyword: '', movieData: movieData });
     	});
 });
@@ -234,32 +236,33 @@ router.get('/four/:page', function(req, res, next) {
 	}
 	superagent.get(link)
 	    .end(function (err, sres) {
-	      	if (err) {
-	        	return next(err);
+	    	let movieData = [];
+	      	if (!err) {
+	        	let $ = cheerio.load(sres.text, {decodeEntities: false});
+	      	
+		      	if(req.params.page === '1'){
+		      		$('#result1 li').each(function (idx, element) {
+			        	let $element = $(element);
+				        movieData.push({
+				          	title: $element.find('img').attr('alt'),
+				          	poster: $element.find('img').attr('src'),
+				          	id: $element.find('.z-movie-playlink').attr('href').replace(/https:\/\/gaoqing.fm\/view\//g, '')
+				        });
+			      	});
+		      		page = '1';
+		      	}else{
+		      		$('li').each(function (idx, element) {
+			        	let $element = $(element);
+				        movieData.push({
+				          	title: $element.find('img').attr('alt'),
+				          	poster: $element.find('img').attr('src'),
+				          	id: $element.find('.z-movie-playlink').attr('href').replace(/https:\/\/gaoqing.fm\/view\//g, '')
+				        });
+			      	});
+		      		page = req.params.page;
+		      	}
 	      	}
-	      	var $ = cheerio.load(sres.text, {decodeEntities: false});
-	      	var movieData = [];
-	      	if(req.params.page === '1'){
-	      		$('#result1 li').each(function (idx, element) {
-		        	var $element = $(element);
-			        movieData.push({
-			          	title: $element.find('img').attr('alt'),
-			          	poster: $element.find('img').attr('src'),
-			          	id: $element.find('.z-movie-playlink').attr('href').replace(/https:\/\/gaoqing.fm\/view\//g, '')
-			        });
-		      	});
-	      		page = '1';
-	      	}else{
-	      		$('li').each(function (idx, element) {
-		        	var $element = $(element);
-			        movieData.push({
-			          	title: $element.find('img').attr('alt'),
-			          	poster: $element.find('img').attr('src'),
-			          	id: $element.find('.z-movie-playlink').attr('href').replace(/https:\/\/gaoqing.fm\/view\//g, '')
-			        });
-		      	});
-	      		page = req.params.page;
-	      	}
+	      	
 	      	res.render('four', { type: '4', page: req.params.page, searchType: '1', keyword: '', movieData: movieData });
 	    });
 });
@@ -268,35 +271,36 @@ router.get('/five', function(req, res, next) {
 	superagent.get('http://www.dygang.net/')
 		.charset('gbk') 
 	    .end(function (err, sres) {
-	      	if (err) {
-	        	return next(err);
+	    	let movieData = [], tvData = [], highMovieData = [];
+	      	if (!err) {
+	        	let $ = cheerio.load(sres.text, {decodeEntities: false});
+	      	
+		      	$('#tab1_div_0 img').each(function (idx, element) {
+		        	let $element = $(element);
+			        movieData.push({
+			          	title: $element.attr('alt'),
+			          	poster: $element.attr('src'),
+			          	id: encodeURIComponent($element.parent().attr('href').replace(/http:\/\/www.dygang.net\//g, ''))
+			        });
+		      	});
+		      	$('#tab1_div_1 img').each(function (idx, element) {
+		        	let $element = $(element);
+			        tvData.push({
+			          	title: $element.attr('alt'),
+			          	poster: $element.attr('src'),
+			          	id: encodeURIComponent($element.parent().attr('href').replace(/http:\/\/www.dygang.net\//g, ''))
+			        });
+		      	});
+		      	$('#tab1_div_2 img').each(function (idx, element) {
+		        	let $element = $(element);
+			        highMovieData.push({
+			          	title: $element.attr('alt'),
+			          	poster: $element.attr('src'),
+			          	id: encodeURIComponent($element.parent().attr('href').replace(/http:\/\/www.dygang.net\//g, ''))
+			        });
+		      	});
 	      	}
-	      	var $ = cheerio.load(sres.text, {decodeEntities: false});
-	      	var movieData = [], tvData = [], highMovieData = [];
-	      	$('#tab1_div_0 img').each(function (idx, element) {
-	        	var $element = $(element);
-		        movieData.push({
-		          	title: $element.attr('alt'),
-		          	poster: $element.attr('src'),
-		          	id: encodeURIComponent($element.parent().attr('href').replace(/http:\/\/www.dygang.net\//g, ''))
-		        });
-	      	});
-	      	$('#tab1_div_1 img').each(function (idx, element) {
-	        	var $element = $(element);
-		        tvData.push({
-		          	title: $element.attr('alt'),
-		          	poster: $element.attr('src'),
-		          	id: encodeURIComponent($element.parent().attr('href').replace(/http:\/\/www.dygang.net\//g, ''))
-		        });
-	      	});
-	      	$('#tab1_div_2 img').each(function (idx, element) {
-	        	var $element = $(element);
-		        highMovieData.push({
-		          	title: $element.attr('alt'),
-		          	poster: $element.attr('src'),
-		          	id: encodeURIComponent($element.parent().attr('href').replace(/http:\/\/www.dygang.net\//g, ''))
-		        });
-	      	});
+	      	
 	      	res.render('five', { type: '5', page: '1', searchType: '1', keyword: '', movieData: movieData, tvData: tvData, highMovieData: highMovieData });
 	    });
 });
@@ -310,20 +314,21 @@ router.get('/six/:page', function(req, res, next) {
 	}
 	superagent.get(link)
 	    .end(function (err, sres) {
-	      	if (err) {
-	        	return next(err);
+	    	let movieData = [];
+	      	if (!err) {
+	        	let $ = cheerio.load(sres.text, {decodeEntities: false});
+	      	
+		      	$('.source-table .hidden-phone').each(function (idx, element) {
+		        	let $element = $(element);
+			        movieData.push({
+			          	title: $element.find('.source-name .source-title').attr('title'),
+			          	href: 'http://www.quzhuanpan.com' + $element.find('.source-name .source-title').attr('href'),
+			          	time: $element.find('.source-download-times').next().html(),
+			          	type: $element.find('.source-download-times').next().next().html()
+			        });
+		      	});
 	      	}
-	      	var $ = cheerio.load(sres.text, {decodeEntities: false});
-	      	var movieData = [];
-	      	$('.source-table .hidden-phone').each(function (idx, element) {
-	        	var $element = $(element);
-		        movieData.push({
-		          	title: $element.find('.source-name .source-title').attr('title'),
-		          	href: 'http://www.quzhuanpan.com' + $element.find('.source-name .source-title').attr('href'),
-		          	time: $element.find('.source-download-times').next().html(),
-		          	type: $element.find('.source-download-times').next().next().html()
-		        });
-	      	});
+	      	
 	      	res.render('six', { type: '6', page: req.params.page, searchType: '1', keyword: '', movieData: movieData });
 	    });
 });
@@ -331,55 +336,55 @@ router.get('/six/:page', function(req, res, next) {
 router.get('/seven', function(req, res, next) {
   	superagent.get('http://www.zimuzu.tv/')
 	    .end(function (err, sres) {
-	      	if (err) {
-	        	return next(err);
-	      	}
-	      	var $ = cheerio.load(sres.text, {decodeEntities: false});
-	      	var tvData1 = [], tvData2 = [], tvData3 = [], tvData4 = [];
-	      	$('.top24 .top').each(function (idx, element) {
-	        	var $element = $(element);
-		        tvData1.push({
-		          	title: $element.find('.fl-info a').html(),
-		          	subTitle: $element.find('.fl-info p').eq(0).html(),
-		          	id: 'http://www.zimuzu.tv'+($element.find('.fl-img a').attr('href'))
-		        });
-	      	});
-	      	$('.top24 li').each(function (idx, element) {
-	        	var $element = $(element);
-	        	if(!$element.hasClass('top')) {
-	        		tvData1.push({
-			          	title: $element.find('a').html(),
-			          	subTitle: $element.find('em').html(),
-			          	id: 'http://www.zimuzu.tv'+($element.find('a').attr('href'))
+	    	let tvData1 = [], tvData2 = [], tvData3 = [], tvData4 = [];
+	      	if (!err) {
+	        	let $ = cheerio.load(sres.text, {decodeEntities: false});
+	      	
+		      	$('.top24 .top').each(function (idx, element) {
+		        	let $element = $(element);
+			        tvData1.push({
+			          	title: $element.find('.fl-info a').html(),
+			          	subTitle: $element.find('.fl-info p').eq(0).html(),
+			          	id: 'http://www.zimuzu.tv'+($element.find('.fl-img a').attr('href'))
 			        });
-	        	}
-	      	});
-	      	$('.lastest-release li').each(function (idx, element) {
-	        	var $element = $(element);
-		        tvData2.push({
-		          	title: $element.find('p a').html(),
-		          	subTitle: $element.find('.f4').eq(0).html(),
-		          	id: 'http://www.zimuzu.tv'+($element.find('.imglink').attr('href').replace(/resource/g, 'gresource')),
-		          	poster: $element.find('.imglink img').attr('src')
-		        });
-	      	});
-	      	$('.top-update li').each(function (idx, element) {
-	        	var $element = $(element);
-		        tvData3.push({
-		          	title: $element.find('.t .f14 a strong').html(),
-		          	subTitle: $element.find('.t .f14').html().split('<')[0],
-		          	id: 'http://www.zimuzu.tv'+($element.find('.img a').attr('href')),
-		          	poster: $element.find('.img img').attr('src')
-		        });
-	      	});
-	      	$('.top-tv li').each(function (idx, element) {
-	        	var $element = $(element);
-		        tvData4.push({
-		          	title: $element.find('.fl-info h3 a').html(),
-		          	id: 'http://www.zimuzu.tv'+($element.find('.fl-img a').attr('href').replace(/http:\/\/www.zimuzu.tv/g, '')),
-		          	poster: $element.find('.fl-img img').attr('src')
-		        });
-	      	});
+		      	});
+		      	$('.top24 li').each(function (idx, element) {
+		        	let $element = $(element);
+		        	if(!$element.hasClass('top')) {
+		        		tvData1.push({
+				          	title: $element.find('a').html(),
+				          	subTitle: $element.find('em').html(),
+				          	id: 'http://www.zimuzu.tv'+($element.find('a').attr('href'))
+				        });
+		        	}
+		      	});
+		      	$('.lastest-release li').each(function (idx, element) {
+		        	let $element = $(element);
+			        tvData2.push({
+			          	title: $element.find('p a').html(),
+			          	subTitle: $element.find('.f4').eq(0).html(),
+			          	id: 'http://www.zimuzu.tv'+($element.find('.imglink').attr('href').replace(/resource/g, 'gresource')),
+			          	poster: $element.find('.imglink img').attr('src')
+			        });
+		      	});
+		      	$('.top-update li').each(function (idx, element) {
+		        	let $element = $(element);
+			        tvData3.push({
+			          	title: $element.find('.t .f14 a strong').html(),
+			          	subTitle: $element.find('.t .f14').html().split('<')[0],
+			          	id: 'http://www.zimuzu.tv'+($element.find('.img a').attr('href')),
+			          	poster: $element.find('.img img').attr('src')
+			        });
+		      	});
+		      	$('.top-tv li').each(function (idx, element) {
+		        	let $element = $(element);
+			        tvData4.push({
+			          	title: $element.find('.fl-info h3 a').html(),
+			          	id: 'http://www.zimuzu.tv'+($element.find('.fl-img a').attr('href').replace(/http:\/\/www.zimuzu.tv/g, '')),
+			          	poster: $element.find('.fl-img img').attr('src')
+			        });
+		      	});
+	      	}
 	      	
 	      	let data = {
 	      		type: '7', 
@@ -398,44 +403,45 @@ router.get('/seven', function(req, res, next) {
 router.get('/eight/:page', function(req, res, next) {
 	superagent.get('http://www.hanfan.cc/page/'+req.params.page)
     	.end(function (err, sres) {
-      		if (err) {
-        		return next(err);
-      		}
-      		var $ = cheerio.load(sres.text, {decodeEntities: false});
-      		var movieData = {
+    		let movieData = {
       			data: [],
       			pageData: []
       		};
-      		$('.excerpt').each(function (idx, element) {
-	        	var $element = $(element);
-		        movieData.data.push({
-		          	title: $element.find('.focus img').attr('alt'),
-		          	subTitle: $element.find('.meta .pv').html(),
-		          	poster: $element.find('.focus img').attr('data-src'),
-		          	href: $element.find('.focus').attr('href')
-		        });
-	      	});
-	      	$('.pagination li').each(function (idx, element) {
-	        	var $element = $(element);
-	        	if($element.hasClass('active')) {
-	        		movieData.pageData.push({
-			          	page: $element.find('span').html(),
-			          	name: $element.find('span').html(),
-			          	isCurrent: true
+      		if (!err) {
+        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+      		
+	      		$('.excerpt').each(function (idx, element) {
+		        	let $element = $(element);
+			        movieData.data.push({
+			          	title: $element.find('.focus img').attr('alt'),
+			          	subTitle: $element.find('.meta .pv').html(),
+			          	poster: $element.find('.focus img').attr('data-src'),
+			          	href: $element.find('.focus').attr('href')
 			        });
-	        	}else {
-	        		if($element.children().is('a')) {
-	        			let page = $element.find('a').attr('href').replace(/http:\/\/www.hanfan.cc\//g, '').replace(/page\//g, '').replace(/\//g, '')
-	        			page ? page : page = '1';
-	        			movieData.pageData.push({
-				          	page: page,
-				          	name: $element.find('a').html(),
-				          	isCurrent: false
+		      	});
+		      	$('.pagination li').each(function (idx, element) {
+		        	let $element = $(element);
+		        	if($element.hasClass('active')) {
+		        		movieData.pageData.push({
+				          	page: $element.find('span').html(),
+				          	name: $element.find('span').html(),
+				          	isCurrent: true
 				        });
-	        		}
-	        	}
-	      	});
-	      	movieData.totalPage = $('.pagination li').last().find('span').html();
+		        	}else {
+		        		if($element.children().is('a')) {
+		        			let page = $element.find('a').attr('href').replace(/http:\/\/www.hanfan.cc\//g, '').replace(/page\//g, '').replace(/\//g, '')
+		        			page ? page : page = '1';
+		        			movieData.pageData.push({
+					          	page: page,
+					          	name: $element.find('a').html(),
+					          	isCurrent: false
+					        });
+		        		}
+		        	}
+		      	});
+		      	movieData.totalPage = $('.pagination li').last().find('span').html();
+      		}
+      		
       		res.render('eight', { type: '8', page: req.params.page, searchType: '1', keyword: '', movieData: movieData });
     	});
 });
@@ -443,17 +449,13 @@ router.get('/eight/:page', function(req, res, next) {
 router.get('/onedetail/:type/:id', function(req, res, next) {
     superagent.get('https://www.80s.tt/movie/'+req.params.id)
     	.end(function (err, sres) {
-      		if (err) {
-        		return next(err);
-      		}
-      		var $ = cheerio.load(sres.text, {decodeEntities: false});
-      		var detail = {
-      			title: $('.movie-info .right .title').html(),
-      			subTitle: $('.movie-info .right .sub-title').html(),
-      			poster: $('.movie-info .left a').attr('href'),
-      			description: $('.description').html(),
-      			score: $('.movie-info .right .title .score').html(),
-      			screenshot: $('.screenshot img').attr('src'),
+    		let detail = {
+      			title: '',
+      			subTitle: '',
+      			poster: '',
+      			description: '',
+      			score: '',
+      			screenshot: '',
       			sign: [],
       			member: [],
       			time: [],
@@ -461,54 +463,66 @@ router.get('/onedetail/:type/:id', function(req, res, next) {
       			high: [],
       			higher: []
       		};
-      		$('.movie-info .right .attr').eq(0).find('a').each(function (idx, element) {
-	        	var $element = $(element);
-	        	detail.sign.push($element.html());
-      		});
-      		$('.movie-info .right .attr').eq(1).find('a').each(function (idx, element) {
-	        	var $element = $(element);
-	        	detail.member.push($element.html());
-      		});
-      		$('.movie-info .right .attr').eq(2).find('li').each(function (idx, element) {
-	        	var $element = $(element);
-	        	detail.time.push($element.html());
-      		});
-      		$('.download .download-list').each(function (idx, element) {
-	        	var $element = $(element);
-	        	if($element.find('.title').hasClass('title-5')) {
-	        		$element.find('.dl-items').each(function (idx, element) {
-			        	var $element1 = $(element);
-			        	detail.higher.push({
-			        		name: $element1.find('.dl-name').html(),
-			        		format: $element1.find('.label-ext-1').html(),
-			        		size: $element1.find('.label-file-size').html(),
-			        		link: $element1.find('.dl-name').attr('href')
-			        	})
-		      		});
-	        	}
-	        	if($element.find('.title').hasClass('title-4')) {
-	        		$element.find('.dl-items').each(function (idx, element) {
-			        	var $element1 = $(element);
-			        	detail.high.push({
-			        		name: $element1.find('.dl-name').html(),
-			        		format: $element1.find('.label-ext-1').html(),
-			        		size: $element1.find('.label-file-size').html(),
-			        		link: $element1.find('.dl-name').attr('href')
-			        	})
-		      		});
-	        	}
-	        	if($element.find('.title').hasClass('title-3')) {
-	        		$element.find('.dl-items').each(function (idx, element) {
-			        	var $element1 = $(element);
-			        	detail.normal.push({
-			        		name: $element1.find('.dl-name').html(),
-			        		format: $element1.find('.label-ext-1').html(),
-			        		size: $element1.find('.label-file-size').html(),
-			        		link: $element1.find('.dl-name').attr('href')
-			        	})
-		      		});
-	        	}
-      		});
+      		if (!err) {
+        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+
+      			detail.title = $('.movie-info .right .title').html();
+      			detail.subTitle = $('.movie-info .right .sub-title').html();
+      			detail.poster = $('.movie-info .left a').attr('href');
+      			detail.description = $('.description').html();
+      			detail.score = $('.movie-info .right .title .score').html();
+      			detail.screenshot = $('.screenshot img').attr('src');
+
+	      		$('.movie-info .right .attr').eq(0).find('a').each(function (idx, element) {
+		        	let $element = $(element);
+		        	detail.sign.push($element.html());
+	      		});
+	      		$('.movie-info .right .attr').eq(1).find('a').each(function (idx, element) {
+		        	let $element = $(element);
+		        	detail.member.push($element.html());
+	      		});
+	      		$('.movie-info .right .attr').eq(2).find('li').each(function (idx, element) {
+		        	let $element = $(element);
+		        	detail.time.push($element.html());
+	      		});
+	      		$('.download .download-list').each(function (idx, element) {
+		        	let $element = $(element);
+		        	if($element.find('.title').hasClass('title-5')) {
+		        		$element.find('.dl-items').each(function (idx, element) {
+				        	let $element1 = $(element);
+				        	detail.higher.push({
+				        		name: $element1.find('.dl-name').html(),
+				        		format: $element1.find('.label-ext-1').html(),
+				        		size: $element1.find('.label-file-size').html(),
+				        		link: $element1.find('.dl-name').attr('href')
+				        	})
+			      		});
+		        	}
+		        	if($element.find('.title').hasClass('title-4')) {
+		        		$element.find('.dl-items').each(function (idx, element) {
+				        	let $element1 = $(element);
+				        	detail.high.push({
+				        		name: $element1.find('.dl-name').html(),
+				        		format: $element1.find('.label-ext-1').html(),
+				        		size: $element1.find('.label-file-size').html(),
+				        		link: $element1.find('.dl-name').attr('href')
+				        	})
+			      		});
+		        	}
+		        	if($element.find('.title').hasClass('title-3')) {
+		        		$element.find('.dl-items').each(function (idx, element) {
+				        	let $element1 = $(element);
+				        	detail.normal.push({
+				        		name: $element1.find('.dl-name').html(),
+				        		format: $element1.find('.label-ext-1').html(),
+				        		size: $element1.find('.label-file-size').html(),
+				        		link: $element1.find('.dl-name').attr('href')
+				        	})
+			      		});
+		        	}
+	      		});
+      		}
+      		
       		res.render('onedetail', {type: req.params.type, page: '1', searchType: '1', keyword: '', detail: detail});
     	});
 })
@@ -517,21 +531,22 @@ router.get('/twodetail/:link', function(req, res, next) {
 	superagent.get('http://www.dytt8.net'+decodeURIComponent(req.params.link))
 		.charset('gbk') 
     	.end(function (err, sres) {
-      		if (err) {
-        		return next(err);
-      		}
-      		var $ = cheerio.load(sres.text, {decodeEntities: false});
-      		$('#Zoom>span a').each(function (idx, element) {
-      			var $element = $(element);
-  				let html = $element.attr('href');
-  				$element.attr('href', 'javascript:void(0);');
-  				$element.html(html);
-      		});
-      		let html = $('#Zoom>span').html().split('img');
-      		html[1] = ' class="poster"' + html[1];
-      		var detail = {
-      			content: html.join('img').replace(/下载地址/g, '下载地址（复制后用迅雷打开）')
+    		let detail = {
+      			content: ''
       		};
+      		if (!err) {
+        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+	      		$('#Zoom>span a').each(function (idx, element) {
+	      			let $element = $(element);
+	  				let html = $element.attr('href');
+	  				$element.attr('href', 'javascript:void(0);');
+	  				$element.html(html);
+	      		});
+	      		let html = $('#Zoom>span').html().split('img');
+	      		html[1] = ' class="poster"' + html[1];
+	      		detail.content = html.join('img').replace(/下载地址/g, '下载地址（复制后用迅雷打开）');
+      		}
+      		
       		res.render('twodetail', { type: '2', page: '1', searchType: '1', keyword: '', detail: detail });
     	});
 });
@@ -539,27 +554,33 @@ router.get('/twodetail/:link', function(req, res, next) {
 router.get('/threedetail/:id', function(req, res, next) {
 	superagent.get('http://www.hdwan.net/'+req.params.id+'.html')
     	.end(function (err, sres) {
-      		if (err) {
-        		return next(err);
-      		}
-      		var $ = cheerio.load(sres.text, {decodeEntities: false});
-      		var detail = {
-      			title: $('.article_container h1').html(),
-      			poster: $('#post_content .aligncenter.size-full').eq(0).attr('src'),
-      			info: $('#post_content p').eq(1).html(),
-      			description: $('#post_content p').eq(2).html().replace(/\s+/g, ''),
+    		let detail = {
+      			title: '',
+      			poster: '',
+      			info: '',
+      			description: '',
       			imgs: [],
       			href: ''
       		};
-      		$('#post_content .aligncenter.size-full').each(function (idx, element) {
-      			if(idx > 0) {
-      				var $element = $(element);
-		        	detail.imgs.push($element.attr('src'));
-      			}
-	      	});
-	      	if($('.dw-box.dw-box-info a')){
-	      		detail.href = $('.dw-box.dw-box-info a').eq(0).attr('href');
-	      	}
+      		if (!err) {
+        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+	      		
+      			detail.title = $('.article_container h1').html();
+      			detail.poster = $('#post_content .aligncenter.size-full').eq(0).attr('src');
+      			detail.info = $('#post_content p').eq(1).html();
+      			detail.description = $('#post_content p').eq(2).html().replace(/\s+/g, '');
+
+	      		$('#post_content .aligncenter.size-full').each(function (idx, element) {
+	      			if(idx > 0) {
+	      				let $element = $(element);
+			        	detail.imgs.push($element.attr('src'));
+	      			}
+		      	});
+		      	if($('.dw-box.dw-box-info a')){
+		      		detail.href = $('.dw-box.dw-box-info a').eq(0).attr('href');
+		      	}
+      		}
+      		
       		res.render('threedetail', { type: '3', page: '1', searchType: '1', keyword: '', detail: detail });
     	});
 });
@@ -567,28 +588,34 @@ router.get('/threedetail/:id', function(req, res, next) {
 router.get('/fourdetail/:id', function(req, res, next) {
 	superagent.get('https://gaoqing.fm/view/'+req.params.id)
     	.end(function (err, sres) {
-      		if (err) {
-        		return next(err);
-      		}
-      		var $ = cheerio.load(sres.text, {decodeEntities: false});
-      		$('#viewfilm a').removeAttr('href');
-      		var detail = {
-      			title: $('h2 a').html(),
-      			poster: $('.x-m-poster img').attr('src'),
-      			info: $('#viewfilm').html(),
-      			description: $('#des-full').html().replace(/\s+/g, ''),
+    		let detail = {
+      			title: '',
+      			poster: '',
+      			info: '',
+      			description: '',
       			download: []
       		};
-      		$('#cili td').each(function (idx, element) {
-  				var $element = $(element);
-	        	detail.download.push({
-	        		name: $element.find('b').html(),
-	        		size: $element.find('.label-warning').html(),
-	        		type: $element.find('.label-danger').html(),
-	        		link1: $element.find('a.btn-info.btn-sm').attr('href'),
-	        		link2: $element.find('a.btn-primary.btn-sm').attr('href')
-	        	});
-	      	});
+      		if (!err) {
+        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+	      		$('#viewfilm a').removeAttr('href');
+	      		
+      			detail.title = $('h2 a').html();
+      			detail.poster = $('.x-m-poster img').attr('src');
+      			detail.info = $('#viewfilm').html();
+      			detail.description = $('#des-full').html().replace(/\s+/g, '');
+
+	      		$('#cili td').each(function (idx, element) {
+	  				let $element = $(element);
+		        	detail.download.push({
+		        		name: $element.find('b').html(),
+		        		size: $element.find('.label-warning').html(),
+		        		type: $element.find('.label-danger').html(),
+		        		link1: $element.find('a.btn-info.btn-sm').attr('href'),
+		        		link2: $element.find('a.btn-primary.btn-sm').attr('href')
+		        	});
+		      	});
+      		}
+      		
       		res.render('fourdetail', { type: '4', page: '1', searchType: '1', keyword: '', detail: detail });
     	});
 });
@@ -597,34 +624,40 @@ router.get('/fivedetail/:id', function(req, res, next) {
 	superagent.get('http://www.dygang.net/'+req.params.id)
 		.charset('gbk') 
     	.end(function (err, sres) {
-      		if (err) {
-        		return next(err);
-      		}
-      		var $ = cheerio.load(sres.text, {decodeEntities: false});
-      		$('#dede_content p').eq(3).find('a').removeAttr('href');
-      		var detail = {
-      			title: $('.title a').html(),
-      			poster: $('#dede_content img').eq(0).attr('src'),
-      			info: $('#dede_content p').eq(1).html(),
-      			description: $('#dede_content p').eq(3).html().replace(/\s+/g, ''),
+    		let detail = {
+      			title: '',
+      			poster: '',
+      			info: '',
+      			description: '',
       			imgs: [],
       			download: []
       		};
-      		$('#dede_content img').each(function (idx, element) {
-      			if(idx > 0) {
-      				var $element = $(element);
-		        	detail.imgs.push($element.attr('src'));
-      			}
-	      	});
-	      	$('#dede_content table').eq(0).find('tr td').each(function (idx, element) {
-      			var $element = $(element);
-      			let obj = {};
-      			obj.name = $element.find('a').html();
-      			obj.href = $element.find('a').attr('href');
-      			$element.find('a').remove();
-      			obj.size = $element.html().replace(/(\()|(\))/g, ' ').split('：');
-      			detail.download.push(obj);
-	      	});
+      		if (!err) {
+        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+	      		$('#dede_content p').eq(3).find('a').removeAttr('href');
+	      		
+      			detail.title = $('.title a').html();
+      			detail.poster = $('#dede_content img').eq(0).attr('src');
+      			detail.info = $('#dede_content p').eq(1).html();
+      			detail.description = $('#dede_content p').eq(3).html().replace(/\s+/g, '');
+	      			
+	      		$('#dede_content img').each(function (idx, element) {
+	      			if(idx > 0) {
+	      				let $element = $(element);
+			        	detail.imgs.push($element.attr('src'));
+	      			}
+		      	});
+		      	$('#dede_content table').eq(0).find('tr td').each(function (idx, element) {
+	      			let $element = $(element);
+	      			let obj = {};
+	      			obj.name = $element.find('a').html();
+	      			obj.href = $element.find('a').attr('href');
+	      			$element.find('a').remove();
+	      			obj.size = $element.html().replace(/(\()|(\))/g, ' ').split('：');
+	      			detail.download.push(obj);
+		      	});
+      		}
+      		
       		res.render('fivedetail', { type: '5', page: '1', searchType: '1', keyword: '', detail: detail });
     	});
 });
@@ -866,7 +899,6 @@ router.post('/search/:type/:page', function(req, res, next) {
 			res.render('search', data);
 		})
 	}
-	
 });
 //韩饭网搜索详情
 router.get('/search/:searchType/:type/:page/:keyword', function(req, res, next) {

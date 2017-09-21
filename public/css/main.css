@@ -299,11 +299,20 @@
   left: 0;
   top: 0;
 }
+.detail-wrapper .detail-item .detail-item-content .center-img{
+  display: block;
+  width: 80% !important;
+  height: auto !important;
+  margin: 15px auto 0 !important;
+}
 .detail-wrapper .detail-item .detail-item-content span{
   display: none;
 }
 .detail-wrapper .detail-item .detail-item-content a:hover{
   color: #666;
+}
+.detail-wrapper .detail-item .detail-item-content .go-btn{
+  text-decoration: underline;
 }
 .detail-wrapper .detail-item .download-title{
   text-align: center;
