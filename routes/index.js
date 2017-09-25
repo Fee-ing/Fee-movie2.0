@@ -524,7 +524,7 @@ router.get('/onedetail/:type/:id', function(req, res, next) {
 		        	if($element.find('.title').hasClass('title-2')) {
 		        		$element.find('.dl-items').each(function (idx, element) {
 				        	let $element1 = $(element);
-				        	detail.normal.push({
+				        	detail.low.push({
 				        		name: $element1.find('.dl-name').html(),
 				        		format: $element1.find('.label-ext-1').html(),
 				        		size: $element1.find('.label-file-size').html(),
