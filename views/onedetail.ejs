@@ -145,6 +145,34 @@
 				</table>
 			</div>
 		<% } %>
+		<% if(detail.low.length > 0) { %>
+			<div class="detail-item-title detail-item-title1">枪版：</div>
+			<div class="detail-item-content">
+				<table border="1" cellspacing="0" cellpadding="0">
+				  	<thead>
+					    <tr>
+					      	<th>资源名称</th>
+					      	<th>格式</th>
+					      	<th>大小</th>
+					      	<th>操作</th>
+					    </tr>
+				  	</thead>
+				  	<tbody>
+					  	<% detail.low.forEach(function(movie){ %>
+					    	<tr>
+					    		<td><%= movie.name %></td>
+					    		<td><%= movie.format %></td>
+					    		<td><%= movie.size %></td>
+					    		<td>
+					    			<a href="<%= movie.link %>" class="btn">迅雷下载</a>
+					    			<a data-clipboard-text="<%= movie.link %>" class="btn copy-btn">复制下载链接</a>
+					    		</td>
+					    	</tr>
+					    <% }) %>
+					</tbody>
+				</table>
+			</div>
+		<% } %>
 	</div>
 </div>
 

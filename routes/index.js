@@ -459,6 +459,7 @@ router.get('/onedetail/:type/:id', function(req, res, next) {
       			sign: [],
       			member: [],
       			time: [],
+      			low: [],
       			normal: [],
       			high: [],
       			higher: []
@@ -510,6 +511,17 @@ router.get('/onedetail/:type/:id', function(req, res, next) {
 			      		});
 		        	}
 		        	if($element.find('.title').hasClass('title-3')) {
+		        		$element.find('.dl-items').each(function (idx, element) {
+				        	let $element1 = $(element);
+				        	detail.normal.push({
+				        		name: $element1.find('.dl-name').html(),
+				        		format: $element1.find('.label-ext-1').html(),
+				        		size: $element1.find('.label-file-size').html(),
+				        		link: $element1.find('.dl-name').attr('href')
+				        	})
+			      		});
+		        	}
+		        	if($element.find('.title').hasClass('title-2')) {
 		        		$element.find('.dl-items').each(function (idx, element) {
 				        	let $element1 = $(element);
 				        	detail.normal.push({
