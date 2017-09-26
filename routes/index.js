@@ -416,7 +416,7 @@ router.get('/eight/:page', function(req, res, next) {
 			          	title: $element.find('.focus img').attr('alt'),
 			          	subTitle: $element.find('.meta .pv').html(),
 			          	poster: $element.find('.focus img').attr('data-src'),
-			          	href: $element.find('.focus').attr('href')
+			          	href: $element.find('.focus').attr('href').replace(/http:\/\/www.hanfan.cc\//g, '').replace(/\.html/g, '')
 			        });
 		      	});
 		      	$('.pagination li').each(function (idx, element) {
@@ -671,6 +671,60 @@ router.get('/fivedetail/:id', function(req, res, next) {
       		}
       		
       		res.render('fivedetail', { type: '5', page: '1', searchType: '1', keyword: '', detail: detail });
+    	});
+});
+
+router.get('/eightdetail/:id', function(req, res, next) {
+	superagent.get('http://www.hanfan.cc/'+req.params.id+'.html')
+    	.end(function (err, sres) {
+    		let detail = {
+      			title: '',
+      			poster: '',
+      			info: [],
+      			video: '',
+      			download: []
+      		};
+      		if (!err) {
+        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+	      		
+      			detail.title = $('.article-title a').html();
+      			detail.poster = $('.article-content img').eq(0).attr('src');
+      			detail.video = $('.article-content iframe').attr('src');
+
+      			let part = $('.part_content .part').eq(1);
+      			if(part.html()) {
+      				$('.part_content .part strong').remove();
+	      			$('.part_content .part br').remove();
+	      				
+	      			part.find('a').each(function (idx, element) {
+		      			let $element = $(element);
+		      			detail.download.push({href: $element.attr('href')});
+			      	});
+			      	$('.part_content .part a').remove();
+
+			      	let part_html = part.html().replace(/(天使_TSKS：)|(幻想乐园：)|(\|)|(\s)/g, '').split('密码');
+			      	let k = 0;
+			      	for(let i = 1;i < part_html.length; i++) {
+			      		if(part_html[i] && detail.download[k]) {
+			      			detail.download[k].password = part_html[i];
+			      			k++;
+			      		}
+			      	}
+      			}
+      			
+
+      			$('.article-content center').remove();
+      			$('.article-content div').remove();
+      			$('.article-content img').remove();
+	      		$('.article-content p').each(function (idx, element) {
+	      			let $element = $(element);
+	      			if($element.is('p')){
+			        	detail.info.push($element.html());
+	      			}
+		      	});
+      		}
+      		
+      		res.render('eightdetail', { type: '8', page: '1', searchType: '1', keyword: '', detail: detail });
     	});
 });
 
