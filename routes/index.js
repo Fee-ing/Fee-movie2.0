@@ -521,6 +521,75 @@ router.get('/eight/:page', function(req, res, next) {
     	});
 });
 
+router.get('/nine', function(req, res, next) {
+	superagent.get(URLCONFIG.nine.home)
+		.charset('gbk') 
+    	.end(function (err, sres) {
+    		let today = [], newMovie = '', newTv = '', newComic = '', newVariety = '';
+      		if (!err) {
+        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+      		
+	      		$('.kandian .commend ul li').each(function (idx, element) {
+		        	let $element = $(element);
+			        today.push({
+			          	title: $element.find('.db').attr('title'),
+			          	subTitle: $element.find('p').html(),
+			          	poster: $element.find('.db img').attr('src'),
+			          	id: encodeURIComponent($element.find('.db').attr('href').replace(/\.html/g, ''))
+			        });
+		      	});
+
+		      	$('.zuoce .xinfenlei').eq(0).find('ul li').each(function (idx, element) {
+		        	let $element = $(element);
+			        $element.attr('title', $element.find('a').html());
+			        let href = '/ninedetail/' + encodeURIComponent($element.find('a').attr('href').replace(/\.html/g, ''));
+			        $element.find('a').attr('href', href);
+		      	});
+
+		      	$('.zuoce .xinfenlei').eq(1).find('ul li').each(function (idx, element) {
+		        	let $element = $(element);
+			        $element.attr('title', $element.find('a').html());
+			        let href = '/ninedetail/' + encodeURIComponent($element.find('a').attr('href').replace(/\.html/g, ''));
+			        $element.find('a').attr('href', href);
+		      	});
+
+		      	$('.zuocez .xxfl').eq(0).find('ul li').each(function (idx, element) {
+		        	let $element = $(element);
+			        $element.attr('title', $element.find('a').html());
+			        let href = '/ninedetail/' + encodeURIComponent($element.find('a').attr('href').replace(/\.html/g, ''));
+			        $element.find('a').attr('href', href);
+		      	});
+
+		      	$('.zuocez .xxfl').eq(1).find('ul li').each(function (idx, element) {
+		        	let $element = $(element);
+			        $element.attr('title', $element.find('a').html());
+			        let href = '/ninedetail/' + encodeURIComponent($element.find('a').attr('href').replace(/\.html/g, ''));
+			        $element.find('a').attr('href', href);
+		      	});
+
+		      	newMovie = $('.zuoce .xinfenlei').eq(0).find('ul').html();
+		      	newTv = $('.zuoce .xinfenlei').eq(1).find('ul').html();
+		      	newComic = $('.zuocez .xxfl').eq(0).find('ul').html();
+		      	newVariety = $('.zuocez .xxfl').eq(1).find('ul').html();
+		      	
+      		}
+
+      		let data = {
+      			type: '9', 
+      			page: req.params.page, 
+      			searchType: '1', 
+      			keyword: '', 
+      			today: today,
+      			newMovie: newMovie,
+      			newTv: newTv,
+      			newComic: newComic,
+      			newVariety: newVariety
+      		}
+      		
+      		res.render('nine', data);
+    	});
+});
+
 router.get('/onedetail/:type/:id', function(req, res, next) {
     superagent.get(URLCONFIG.one.detail + req.params.id)
     	.end(function (err, sres) {
@@ -750,7 +819,7 @@ router.get('/fivedetail/:id', function(req, res, next) {
 });
 
 router.get('/eightdetail/:id', function(req, res, next) {
-	superagent.get(URLCONFIG.eight.detail + req.params.id+'.html')
+	superagent.get(URLCONFIG.eight.detail + req.params.id + '.html')
     	.end(function (err, sres) {
     		let detail = {
       			title: '',
@@ -800,6 +869,54 @@ router.get('/eightdetail/:id', function(req, res, next) {
       		}
       		
       		res.render('eightdetail', { type: '8', page: '1', searchType: '1', keyword: '', detail: detail });
+    	});
+});
+
+router.get('/ninedetail/:id', function(req, res, next) {
+	superagent.get(URLCONFIG.nine.detail + decodeURIComponent(req.params.id) + '.html')
+		.charset('gbk') 
+    	.end(function (err, sres) {
+    		let detail = {
+      			title: '',
+      			poster: '',
+      			info: '',
+      			download: []
+      		};
+      		if (!err) {
+        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+	      		
+      			detail.title = $('h1 a').html();
+      			detail.poster = $('.haibao img').attr('src');
+      			$('.neirong').children().last().remove();
+      			detail.info = $('.neirong').html();
+
+      			$('.downurl').each(function (idx, element) {
+		        	let $element = $(element);
+
+			        $element.find('li').each(function (idx, element1) {
+			        	let $element1 = $(element1);
+			        	let name = $element1.find('a').eq(0).html();
+			        	if(name === 'HD') {
+			        		name = '高清版';
+			        	}else if(name === 'TS') {
+			        		name = '准枪版';
+			        	}else if(name === 'CAM') {
+			        		name = '枪版';
+			        	}else if(name === 'BD') {
+			        		name = '蓝光版';
+			        	}
+				        detail.download.push({
+				        	name: name,
+				        	link: $element1.find('a').eq(0).attr('href')
+				        })
+			      	});
+		      	});
+
+		      	
+
+      		}
+      		
+      		res.render('ninedetail', { type: '9', page: '1', searchType: '1', keyword: '', detail: detail });
     	});
 });
 

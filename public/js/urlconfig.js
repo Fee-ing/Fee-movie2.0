@@ -37,6 +37,10 @@ const URLCONFIG = {
 		detail: 'http://www.hanfan.cc/',
 		search: 'http://www.hanfan.cc/'
 	},
+	nine: {
+		home: 'http://www.loldytit.com/',
+		detail: 'http://www.loldytit.com',
+	},
 	dt: {
 		home: 'http://diggbt.fyi',
 		search: 'http://diggbt.fyi/'

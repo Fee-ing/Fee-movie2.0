@@ -1,0 +1,35 @@
+<% include header.ejs %>
+
+<div class="one-wrapper">
+	<a class="tip tip1" target="_blank" href="http://www.loldytit.com/">更多资源，移步LOL电影天堂官网</a>
+	<h2 class="movie-title">今日看点</h2>
+	<div class="block-wrapper">
+		<% today.forEach(function(movie){ %>
+		    <a class="block-item block-item2" target="_blank" href="/ninedetail/<%= movie.id %>">
+		    	<div class="item-poster equalHeight">
+		    		<img src="<%= movie.poster %>" alt="">
+		    	</div>
+		    	<h4 class="item-title" title="<%= movie.title %>"><%= movie.title %></h4>
+		    	<h5 class="item-subTitle"><%= movie.subTitle %></h5>
+		    </a>
+	    <% }) %>
+	</div>
+	<h2 class="movie-title">最新电影</h2>
+	<ul class="ul-wrapper">
+		<%- newMovie %>
+	</ul>
+	<h2 class="movie-title">最新电视剧</h2>
+	<ul class="ul-wrapper">
+		<%- newTv %>
+	</ul>
+	<h2 class="movie-title">最新动漫</h2>
+	<ul class="ul-wrapper">
+		<%- newComic %>
+	</ul>
+	<h2 class="movie-title">最新综艺</h2>
+	<ul class="ul-wrapper">
+		<%- newVariety %>
+	</ul>
+</div>
+
+<% include footer.ejs %>
