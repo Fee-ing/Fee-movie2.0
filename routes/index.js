@@ -3,11 +3,12 @@ var cheerio = require('cheerio');
 var superagent = require('superagent');
 require('superagent-charset')(superagent);
 
+var URLCONFIG = require('../public/js/urlconfig');
+
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-	// superagent.get('https://www.80s.tt/')
-  	superagent.get('http://www.80s.tw/')
+  	superagent.get(URLCONFIG.one.home)
 	    .end(function (err, sres) {
 	    	let movieHotData = [], tvHotData = [], varietyHotData = [], comicHotData = [];
 	      	let movieData = [], tvData = [],varietyData = [], comicData = [];
@@ -92,7 +93,7 @@ router.get('/', function(req, res, next) {
 			        movieHotData.push({
 			          	title: $element.find('.h3 a').html(),
 			          	subTitle: $element.find('.tip').html(),
-			          	id: 'http://www.80s.tw'+$element.find('.h3 a').attr('href'),
+			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
 			          	poster: $element.find('img').attr('_src')
 			        });
 		      	});
@@ -101,7 +102,7 @@ router.get('/', function(req, res, next) {
 			        tvHotData.push({
 			          	title: $element.find('.h3 a').html(),
 			          	subTitle: $element.find('.tip').html(),
-			          	id: 'http://www.80s.tw'+$element.find('.h3 a').attr('href'),
+			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
 			          	poster: $element.find('img').attr('_src')
 			        });
 		      	});
@@ -110,7 +111,7 @@ router.get('/', function(req, res, next) {
 			        comicHotData.push({
 			          	title: $element.find('.h3 a').html(),
 			          	subTitle: $element.find('.tip').html(),
-			          	id: 'http://www.80s.tw'+$element.find('.h3 a').attr('href'),
+			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
 			          	poster: $element.find('img').attr('_src')
 			        });
 		      	});
@@ -119,7 +120,7 @@ router.get('/', function(req, res, next) {
 			        varietyHotData.push({
 			          	title: $element.find('.h3 a').html(),
 			          	subTitle: $element.find('.tip').html(),
-			          	id: 'http://www.80s.tw'+$element.find('.h3 a').attr('href'),
+			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
 			          	poster: $element.find('img').attr('_src')
 			        });
 		      	});
@@ -128,7 +129,7 @@ router.get('/', function(req, res, next) {
 			        movieData.push({
 			          	title: $element.find('.h3 a').html(),
 			          	subTitle: $element.find('.tip').html(),
-			          	id: 'http://www.80s.tw'+$element.find('.h3 a').attr('href'),
+			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
 			          	poster: $element.find('img').attr('_src')
 			        });
 		      	});
@@ -137,7 +138,7 @@ router.get('/', function(req, res, next) {
 			        tvData.push({
 			          	title: $element.find('.h3 a').html(),
 			          	subTitle: $element.find('.tip').html(),
-			          	id: 'http://www.80s.tw'+$element.find('.h3 a').attr('href'),
+			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
 			          	poster: $element.find('img').attr('_src')
 			        });
 		      	});
@@ -146,7 +147,7 @@ router.get('/', function(req, res, next) {
 			        comicData.push({
 			          	title: $element.find('.h3 a').html(),
 			          	subTitle: $element.find('.tip').html(),
-			          	id: 'http://www.80s.tw'+$element.find('.h3 a').attr('href'),
+			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
 			          	poster: $element.find('img').attr('_src')
 			        });
 		      	});
@@ -155,7 +156,7 @@ router.get('/', function(req, res, next) {
 			        varietyData.push({
 			          	title: $element.find('.h3 a').html(),
 			          	subTitle: $element.find('.tip').html(),
-			          	id: 'http://www.80s.tw'+$element.find('.h3 a').attr('href'),
+			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
 			          	poster: $element.find('img').attr('_src')
 			        });
 		      	});
@@ -180,7 +181,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/two', function(req, res, next) {
-	superagent.get('http://www.dytt8.net/index.htm')
+	superagent.get(URLCONFIG.two.home)
 		.charset('gbk') 
 	    .end(function (err, sres) {
 	    	let newData = [], thunderData = [], chmovieData = [], enmovieData = [], varietyData = [], comicData = [];
@@ -266,7 +267,7 @@ router.get('/two', function(req, res, next) {
 });
 
 router.get('/three/:page', function(req, res, next) {
-	superagent.get('http://www.hdwan.net/page/'+req.params.page)
+	superagent.get(URLCONFIG.three.home + req.params.page)
     	.end(function (err, sres) {
     		let movieData = {
       			data: [],
@@ -304,9 +305,9 @@ router.get('/three/:page', function(req, res, next) {
 router.get('/four/:page', function(req, res, next) {
 	let link = '';
 	if(req.params.page === '1'){
-		link = 'https://gaoqing.fm/';
+		link = URLCONFIG.four.home;
 	}else {
-		link = 'https://gaoqing.fm/ajax.php?type=&country=&director=&actor=&year=&p='+req.params.page+'&sort=';
+		link = URLCONFIG.four.home + 'ajax.php?type=&country=&director=&actor=&year=&p=' + req.params.page+'&sort=';
 	}
 	superagent.get(link)
 	    .end(function (err, sres) {
@@ -342,7 +343,7 @@ router.get('/four/:page', function(req, res, next) {
 });
 
 router.get('/five', function(req, res, next) {
-	superagent.get('http://www.dygang.net/')
+	superagent.get(URLCONFIG.five.home)
 		.charset('gbk') 
 	    .end(function (err, sres) {
 	    	let movieData = [], tvData = [], highMovieData = [];
@@ -382,9 +383,9 @@ router.get('/five', function(req, res, next) {
 router.get('/six/:page', function(req, res, next) {
 	let link = '';
 	if(req.params.page === '1'){
-		link = 'http://www.quzhuanpan.com/source/loadSourceList.do?type=1';
+		link = URLCONFIG.six.home;
 	}else {
-		link = 'http://www.quzhuanpan.com/source/loadSourceList.do?type=1&currentPage='+req.params.page;
+		link = URLCONFIG.six.home + '&currentPage='+req.params.page;
 	}
 	superagent.get(link)
 	    .end(function (err, sres) {
@@ -396,7 +397,7 @@ router.get('/six/:page', function(req, res, next) {
 		        	let $element = $(element);
 			        movieData.push({
 			          	title: $element.find('.source-name .source-title').attr('title'),
-			          	href: 'http://www.quzhuanpan.com' + $element.find('.source-name .source-title').attr('href'),
+			          	href: URLCONFIG.six.href + $element.find('.source-name .source-title').attr('href'),
 			          	time: $element.find('.source-download-times').next().html(),
 			          	type: $element.find('.source-download-times').next().next().html()
 			        });
@@ -408,7 +409,7 @@ router.get('/six/:page', function(req, res, next) {
 });
 
 router.get('/seven', function(req, res, next) {
-  	superagent.get('http://www.zimuzu.tv/')
+  	superagent.get(URLCONFIG.seven.home)
 	    .end(function (err, sres) {
 	    	let tvData1 = [], tvData2 = [], tvData3 = [], tvData4 = [];
 	      	if (!err) {
@@ -419,7 +420,7 @@ router.get('/seven', function(req, res, next) {
 			        tvData1.push({
 			          	title: $element.find('.fl-info a').html(),
 			          	subTitle: $element.find('.fl-info p').eq(0).html(),
-			          	id: 'http://www.zimuzu.tv'+($element.find('.fl-img a').attr('href'))
+			          	id: URLCONFIG.seven.href + ($element.find('.fl-img a').attr('href'))
 			        });
 		      	});
 		      	$('.top24 li').each(function (idx, element) {
@@ -428,7 +429,7 @@ router.get('/seven', function(req, res, next) {
 		        		tvData1.push({
 				          	title: $element.find('a').html(),
 				          	subTitle: $element.find('em').html(),
-				          	id: 'http://www.zimuzu.tv'+($element.find('a').attr('href'))
+				          	id: URLCONFIG.seven.href + ($element.find('a').attr('href'))
 				        });
 		        	}
 		      	});
@@ -437,7 +438,7 @@ router.get('/seven', function(req, res, next) {
 			        tvData2.push({
 			          	title: $element.find('p a').html(),
 			          	subTitle: $element.find('.f4').eq(0).html(),
-			          	id: 'http://www.zimuzu.tv'+($element.find('.imglink').attr('href').replace(/resource/g, 'gresource')),
+			          	id: URLCONFIG.seven.href + ($element.find('.imglink').attr('href').replace(/resource/g, 'gresource')),
 			          	poster: $element.find('.imglink img').attr('src')
 			        });
 		      	});
@@ -446,7 +447,7 @@ router.get('/seven', function(req, res, next) {
 			        tvData3.push({
 			          	title: $element.find('.t .f14 a strong').html(),
 			          	subTitle: $element.find('.t .f14').html().split('<')[0],
-			          	id: 'http://www.zimuzu.tv'+($element.find('.img a').attr('href')),
+			          	id: URLCONFIG.seven.href + ($element.find('.img a').attr('href')),
 			          	poster: $element.find('.img img').attr('src')
 			        });
 		      	});
@@ -454,7 +455,7 @@ router.get('/seven', function(req, res, next) {
 		        	let $element = $(element);
 			        tvData4.push({
 			          	title: $element.find('.fl-info h3 a').html(),
-			          	id: 'http://www.zimuzu.tv'+($element.find('.fl-img a').attr('href').replace(/http:\/\/www.zimuzu.tv/g, '')),
+			          	id: URLCONFIG.seven.href + ($element.find('.fl-img a').attr('href').replace(/http:\/\/www.zimuzu.tv/g, '')),
 			          	poster: $element.find('.fl-img img').attr('src')
 			        });
 		      	});
@@ -475,7 +476,7 @@ router.get('/seven', function(req, res, next) {
 });
 
 router.get('/eight/:page', function(req, res, next) {
-	superagent.get('http://www.hanfan.cc/page/'+req.params.page)
+	superagent.get(URLCONFIG.eight.home + req.params.page)
     	.end(function (err, sres) {
     		let movieData = {
       			data: [],
@@ -521,7 +522,7 @@ router.get('/eight/:page', function(req, res, next) {
 });
 
 router.get('/onedetail/:type/:id', function(req, res, next) {
-    superagent.get('https://www.80s.tt/movie/'+req.params.id)
+    superagent.get(URLCONFIG.one.detail + req.params.id)
     	.end(function (err, sres) {
     		let detail = {
       			title: '',
@@ -614,7 +615,7 @@ router.get('/onedetail/:type/:id', function(req, res, next) {
 })
 
 router.get('/twodetail/:link', function(req, res, next) {
-	superagent.get('http://www.dytt8.net'+decodeURIComponent(req.params.link))
+	superagent.get(URLCONFIG.two.detail + decodeURIComponent(req.params.link))
 		.charset('gbk') 
     	.end(function (err, sres) {
     		let detail = {
@@ -638,7 +639,7 @@ router.get('/twodetail/:link', function(req, res, next) {
 });
 
 router.get('/threedetail/:id', function(req, res, next) {
-	superagent.get('http://www.hdwan.net/'+req.params.id+'.html')
+	superagent.get(URLCONFIG.three.detail + req.params.id + '.html')
     	.end(function (err, sres) {
     		let detail = {
       			title: '',
@@ -672,7 +673,7 @@ router.get('/threedetail/:id', function(req, res, next) {
 });
 
 router.get('/fourdetail/:id', function(req, res, next) {
-	superagent.get('https://gaoqing.fm/view/'+req.params.id)
+	superagent.get(URLCONFIG.four.detail + req.params.id)
     	.end(function (err, sres) {
     		let detail = {
       			title: '',
@@ -707,7 +708,7 @@ router.get('/fourdetail/:id', function(req, res, next) {
 });
 
 router.get('/fivedetail/:id', function(req, res, next) {
-	superagent.get('http://www.dygang.net/'+req.params.id)
+	superagent.get(URLCONFIG.five.detail + req.params.id)
 		.charset('gbk') 
     	.end(function (err, sres) {
     		let detail = {
@@ -749,7 +750,7 @@ router.get('/fivedetail/:id', function(req, res, next) {
 });
 
 router.get('/eightdetail/:id', function(req, res, next) {
-	superagent.get('http://www.hanfan.cc/'+req.params.id+'.html')
+	superagent.get(URLCONFIG.eight.detail + req.params.id+'.html')
     	.end(function (err, sres) {
     		let detail = {
       			title: '',
@@ -807,7 +808,7 @@ router.get('/eightdetail/:id', function(req, res, next) {
 function searchOne(req){
     let p = new Promise(function(resolve, reject){
         let searchData1 = [];
-        superagent.post('https://www.80s.tt/search')
+        superagent.post(URLCONFIG.one.search)
 	    	.send({keyword: req.body.keyword} )
 	    	.end(function (err, sres) {
 	      		if (!err) {
@@ -831,7 +832,7 @@ function searchOne(req){
 function searchTwo(req){
     let p = new Promise(function(resolve, reject){
         let searchData2 = [];
-        superagent.get('http://www.hdwan.net/')
+        superagent.get(URLCONFIG.three.search)
 			.query({s: req.body.keyword})
 	    	.end(function (err, sres) {
 	      		if (!err) {
@@ -854,7 +855,7 @@ function searchTwo(req){
 function searchThree(req){
     let p = new Promise(function(resolve, reject){
         let searchData3 = [];
-        superagent.get('https://gaoqing.fm/s.php')
+        superagent.get(URLCONFIG.four.search)
 			.query({q: req.body.keyword})
 	    	.end(function (err, sres) {
 	      		if (!err) {
@@ -877,7 +878,7 @@ function searchThree(req){
 function searchFour(req){
     let p = new Promise(function(resolve, reject){
         let searchData4 = [];
-        superagent.get('http://www.quzhuanpan.com/source/search.action')
+        superagent.get(URLCONFIG.six.search)
 			.query({q: req.body.keyword, currentPage: req.params.page})
 	    	.end(function (err, sres) {
 	      		if (!err) {
@@ -886,7 +887,7 @@ function searchFour(req){
 		        		let $element = $(element);
 				        searchData4.push({
 				          	title: $element.find('.source-title').attr('title'),
-				          	href: 'http://www.quzhuanpan.com' + $element.find('.source-title').attr('href'),
+				          	href: URLCONFIG.six.href + $element.find('.source-title').attr('href'),
 				          	size: $element.find('.next-row').eq(2).html().split('|')
 				        });
 			      	});
@@ -904,7 +905,7 @@ function searchFive(req){
         	pageData: [],
         	totalPage: '1'
         };
-        superagent.post('http://diggbt.fyi/')
+        superagent.post(URLCONFIG.dt.search)
 	    	.send({keyword: req.body.keyword} )
 	    	.type('form')
 	    	.end(function (err, sres) {
@@ -958,7 +959,7 @@ function searchSix(req, c_page){
         	pageData: [],
         	totalPage: '1'
         };
-        superagent.get('http://www.hanfan.cc/')
+        superagent.get(URLCONFIG.eight.search)
 			.query({s: req.body.keyword})
 	    	.end(function (err, sres) {
 	      		if (!err) {
@@ -1055,7 +1056,7 @@ router.get('/search/:searchType/:type/:page/:keyword', function(req, res, next) 
 	searchObj.page = req.params.page;
   	searchObj.searchType = req.params.searchType;
 	if(req.params.searchType === '2') {
-		superagent.get('http://diggbt.fyi'+decodeURIComponent(req.params.page)+'.html')
+		superagent.get(URLCONFIG.dt.home + decodeURIComponent(req.params.page) + '.html')
 	    	.end(function (err, sres) {
 	    		let searchData5 = {
 		        	data: [],
@@ -1103,7 +1104,7 @@ router.get('/search/:searchType/:type/:page/:keyword', function(req, res, next) 
 		      	res.render('search', searchObj);
 	      	});
 	}else if(req.params.searchType === '3') {
-		superagent.get('http://www.hanfan.cc/page/'+req.params.page+'/')
+		superagent.get(URLCONFIG.eight.home + req.params.page+'/')
 			.query({s: req.params.keyword})
 	    	.end(function (err, sres) {
 	    		let searchData6 = {
