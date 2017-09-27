@@ -168,6 +168,13 @@
 .block-wrapper .block-item2:nth-child(6n+1){
   margin-left: 0;
 }
+.block-wrapper .block-item3{
+  width: 18%;
+  margin-left: 2.5%;
+}
+.block-wrapper .block-item3:nth-child(5n+1){
+  margin-left: 0;
+}
 
 .block-wrapper .block-item .item-poster{
   position: relative;

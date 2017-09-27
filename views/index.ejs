@@ -1,11 +1,11 @@
 <% include header.ejs %>
 
 <div class="one-wrapper">
-	<a class="tip tip1" target="_blank" href="https://www.80s.tt/">更多资源，移步80s官网</a>
+	<a class="tip tip1" target="_blank" href="http://www.80s.tw/">更多资源，移步80s官网（新版80s访问不了，暂时替换成旧版的资源。9.27）</a>
 	<h2 class="movie-title">热门电影</h2>
 	<div class="block-wrapper">
 		<% movieHotData.forEach(function(movie){ %>
-		    <a class="block-item block-item1" target="_blank" href="/onedetail/<%= type %>/<%= movie.id %>">
+		    <a class="block-item block-item2" target="_blank" href="<%= movie.id %>">
 		    	<div class="item-poster equalHeight">
 		    		<img src="<%= movie.poster %>" alt="">
 		    	</div>
@@ -17,7 +17,7 @@
 	<h2 class="movie-title">热门电视剧</h2>
 	<div class="block-wrapper">
 		<% tvHotData.forEach(function(tv){ %>
-		    <a class="block-item block-item1" target="_blank" href="/onedetail/<%= type %>/<%= tv.id %>">
+		    <a class="block-item block-item2" target="_blank" href="<%= tv.id %>">
 		    	<div class="item-poster equalHeight">
 		    		<img src="<%= tv.poster %>" alt="">
 		    	</div>
@@ -29,7 +29,7 @@
 	<h2 class="movie-title">热门综艺</h2>
 	<div class="block-wrapper">
 		<% varietyHotData.forEach(function(variety){ %>
-		    <a class="block-item block-item1" target="_blank" href="/onedetail/<%= type %>/<%= variety.id %>">
+		    <a class="block-item block-item2" target="_blank" href="<%= variety.id %>">
 		    	<div class="item-poster equalHeight">
 		    		<img src="<%= variety.poster %>" alt="">
 		    	</div>
@@ -41,7 +41,7 @@
 	<h2 class="movie-title">热门动漫</h2>
 	<div class="block-wrapper">
 		<% comicHotData.forEach(function(comic){ %>
-		    <a class="block-item block-item1" target="_blank" href="/onedetail/<%= type %>/<%= comic.id %>">
+		    <a class="block-item block-item2" target="_blank" href="<%= comic.id %>">
 		    	<div class="item-poster equalHeight">
 		    		<img src="<%= comic.poster %>" alt="">
 		    	</div>
@@ -53,7 +53,7 @@
 	<h2 class="movie-title">最新电影</h2>
 	<div class="block-wrapper">
 		<% movieData.forEach(function(movie){ %>
-		    <a class="block-item block-item2" target="_blank" href="/onedetail/<%= type %>/<%= movie.id %>">
+		    <a class="block-item block-item3" target="_blank" href="<%= movie.id %>">
 		    	<div class="item-poster equalHeight">
 		    		<img src="<%= movie.poster %>" alt="">
 		    	</div>
@@ -65,7 +65,7 @@
 	<h2 class="movie-title">最新电视剧</h2>
 	<div class="block-wrapper">
 		<% tvData.forEach(function(tv){ %>
-		    <a class="block-item block-item2" target="_blank" href="/onedetail/<%= type %>/<%= tv.id %>">
+		    <a class="block-item block-item3" target="_blank" href="<%= tv.id %>">
 		    	<div class="item-poster equalHeight">
 		    		<img src="<%= tv.poster %>" alt="">
 		    	</div>
@@ -77,7 +77,7 @@
 	<h2 class="movie-title">最新综艺</h2>
 	<div class="block-wrapper">
 		<% varietyData.forEach(function(variety){ %>
-		    <a class="block-item block-item2" target="_blank" href="/onedetail/<%= type %>/<%= variety.id %>">
+		    <a class="block-item block-item3" target="_blank" href="<%= variety.id %>">
 		    	<div class="item-poster equalHeight">
 		    		<img src="<%= variety.poster %>" alt="">
 		    	</div>
@@ -89,7 +89,7 @@
 	<h2 class="movie-title">最新动漫</h2>
 	<div class="block-wrapper">
 		<% comicData.forEach(function(comic){ %>
-		    <a class="block-item block-item2" target="_blank" href="/onedetail/<%= type %>/<%= comic.id %>">
+		    <a class="block-item block-item3" target="_blank" href="<%= comic.id %>">
 		    	<div class="item-poster equalHeight">
 		    		<img src="<%= comic.poster %>" alt="">
 		    	</div>

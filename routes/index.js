@@ -6,83 +6,157 @@ require('superagent-charset')(superagent);
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-  	superagent.get('https://www.80s.tt/')
+	// superagent.get('https://www.80s.tt/')
+  	superagent.get('http://www.80s.tw/')
 	    .end(function (err, sres) {
 	    	let movieHotData = [], tvHotData = [], varietyHotData = [], comicHotData = [];
 	      	let movieData = [], tvData = [],varietyData = [], comicData = [];
 	      	if (!err) {
 	        	let $ = cheerio.load(sres.text, {decodeEntities: false});
 	      	
-		      	$('.mlm1 .movie-item').each(function (idx, element) {
+		      	// $('.mlm1 .movie-item').each(function (idx, element) {
+		       //  	let $element = $(element);
+			      //   movieHotData.push({
+			      //     	title: $element.find('.title h4 a').html(),
+			      //     	subTitle: $element.find('.title em').html(),
+			      //     	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
+			      //     	poster: $element.find('.poster img').attr('data-original')
+			      //   });
+		      	// });
+		      	// $('.mlm2 .movie-item').each(function (idx, element) {
+		       //  	let $element = $(element);
+			      //   tvHotData.push({
+			      //     	title: $element.find('.title h4 a').html(),
+			      //     	subTitle: $element.find('.title em').html(),
+			      //     	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
+			      //     	poster: $element.find('.poster img').attr('data-original')
+			      //   });
+		      	// });
+		      	// $('.mlm3 .movie-item').each(function (idx, element) {
+		       //  	let $element = $(element);
+			      //   varietyHotData.push({
+			      //     	title: $element.find('.title h4 a').html(),
+			      //     	subTitle: $element.find('.title em').html(),
+			      //     	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
+			      //     	poster: $element.find('.poster img').attr('data-original')
+			      //   });
+		      	// });
+		      	// $('.mlm4 .movie-item').each(function (idx, element) {
+		       //  	let $element = $(element);
+			      //   comicHotData.push({
+			      //     	title: $element.find('.title h4 a').html(),
+			      //     	subTitle: $element.find('.title em').html(),
+			      //     	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
+			      //     	poster: $element.find('.poster img').attr('data-original')
+			      //   });
+		      	// });
+		      	// $('.mlm5 .movie-item').each(function (idx, element) {
+		       //  	let $element = $(element);
+			      //   movieData.push({
+			      //     	title: $element.find('.title h4 a').html(),
+			      //     	subTitle: $element.find('.title em').html(),
+			      //     	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
+			      //     	poster: $element.find('.poster img').attr('data-original')
+			      //   });
+		      	// });
+		      	// $('.mlm6 .movie-item').each(function (idx, element) {
+		       //  	let $element = $(element);
+			      //   tvData.push({
+			      //     	title: $element.find('.title h4 a').html(),
+			      //     	subTitle: $element.find('.title em').html(),
+			      //     	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
+			      //     	poster: $element.find('.poster img').attr('data-original')
+			      //   });
+		      	// });
+		      	// $('.mlm7 .movie-item').each(function (idx, element) {
+		       //  	let $element = $(element);
+			      //   varietyData.push({
+			      //     	title: $element.find('.title h4 a').html(),
+			      //     	subTitle: $element.find('.title em').html(),
+			      //     	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
+			      //     	poster: $element.find('.poster img').attr('data-original')
+			      //   });
+		      	// });
+		      	// $('.mlm8 .movie-item').each(function (idx, element) {
+		       //  	let $element = $(element);
+			      //   comicData.push({
+			      //     	title: $element.find('.title h4 a').html(),
+			      //     	subTitle: $element.find('.title em').html(),
+			      //     	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
+			      //     	poster: $element.find('.poster img').attr('data-original')
+			      //   });
+		      	// });
+
+		      	$('#tt1 .lpelmt2').each(function (idx, element) {
 		        	let $element = $(element);
 			        movieHotData.push({
-			          	title: $element.find('.title h4 a').html(),
-			          	subTitle: $element.find('.title em').html(),
-			          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
-			          	poster: $element.find('.poster img').attr('data-original')
+			          	title: $element.find('.h3 a').html(),
+			          	subTitle: $element.find('.tip').html(),
+			          	id: 'http://www.80s.tw'+$element.find('.h3 a').attr('href'),
+			          	poster: $element.find('img').attr('_src')
 			        });
 		      	});
-		      	$('.mlm2 .movie-item').each(function (idx, element) {
+		      	$('#tt2 .lpelmt2').each(function (idx, element) {
 		        	let $element = $(element);
 			        tvHotData.push({
-			          	title: $element.find('.title h4 a').html(),
-			          	subTitle: $element.find('.title em').html(),
-			          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
-			          	poster: $element.find('.poster img').attr('data-original')
+			          	title: $element.find('.h3 a').html(),
+			          	subTitle: $element.find('.tip').html(),
+			          	id: 'http://www.80s.tw'+$element.find('.h3 a').attr('href'),
+			          	poster: $element.find('img').attr('_src')
 			        });
 		      	});
-		      	$('.mlm3 .movie-item').each(function (idx, element) {
-		        	let $element = $(element);
-			        varietyHotData.push({
-			          	title: $element.find('.title h4 a').html(),
-			          	subTitle: $element.find('.title em').html(),
-			          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
-			          	poster: $element.find('.poster img').attr('data-original')
-			        });
-		      	});
-		      	$('.mlm4 .movie-item').each(function (idx, element) {
+		      	$('#tt3 .lpelmt2').each(function (idx, element) {
 		        	let $element = $(element);
 			        comicHotData.push({
-			          	title: $element.find('.title h4 a').html(),
-			          	subTitle: $element.find('.title em').html(),
-			          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
-			          	poster: $element.find('.poster img').attr('data-original')
+			          	title: $element.find('.h3 a').html(),
+			          	subTitle: $element.find('.tip').html(),
+			          	id: 'http://www.80s.tw'+$element.find('.h3 a').attr('href'),
+			          	poster: $element.find('img').attr('_src')
 			        });
 		      	});
-		      	$('.mlm5 .movie-item').each(function (idx, element) {
+		      	$('#tt4 .lpelmt2').each(function (idx, element) {
+		        	let $element = $(element);
+			        varietyHotData.push({
+			          	title: $element.find('.h3 a').html(),
+			          	subTitle: $element.find('.tip').html(),
+			          	id: 'http://www.80s.tw'+$element.find('.h3 a').attr('href'),
+			          	poster: $element.find('img').attr('_src')
+			        });
+		      	});
+		      	$('.me1').eq(0).find('li').each(function (idx, element) {
 		        	let $element = $(element);
 			        movieData.push({
-			          	title: $element.find('.title h4 a').html(),
-			          	subTitle: $element.find('.title em').html(),
-			          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
-			          	poster: $element.find('.poster img').attr('data-original')
+			          	title: $element.find('.h3 a').html(),
+			          	subTitle: $element.find('.tip').html(),
+			          	id: 'http://www.80s.tw'+$element.find('.h3 a').attr('href'),
+			          	poster: $element.find('img').attr('_src')
 			        });
 		      	});
-		      	$('.mlm6 .movie-item').each(function (idx, element) {
+		      	$('.me1').eq(1).find('li').each(function (idx, element) {
 		        	let $element = $(element);
 			        tvData.push({
-			          	title: $element.find('.title h4 a').html(),
-			          	subTitle: $element.find('.title em').html(),
-			          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
-			          	poster: $element.find('.poster img').attr('data-original')
+			          	title: $element.find('.h3 a').html(),
+			          	subTitle: $element.find('.tip').html(),
+			          	id: 'http://www.80s.tw'+$element.find('.h3 a').attr('href'),
+			          	poster: $element.find('img').attr('_src')
 			        });
 		      	});
-		      	$('.mlm7 .movie-item').each(function (idx, element) {
-		        	let $element = $(element);
-			        varietyData.push({
-			          	title: $element.find('.title h4 a').html(),
-			          	subTitle: $element.find('.title em').html(),
-			          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
-			          	poster: $element.find('.poster img').attr('data-original')
-			        });
-		      	});
-		      	$('.mlm8 .movie-item').each(function (idx, element) {
+		      	$('.me1').eq(2).find('li').each(function (idx, element) {
 		        	let $element = $(element);
 			        comicData.push({
-			          	title: $element.find('.title h4 a').html(),
-			          	subTitle: $element.find('.title em').html(),
-			          	id: $element.find('.title h4 a').attr('href').replace(/\/movie\//g, ''),
-			          	poster: $element.find('.poster img').attr('data-original')
+			          	title: $element.find('.h3 a').html(),
+			          	subTitle: $element.find('.tip').html(),
+			          	id: 'http://www.80s.tw'+$element.find('.h3 a').attr('href'),
+			          	poster: $element.find('img').attr('_src')
+			        });
+		      	});
+		      	$('.me1').eq(3).find('li').each(function (idx, element) {
+		        	let $element = $(element);
+			        varietyData.push({
+			          	title: $element.find('.h3 a').html(),
+			          	subTitle: $element.find('.tip').html(),
+			          	id: 'http://www.80s.tw'+$element.find('.h3 a').attr('href'),
+			          	poster: $element.find('img').attr('_src')
 			        });
 		      	});
 	      	}
@@ -942,13 +1016,22 @@ router.post('/search/:type/:page', function(req, res, next) {
     	searchData6: null
     };
 	if(req.body.searchType === '1') {
+		// Promise
+		// .all([searchOne(req), searchTwo(req), searchThree(req), searchFour(req)])
+		// .then(function(results){
+		// 	data.searchData1 = results[0];
+		// 	data.searchData2 = results[1];
+		// 	data.searchData3 = results[2];
+		// 	data.searchData4 = results[3];
+		// 	searchObj = data;
+		// 	res.render('search', data);
+		// });
 		Promise
-		.all([searchOne(req), searchTwo(req), searchThree(req), searchFour(req)])
+		.all([searchTwo(req), searchThree(req), searchFour(req)])
 		.then(function(results){
-			data.searchData1 = results[0];
-			data.searchData2 = results[1];
-			data.searchData3 = results[2];
-			data.searchData4 = results[3];
+			data.searchData2 = results[0];
+			data.searchData3 = results[1];
+			data.searchData4 = results[2];
 			searchObj = data;
 			res.render('search', data);
 		});
