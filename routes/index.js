@@ -535,7 +535,7 @@ router.get('/nine', function(req, res, next) {
 			          	title: $element.find('.db').attr('title'),
 			          	subTitle: $element.find('p').html(),
 			          	poster: $element.find('.db img').attr('src'),
-			          	id: URLCONFIG.nine.detail + $element.find('.db').attr('href')
+			          	id: encodeURIComponent($element.find('.db').attr('href'))
 			        });
 		      	});
 
@@ -872,8 +872,8 @@ router.get('/eightdetail/:id', function(req, res, next) {
     	});
 });
 
-router.get('/ninedetail/:id', function(req, res, next) {
-	superagent.get(URLCONFIG.nine.detail + decodeURIComponent(req.params.id) + '.html')
+router.get('/ninedetail/:href', function(req, res, next) {
+	superagent.get(URLCONFIG.nine.detail + decodeURIComponent(req.params.href))
 		.charset('gbk') 
     	.end(function (err, sres) {
     		let detail = {
