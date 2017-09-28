@@ -874,7 +874,7 @@ router.get('/eightdetail/:id', function(req, res, next) {
 
 router.get('/ninedetail/:id', function(req, res, next) {
 	console.log(URLCONFIG.nine.detail + decodeURIComponent(req.params.id) + '.html')
-	superagent.get(URLCONFIG.nine.detail + decodeURIComponent(req.params.id) + '.html')
+	superagent.get('http://www.loldytit.com/Kehuanpian/31192.html')
 		.charset('gbk') 
     	.end(function (err, sres) {
     		let detail = {
