@@ -535,7 +535,7 @@ router.get('/nine', function(req, res, next) {
 			          	title: $element.find('.db').attr('title'),
 			          	subTitle: $element.find('p').html(),
 			          	poster: $element.find('.db img').attr('src'),
-			          	id: encodeURIComponent($element.find('.db').attr('href'))
+			          	id: URLCONFIG.nine.detail + ($element.find('.db').attr('href'))
 			        });
 		      	});
 
@@ -1176,12 +1176,11 @@ router.post('/search/:type/:page', function(req, res, next) {
 		// 	res.render('search', data);
 		// });
 		Promise
-		.all([searchTwo(req), searchThree(req), searchFour(req), searchSeven(req)])
+		.all([searchTwo(req), searchThree(req), searchFour(req)])
 		.then(function(results){
 			data.searchData2 = results[0];
 			data.searchData3 = results[1];
 			data.searchData4 = results[2];
-			data.searchData7 = results[3];
 			searchObj = data;
 			res.render('search', data);
 		});
