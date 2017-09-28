@@ -873,6 +873,7 @@ router.get('/eightdetail/:id', function(req, res, next) {
 });
 
 router.get('/ninedetail/:id', function(req, res, next) {
+	console.log(URLCONFIG.nine.detail + decodeURIComponent(req.params.id) + '.html')
 	superagent.get(URLCONFIG.nine.detail + decodeURIComponent(req.params.id) + '.html')
 		.charset('gbk') 
     	.end(function (err, sres) {
@@ -1117,6 +1118,34 @@ function searchSix(req, c_page){
     });
     return p;            
 }
+//LOL电影天堂搜索
+function searchSeven(req){
+    let p = new Promise(function(resolve, reject){
+        let searchData7 = [];
+        superagent.post(URLCONFIG.nine.search)
+        	.charset('gbk')
+	    	.send({keyboard: req.body.keyword})
+	    	.type('form')
+	    	.end(function (err, sres) {
+	      		if (!err) {
+	        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+
+			      	$('ol').each(function (idx, element) {
+		        		let $element = $(element);
+				        searchData7.push({
+				          	title: $element.find('.label a').html(),
+				          	type: $element.find('b').html(),
+				          	source: $element.find('span').html(),
+				          	time: $element.find('strong').html(),
+				          	id: encodeURIComponent($element.find('.label a').attr('href').replace(/\.html/g, '')),
+				        });
+			      	});
+	      		}
+	      		resolve(searchData7);
+	      	});
+    });
+    return p;            
+}
 
 var searchObj = {};
 router.post('/search/:type/:page', function(req, res, next) {
@@ -1131,7 +1160,8 @@ router.post('/search/:type/:page', function(req, res, next) {
     	searchData3: [],
     	searchData4: [],
     	searchData5: null,
-    	searchData6: null
+    	searchData6: null,
+    	searchData7: []
     };
 	if(req.body.searchType === '1') {
 		// Promise
@@ -1145,11 +1175,12 @@ router.post('/search/:type/:page', function(req, res, next) {
 		// 	res.render('search', data);
 		// });
 		Promise
-		.all([searchTwo(req), searchThree(req), searchFour(req)])
+		.all([searchTwo(req), searchThree(req), searchFour(req), searchSeven(req)])
 		.then(function(results){
 			data.searchData2 = results[0];
 			data.searchData3 = results[1];
 			data.searchData4 = results[2];
+			data.searchData7 = results[3];
 			searchObj = data;
 			res.render('search', data);
 		});

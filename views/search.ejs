@@ -15,6 +15,33 @@
 		    <% }) %>
 		</div>
 	<% } %>
+	<% if(searchData7.length > 0) { %>
+		<h2 class="movie-title">LOL电影天堂搜索结果</h2>
+		<div class="list-wrapper">
+			<table border="1" cellspacing="0" cellpadding="0">
+			  	<thead>
+				    <tr>
+				      	<th>名称</th>
+				      	<th>类型</th>
+				      	<th>资源</th>
+				      	<th>更新时间</th>
+				      	<th>操作</th>
+				    </tr>
+			  	</thead>
+			  	<tbody>
+				  	<% searchData7.forEach(function(movie){ %>
+				    	<tr>
+				    		<td><%- movie.title %></td>
+				    		<td><%- movie.type %></td>
+				    		<td><%- movie.source %></td>
+				    		<td><%- movie.time %></td>
+				    		<td><a class="btn" target="_blank" href="/ninedetail/<%= movie.id %>">前往下载</a></td>
+				    	</tr>
+				    <% }) %>
+				</tbody>
+			</table>
+		</div>
+	<% } %>
 	<% if(searchData2.length > 0) { %>
 		<h2 class="movie-title">海盗湾搜索结果</h2>
 		<div class="block-wrapper">
