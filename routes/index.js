@@ -542,29 +542,29 @@ router.get('/nine', function(req, res, next) {
 		      	$('.zuoce .xinfenlei').eq(0).find('ul li').each(function (idx, element) {
 		        	let $element = $(element);
 			        $element.attr('title', $element.find('a').html());
-			        // let href = '/ninedetail/' + encodeURIComponent($element.find('a').attr('href').replace(/\.html/g, ''));
-			        // $element.find('a').attr('href', href);
+			        let href = URLCONFIG.nine.detail + $element.find('a').attr('href');
+			        $element.find('a').attr('href', href);
 		      	});
 
 		      	$('.zuoce .xinfenlei').eq(1).find('ul li').each(function (idx, element) {
 		        	let $element = $(element);
 			        $element.attr('title', $element.find('a').html());
-			        // let href = '/ninedetail/' + encodeURIComponent($element.find('a').attr('href').replace(/\.html/g, ''));
-			        // $element.find('a').attr('href', href);
+			        let href = URLCONFIG.nine.detail + $element.find('a').attr('href');
+			        $element.find('a').attr('href', href);
 		      	});
 
 		      	$('.zuocez .xxfl').eq(0).find('ul li').each(function (idx, element) {
 		        	let $element = $(element);
 			        $element.attr('title', $element.find('a').html());
-			        // let href = '/ninedetail/' + encodeURIComponent($element.find('a').attr('href').replace(/\.html/g, ''));
-			        // $element.find('a').attr('href', href);
+			        let href = URLCONFIG.nine.detail + $element.find('a').attr('href');
+			        $element.find('a').attr('href', href);
 		      	});
 
 		      	$('.zuocez .xxfl').eq(1).find('ul li').each(function (idx, element) {
 		        	let $element = $(element);
 			        $element.attr('title', $element.find('a').html());
-			        // let href = '/ninedetail/' + encodeURIComponent($element.find('a').attr('href').replace(/\.html/g, ''));
-			        // $element.find('a').attr('href', href);
+			        let href = URLCONFIG.nine.detail + $element.find('a').attr('href');
+			        $element.find('a').attr('href', href);
 		      	});
 
 		      	newMovie = $('.zuoce .xinfenlei').eq(0).find('ul').html();
