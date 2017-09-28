@@ -5,7 +5,7 @@
 	<h2 class="movie-title">今日看点</h2>
 	<div class="block-wrapper">
 		<% today.forEach(function(movie){ %>
-		    <a class="block-item block-item2" target="_blank" href="/ninedetail/<%= movie.id %>">
+		    <a class="block-item block-item2" target="_blank" href="<%= movie.id %>">
 		    	<div class="item-poster equalHeight">
 		    		<img src="<%= movie.poster %>" alt="">
 		    	</div>
