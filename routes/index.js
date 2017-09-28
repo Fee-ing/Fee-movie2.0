@@ -535,36 +535,36 @@ router.get('/nine', function(req, res, next) {
 			          	title: $element.find('.db').attr('title'),
 			          	subTitle: $element.find('p').html(),
 			          	poster: $element.find('.db img').attr('src'),
-			          	id: encodeURIComponent($element.find('.db').attr('href').replace(/\.html/g, ''))
+			          	id: URLCONFIG.nine.detail + $element.find('.db').attr('href')
 			        });
 		      	});
 
 		      	$('.zuoce .xinfenlei').eq(0).find('ul li').each(function (idx, element) {
 		        	let $element = $(element);
 			        $element.attr('title', $element.find('a').html());
-			        let href = '/ninedetail/' + encodeURIComponent($element.find('a').attr('href').replace(/\.html/g, ''));
-			        $element.find('a').attr('href', href);
+			        // let href = '/ninedetail/' + encodeURIComponent($element.find('a').attr('href').replace(/\.html/g, ''));
+			        // $element.find('a').attr('href', href);
 		      	});
 
 		      	$('.zuoce .xinfenlei').eq(1).find('ul li').each(function (idx, element) {
 		        	let $element = $(element);
 			        $element.attr('title', $element.find('a').html());
-			        let href = '/ninedetail/' + encodeURIComponent($element.find('a').attr('href').replace(/\.html/g, ''));
-			        $element.find('a').attr('href', href);
+			        // let href = '/ninedetail/' + encodeURIComponent($element.find('a').attr('href').replace(/\.html/g, ''));
+			        // $element.find('a').attr('href', href);
 		      	});
 
 		      	$('.zuocez .xxfl').eq(0).find('ul li').each(function (idx, element) {
 		        	let $element = $(element);
 			        $element.attr('title', $element.find('a').html());
-			        let href = '/ninedetail/' + encodeURIComponent($element.find('a').attr('href').replace(/\.html/g, ''));
-			        $element.find('a').attr('href', href);
+			        // let href = '/ninedetail/' + encodeURIComponent($element.find('a').attr('href').replace(/\.html/g, ''));
+			        // $element.find('a').attr('href', href);
 		      	});
 
 		      	$('.zuocez .xxfl').eq(1).find('ul li').each(function (idx, element) {
 		        	let $element = $(element);
 			        $element.attr('title', $element.find('a').html());
-			        let href = '/ninedetail/' + encodeURIComponent($element.find('a').attr('href').replace(/\.html/g, ''));
-			        $element.find('a').attr('href', href);
+			        // let href = '/ninedetail/' + encodeURIComponent($element.find('a').attr('href').replace(/\.html/g, ''));
+			        // $element.find('a').attr('href', href);
 		      	});
 
 		      	newMovie = $('.zuoce .xinfenlei').eq(0).find('ul').html();
@@ -873,8 +873,7 @@ router.get('/eightdetail/:id', function(req, res, next) {
 });
 
 router.get('/ninedetail/:id', function(req, res, next) {
-	console.log(URLCONFIG.nine.detail + decodeURIComponent(req.params.id) + '.html')
-	superagent.get('http://www.loldytit.com/Kehuanpian/31192.html')
+	superagent.get(URLCONFIG.nine.detail + decodeURIComponent(req.params.id) + '.html')
 		.charset('gbk') 
     	.end(function (err, sres) {
     		let detail = {
