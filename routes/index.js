@@ -873,6 +873,7 @@ router.get('/eightdetail/:id', function(req, res, next) {
 });
 
 router.get('/ninedetail/:href', function(req, res, next) {
+	console.log(URLCONFIG.nine.detail + decodeURIComponent(req.params.href))
 	superagent.get(URLCONFIG.nine.detail + decodeURIComponent(req.params.href))
 		.charset('gbk') 
     	.end(function (err, sres) {
