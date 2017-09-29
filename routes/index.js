@@ -563,7 +563,7 @@ router.get('/nine', function(req, res, next) {
 		      	$('.zuocez .xxfl').eq(1).find('ul li').each(function (idx, element) {
 		        	let $element = $(element);
 			        $element.attr('title', $element.find('a').html());
-			        let href = URLCONFIG.nine.detail + $element.find('a').attr('href');
+			        let href = '/ninedetail/' + encodeURIComponent($element.find('a').attr('href').replace(/\.html/g, ''));
 			        $element.find('a').attr('href', href);
 		      	});
 
@@ -877,11 +877,9 @@ router.get('/eightdetail/:id', function(req, res, next) {
     	});
 });
 
-router.get('/ninedetail/:href', function(req, res, next) {
-	console.log(URLCONFIG.nine.detail + decodeURIComponent(req.params.href))
-	superagent.get(URLCONFIG.nine.detail + decodeURIComponent(req.params.href))
-		.charset('gbk') 
-		.set('Referer','http://www.loldytit.com/')
+router.get('/ninedetail/:id', function(req, res, next) {
+	superagent.get(URLCONFIG.nine.detail + decodeURIComponent(req.params.id) + '.html')
+		.charset('gbk')
     	.end(function (err, sres) {
     		let detail = {
       			title: '',
