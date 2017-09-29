@@ -563,7 +563,7 @@ router.get('/nine', function(req, res, next) {
 		      	$('.zuocez .xxfl').eq(1).find('ul li').each(function (idx, element) {
 		        	let $element = $(element);
 			        $element.attr('title', $element.find('a').html());
-			        let href = '/ninedetail/' + encodeURIComponent($element.find('a').attr('href').replace(/\.html/g, ''));
+			        let href = '/ninedetail/' + $element.find('a').attr('href').replace(/\.html/g, '').replace(/\//g, 'fee');
 			        $element.find('a').attr('href', href);
 		      	});
 
@@ -878,7 +878,9 @@ router.get('/eightdetail/:id', function(req, res, next) {
 });
 
 router.get('/ninedetail/:id', function(req, res, next) {
-	superagent.get(URLCONFIG.nine.detail + decodeURIComponent(req.params.id) + '.html')
+	let _id = (req.params.id).replace(/fee/g, '/');
+	console.log(req.params.id)
+	superagent.get(URLCONFIG.nine.detail + _id + '.html')
 		.charset('gbk')
     	.end(function (err, sres) {
     		let detail = {
