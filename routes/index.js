@@ -535,28 +535,28 @@ router.get('/nine', function(req, res, next) {
 			          	title: $element.find('.db').attr('title'),
 			          	subTitle: $element.find('p').html(),
 			          	poster: $element.find('.db img').attr('src'),
-			          	id: URLCONFIG.nine.detail + ($element.find('.db').attr('href'))
+			          	id: '/ninedetail' + $element.find('.db').attr('href').replace(/\.html/g, '')
 			        });
 		      	});
 
 		      	$('.zuoce .xinfenlei').eq(0).find('ul li').each(function (idx, element) {
 		        	let $element = $(element);
 			        $element.attr('title', $element.find('a').html());
-			        let href = URLCONFIG.nine.detail + $element.find('a').attr('href');
+			        let href = '/ninedetail' + $element.find('a').attr('href').replace(/\.html/g, '');
 			        $element.find('a').attr('href', href);
 		      	});
 
 		      	$('.zuoce .xinfenlei').eq(1).find('ul li').each(function (idx, element) {
 		        	let $element = $(element);
 			        $element.attr('title', $element.find('a').html());
-			        let href = URLCONFIG.nine.detail + $element.find('a').attr('href');
+			        let href = '/ninedetail' + $element.find('a').attr('href').replace(/\.html/g, '');
 			        $element.find('a').attr('href', href);
 		      	});
 
 		      	$('.zuocez .xxfl').eq(0).find('ul li').each(function (idx, element) {
 		        	let $element = $(element);
 			        $element.attr('title', $element.find('a').html());
-			        let href = URLCONFIG.nine.detail + $element.find('a').attr('href');
+			        let href = '/ninedetail' + $element.find('a').attr('href').replace(/\.html/g, '');
 			        $element.find('a').attr('href', href);
 		      	});
 
@@ -878,8 +878,6 @@ router.get('/eightdetail/:id', function(req, res, next) {
 });
 
 router.get('/ninedetail/:name/:id', function(req, res, next) {
-	let _id = (req.params.id).replace(/fee/g, '/');
-	console.log(URLCONFIG.nine.detail + req.params.name + '/' + req.params.id + '.html')
 	superagent.get(URLCONFIG.nine.detail + req.params.name+ '/'  + req.params.id + '.html')
 		.charset('gbk')
     	.end(function (err, sres) {

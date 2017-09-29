@@ -231,7 +231,6 @@
   line-height: 30px;
   float: left;
   font-size: 12px;
-  cursor: pointer;
   display: -webkit-box; 
   display: -moz-box; 
   display: -ms-flexbox; 
@@ -254,6 +253,7 @@
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
+  text-decoration: underline;
 }
 .ul-wrapper li em{
   color: #df3f1f;
