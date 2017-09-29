@@ -39,7 +39,7 @@ const URLCONFIG = {
 	},
 	nine: {
 		home: 'http://www.loldytit.com/',
-		detail: 'http://www.loldytit.com',
+		detail: 'http://www.loldytit.com/',
 		search: 'http://www.loldytit.com/e/search/index.php'
 	},
 	dt: {
