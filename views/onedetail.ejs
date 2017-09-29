@@ -7,46 +7,7 @@
 			<img src="<%= detail.poster %>">
 		</div>
 		<div class="info-right flex1">
-			<div class="info-right-item flexbox">
-				<span class="right-item-title">主创：</span>
-				<div class="right-item-content flex1">
-					<% detail.member.forEach(function(name){ %>
-						<%= name %>/
-					<% }) %>
-				</div>
-			</div>
-			<div class="info-right-item flexbox">
-				<span class="right-item-title">类型：</span>
-				<div class="right-item-content flex1">
-					<% detail.sign.forEach(function(name){ %>
-						<%= name %>/
-					<% }) %>
-				</div>
-			</div>
-			<div class="info-right-item flexbox">
-				<span class="right-item-title">豆瓣评分：</span>
-				<div class="right-item-content flex1">
-					<%= detail.score %>
-				</div>
-			</div>
-			<div class="info-right-item flexbox">
-				<span class="right-item-title">上映日期：</span>
-				<div class="right-item-content flex1">
-					<%= detail.time[0] %>
-				</div>
-			</div>
-			<div class="info-right-item flexbox">
-				<span class="right-item-title">片长：</span>
-				<div class="right-item-content flex1">
-					<%= detail.time[1].replace(/片长/g, '') %>
-				</div>
-			</div>
-			<div class="info-right-item flexbox">
-				<span class="right-item-title">资源更新日期：</span>
-				<div class="right-item-content flex1">
-					<%= detail.time[2] %>
-				</div>
-			</div>
+			<%- detail.info %>
 		</div>
 	</div>
 	<div class="detail-item">
@@ -146,7 +107,7 @@
 			</div>
 		<% } %>
 		<% if(detail.low.length > 0) { %>
-			<div class="detail-item-title detail-item-title1">流畅：</div>
+			<div class="detail-item-title detail-item-title1">清晰：</div>
 			<div class="detail-item-content">
 				<table border="1" cellspacing="0" cellpadding="0">
 				  	<thead>
@@ -159,6 +120,34 @@
 				  	</thead>
 				  	<tbody>
 					  	<% detail.low.forEach(function(movie){ %>
+					    	<tr>
+					    		<td><%= movie.name %></td>
+					    		<td><%= movie.format %></td>
+					    		<td><%= movie.size %></td>
+					    		<td>
+					    			<a href="<%= movie.link %>" class="btn">迅雷下载</a>
+					    			<a data-clipboard-text="<%= movie.link %>" class="btn copy-btn">复制下载链接</a>
+					    		</td>
+					    	</tr>
+					    <% }) %>
+					</tbody>
+				</table>
+			</div>
+		<% } %>
+		<% if(detail.bad.length > 0) { %>
+			<div class="detail-item-title detail-item-title1">流畅：</div>
+			<div class="detail-item-content">
+				<table border="1" cellspacing="0" cellpadding="0">
+				  	<thead>
+					    <tr>
+					      	<th>资源名称</th>
+					      	<th>格式</th>
+					      	<th>大小</th>
+					      	<th>操作</th>
+					    </tr>
+				  	</thead>
+				  	<tbody>
+					  	<% detail.bad.forEach(function(movie){ %>
 					    	<tr>
 					    		<td><%= movie.name %></td>
 					    		<td><%= movie.format %></td>

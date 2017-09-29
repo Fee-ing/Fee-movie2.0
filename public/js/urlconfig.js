@@ -1,6 +1,6 @@
 const URLCONFIG = {
 	one: {
-		home: 'http://www.80s.tw/',
+		home: 'https://www.80s.tt/',
 		detail: 'https://www.80s.tt/movie/',
 		search: 'https://www.80s.tt/search',
 		href: 'http://www.80s.tw'

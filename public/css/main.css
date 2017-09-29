@@ -129,6 +129,10 @@
   margin-top: 0;
 }
 
+.tip-wrapper{
+  text-align: center;
+  font-size: 12px;
+}
 .tip{
   display: block;
   text-align: center;
@@ -138,6 +142,13 @@
 }
 .tip.tip1{
   margin-top: 5px;
+}
+.tip.tip2{
+  display: inline;
+}
+.tip.tip3{
+  color: #000;
+  font-weight: bold;
 }
 
 .list-wrapper{
