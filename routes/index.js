@@ -267,11 +267,7 @@ router.get('/two', function(req, res, next) {
 });
 
 router.get('/three/:page', function(req, res, next) {
-	let link = URLCONFIG.three.home;
-	if(+req.params.page > 1) {
-		link = URLCONFIG.three.home + 'page/' + req.params.page;
-	}
-	superagent.get(link)
+	superagent.get(URLCONFIG.three.home + req.params.page)
     	.end(function (err, sres) {
     		let movieData = {
       			data: [],
