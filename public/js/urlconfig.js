@@ -10,7 +10,7 @@ const URLCONFIG = {
 		detail: 'http://www.dytt8.net'
 	},
 	three: {
-		home: 'http://www.hdwan.net/page/',
+		home: 'http://www.hdwan.net/',
 		detail: 'http://www.hdwan.net/',
 		search: 'http://www.hdwan.net/'
 	},
