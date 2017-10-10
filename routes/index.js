@@ -15,151 +15,151 @@ router.get('/', function(req, res, next) {
 	      	if (!err) {
 	        	let $ = cheerio.load(sres.text, {decodeEntities: false});
 	      	
-		      	$('.section-list.sl1 .list_mov').each(function (idx, element) {
-		        	let $element = $(element);
-			        movieHotData.push({
-			          	title: $element.find('.list_mov_title h4 a').html(),
-			          	subTitle: $element.find('.list_mov_title em').html(),
-			          	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
-			          	poster: $element.find('.list_mov_poster img').attr('data-original')
-			        });
-		      	});
-		      	$('.section-list.sl3 .list_mov').each(function (idx, element) {
-		        	let $element = $(element);
-			        tvHotData.push({
-			          	title: $element.find('.list_mov_title h4 a').html(),
-			          	subTitle: $element.find('.list_mov_title em').html(),
-			          	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
-			          	poster: $element.find('.list_mov_poster img').attr('data-original')
-			        });
-		      	});
-		      	$('.section-list.sl5 .list_mov').each(function (idx, element) {
-		        	let $element = $(element);
-			        varietyHotData.push({
-			          	title: $element.find('.list_mov_title h4 a').html(),
-			          	subTitle: $element.find('.list_mov_title em').html(),
-			          	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
-			          	poster: $element.find('.list_mov_poster img').attr('data-original')
-			        });
-		      	});
-		      	$('.section-list.sl7 .list_mov').each(function (idx, element) {
-		        	let $element = $(element);
-			        comicHotData.push({
-			          	title: $element.find('.list_mov_title h4 a').html(),
-			          	subTitle: $element.find('.list_mov_title em').html(),
-			          	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
-			          	poster: $element.find('.list_mov_poster img').attr('data-original')
-			        });
-		      	});
-		      	$('.section-list.sl2 .list_mov').each(function (idx, element) {
-		        	let $element = $(element);
-			        movieData.push({
-			          	title: $element.find('.list_mov_title h4 a').html(),
-			          	subTitle: $element.find('.list_mov_title em').html(),
-			          	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
-			          	poster: $element.find('.list_mov_poster img').attr('data-original')
-			        });
-		      	});
-		      	$('.section-list.sl4 .list_mov').each(function (idx, element) {
-		        	let $element = $(element);
-			        tvData.push({
-			          	title: $element.find('.list_mov_title h4 a').html(),
-			          	subTitle: $element.find('.list_mov_title em').html(),
-			          	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
-			          	poster: $element.find('.list_mov_poster img').attr('data-original')
-			        });
-		      	});
-		      	$('.section-list.sl6 .list_mov').each(function (idx, element) {
-		        	let $element = $(element);
-			        varietyData.push({
-			          	title: $element.find('.list_mov_title h4 a').html(),
-			          	subTitle: $element.find('.list_mov_title em').html(),
-			          	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
-			          	poster: $element.find('.list_mov_poster img').attr('data-original')
-			        });
-		      	});
-		      	$('.section-list.sl8 .list_mov').each(function (idx, element) {
-		        	let $element = $(element);
-			        comicData.push({
-			          	title: $element.find('.list_mov_title h4 a').html(),
-			          	subTitle: $element.find('.list_mov_title em').html(),
-			          	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
-			          	poster: $element.find('.list_mov_poster img').attr('data-original')
-			        });
-		      	});
-
-		      	// $('#tt1 .lpelmt2').each(function (idx, element) {
+		      	// $('.section-list.sl1 .list_mov').each(function (idx, element) {
 		       //  	let $element = $(element);
 			      //   movieHotData.push({
-			      //     	title: $element.find('.h3 a').html(),
-			      //     	subTitle: $element.find('.tip').html(),
-			      //     	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
-			      //     	poster: $element.find('img').attr('_src')
+			      //     	title: $element.find('.list_mov_title h4 a').html(),
+			      //     	subTitle: $element.find('.list_mov_title em').html(),
+			      //     	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
+			      //     	poster: $element.find('.list_mov_poster img').attr('data-original')
 			      //   });
 		      	// });
-		      	// $('#tt2 .lpelmt2').each(function (idx, element) {
+		      	// $('.section-list.sl3 .list_mov').each(function (idx, element) {
 		       //  	let $element = $(element);
 			      //   tvHotData.push({
-			      //     	title: $element.find('.h3 a').html(),
-			      //     	subTitle: $element.find('.tip').html(),
-			      //     	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
-			      //     	poster: $element.find('img').attr('_src')
+			      //     	title: $element.find('.list_mov_title h4 a').html(),
+			      //     	subTitle: $element.find('.list_mov_title em').html(),
+			      //     	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
+			      //     	poster: $element.find('.list_mov_poster img').attr('data-original')
 			      //   });
 		      	// });
-		      	// $('#tt3 .lpelmt2').each(function (idx, element) {
-		       //  	let $element = $(element);
-			      //   comicHotData.push({
-			      //     	title: $element.find('.h3 a').html(),
-			      //     	subTitle: $element.find('.tip').html(),
-			      //     	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
-			      //     	poster: $element.find('img').attr('_src')
-			      //   });
-		      	// });
-		      	// $('#tt4 .lpelmt2').each(function (idx, element) {
+		      	// $('.section-list.sl5 .list_mov').each(function (idx, element) {
 		       //  	let $element = $(element);
 			      //   varietyHotData.push({
-			      //     	title: $element.find('.h3 a').html(),
-			      //     	subTitle: $element.find('.tip').html(),
-			      //     	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
-			      //     	poster: $element.find('img').attr('_src')
+			      //     	title: $element.find('.list_mov_title h4 a').html(),
+			      //     	subTitle: $element.find('.list_mov_title em').html(),
+			      //     	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
+			      //     	poster: $element.find('.list_mov_poster img').attr('data-original')
 			      //   });
 		      	// });
-		      	// $('.me1').eq(0).find('li').each(function (idx, element) {
+		      	// $('.section-list.sl7 .list_mov').each(function (idx, element) {
+		       //  	let $element = $(element);
+			      //   comicHotData.push({
+			      //     	title: $element.find('.list_mov_title h4 a').html(),
+			      //     	subTitle: $element.find('.list_mov_title em').html(),
+			      //     	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
+			      //     	poster: $element.find('.list_mov_poster img').attr('data-original')
+			      //   });
+		      	// });
+		      	// $('.section-list.sl2 .list_mov').each(function (idx, element) {
 		       //  	let $element = $(element);
 			      //   movieData.push({
-			      //     	title: $element.find('.h3 a').html(),
-			      //     	subTitle: $element.find('.tip').html(),
-			      //     	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
-			      //     	poster: $element.find('img').attr('_src')
+			      //     	title: $element.find('.list_mov_title h4 a').html(),
+			      //     	subTitle: $element.find('.list_mov_title em').html(),
+			      //     	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
+			      //     	poster: $element.find('.list_mov_poster img').attr('data-original')
 			      //   });
 		      	// });
-		      	// $('.me1').eq(1).find('li').each(function (idx, element) {
+		      	// $('.section-list.sl4 .list_mov').each(function (idx, element) {
 		       //  	let $element = $(element);
 			      //   tvData.push({
-			      //     	title: $element.find('.h3 a').html(),
-			      //     	subTitle: $element.find('.tip').html(),
-			      //     	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
-			      //     	poster: $element.find('img').attr('_src')
+			      //     	title: $element.find('.list_mov_title h4 a').html(),
+			      //     	subTitle: $element.find('.list_mov_title em').html(),
+			      //     	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
+			      //     	poster: $element.find('.list_mov_poster img').attr('data-original')
 			      //   });
 		      	// });
-		      	// $('.me1').eq(2).find('li').each(function (idx, element) {
+		      	// $('.section-list.sl6 .list_mov').each(function (idx, element) {
 		       //  	let $element = $(element);
 			      //   varietyData.push({
-			      //     	title: $element.find('.h3 a').html(),
-			      //     	subTitle: $element.find('.tip').html(),
-			      //     	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
-			      //     	poster: $element.find('img').attr('_src')
+			      //     	title: $element.find('.list_mov_title h4 a').html(),
+			      //     	subTitle: $element.find('.list_mov_title em').html(),
+			      //     	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
+			      //     	poster: $element.find('.list_mov_poster img').attr('data-original')
 			      //   });
 		      	// });
-		      	// $('.me1').eq(3).find('li').each(function (idx, element) {
+		      	// $('.section-list.sl8 .list_mov').each(function (idx, element) {
 		       //  	let $element = $(element);
 			      //   comicData.push({
-			      //     	title: $element.find('.h3 a').html(),
-			      //     	subTitle: $element.find('.tip').html(),
-			      //     	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
-			      //     	poster: $element.find('img').attr('_src')
+			      //     	title: $element.find('.list_mov_title h4 a').html(),
+			      //     	subTitle: $element.find('.list_mov_title em').html(),
+			      //     	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
+			      //     	poster: $element.find('.list_mov_poster img').attr('data-original')
 			      //   });
 		      	// });
+
+		      	$('#tt1 .lpelmt2').each(function (idx, element) {
+		        	let $element = $(element);
+			        movieHotData.push({
+			          	title: $element.find('.h3 a').html(),
+			          	subTitle: $element.find('.tip').html(),
+			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
+			          	poster: $element.find('img').attr('_src')
+			        });
+		      	});
+		      	$('#tt2 .lpelmt2').each(function (idx, element) {
+		        	let $element = $(element);
+			        tvHotData.push({
+			          	title: $element.find('.h3 a').html(),
+			          	subTitle: $element.find('.tip').html(),
+			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
+			          	poster: $element.find('img').attr('_src')
+			        });
+		      	});
+		      	$('#tt3 .lpelmt2').each(function (idx, element) {
+		        	let $element = $(element);
+			        comicHotData.push({
+			          	title: $element.find('.h3 a').html(),
+			          	subTitle: $element.find('.tip').html(),
+			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
+			          	poster: $element.find('img').attr('_src')
+			        });
+		      	});
+		      	$('#tt4 .lpelmt2').each(function (idx, element) {
+		        	let $element = $(element);
+			        varietyHotData.push({
+			          	title: $element.find('.h3 a').html(),
+			          	subTitle: $element.find('.tip').html(),
+			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
+			          	poster: $element.find('img').attr('_src')
+			        });
+		      	});
+		      	$('.me1').eq(0).find('li').each(function (idx, element) {
+		        	let $element = $(element);
+			        movieData.push({
+			          	title: $element.find('.h3 a').html(),
+			          	subTitle: $element.find('.tip').html(),
+			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
+			          	poster: $element.find('img').attr('_src')
+			        });
+		      	});
+		      	$('.me1').eq(1).find('li').each(function (idx, element) {
+		        	let $element = $(element);
+			        tvData.push({
+			          	title: $element.find('.h3 a').html(),
+			          	subTitle: $element.find('.tip').html(),
+			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
+			          	poster: $element.find('img').attr('_src')
+			        });
+		      	});
+		      	$('.me1').eq(2).find('li').each(function (idx, element) {
+		        	let $element = $(element);
+			        varietyData.push({
+			          	title: $element.find('.h3 a').html(),
+			          	subTitle: $element.find('.tip').html(),
+			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
+			          	poster: $element.find('img').attr('_src')
+			        });
+		      	});
+		      	$('.me1').eq(3).find('li').each(function (idx, element) {
+		        	let $element = $(element);
+			        comicData.push({
+			          	title: $element.find('.h3 a').html(),
+			          	subTitle: $element.find('.tip').html(),
+			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
+			          	poster: $element.find('img').attr('_src')
+			        });
+		      	});
 	      	}
 	      	
 	      	let data = {
