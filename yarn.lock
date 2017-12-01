@@ -168,9 +168,9 @@ ee-first@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.0.tgz#6a0d7c6221e490feefd92ec3f441c9ce8cd097f4"
 
-ejs@~2.2.3:
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.2.4.tgz#f0af7e366c13149dd7ae30106c0c0e1cad11903c"
+ejs@~2.5.5:
+  version "2.5.7"
+  resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.5.7.tgz#cc872c168880ae3c7189762fd5ffc00896c9518a"
 
 entities@1.0:
   version "1.0.0"
