@@ -935,6 +935,7 @@ function searchOne(req){
 	    	.end(function (err, sres) {
 	      		if (!err) {
 	        		let $ = cheerio.load(sres.text, {decodeEntities: false});
+	        		console.log(sres.text)
 			      	$('.list-group-item').each(function (idx, element) {
 			        	let $element = $(element);
 				        searchData1.push({
