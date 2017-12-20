@@ -1,8 +1,8 @@
 const URLCONFIG = {
 	one: {
-		home: 'http://www.80s.tw/',
+		home: 'https://www.80s.tt/',
 		detail: 'https://www.80s.tt/movie/',
-		search: 'http://www.80s.tw/search',
+		search: 'https://www.80s.tt/search',
 		href: 'http://www.80s.tw'
 	},
 	two: {
@@ -45,6 +45,10 @@ const URLCONFIG = {
 	dt: {
 		home: 'http://diggbt.fyi',
 		search: 'http://diggbt.fyi/'
+	},
+	btanv: {
+		home: 'http://www.btanv.com/search/',
+		search: 'http://www.btanv.com/q'
 	}
 }
 

@@ -17,7 +17,8 @@
   				<form class="search-form flexbox" method="post" target="_blank" action="/search/<%= type %>/1">
   					<select class="search-select" name="searchType">
   						<option value="1" <%= searchType === '1' ? 'selected' : '' %>>默认搜索</option>
-  						<option value="2" <%= searchType === '2' ? 'selected' : '' %>>DiggBT搜索</option>
+						<option value="2" <%= searchType === '2' ? 'selected' : '' %>>DiggBT搜索</option>
+						<option value="4" <%= searchType === '4' ? 'selected' : '' %>>BTants搜索</option>
   						<option value="3" <%= searchType === '3' ? 'selected' : '' %>>韩饭搜索</option>
   					</select>
 					<input type="text" name="keyword" value="<%= keyword ? keyword : '' %>" class="search-input flex1" placeholder="想看什么就搜一搜吧">
@@ -31,7 +32,7 @@
 				<a class="tabbar-item flex1 <%= type==='1' ? 'active' : '' %>" href="/">80s</a>
 				<a class="tabbar-item flex1 <%= type==='9' ? 'active' : '' %>" href="/nine">LOL</a>
 				<a class="tabbar-item flex1 <%= type==='2' ? 'active' : '' %>" href="/two">电影天堂</a>
-				<a class="tabbar-item flex1 <%= type==='4' ? 'active' : '' %>" href="/four/1">高清电台</a>
+				<!-- <a class="tabbar-item flex1 <%= type==='4' ? 'active' : '' %>" href="/four/1">高清电台</a> -->
 				<!-- <a class="tabbar-item flex1 <%= type==='3' ? 'active' : '' %>" href="/three/<%= page %>">海盗湾</a> -->
 				<a class="tabbar-item flex1 <%= type==='5' ? 'active' : '' %>" href="/five">电影港</a>
 				<a class="tabbar-item flex1 <%= type==='6' ? 'active' : '' %>" href="/six/1">去转盘网</a>

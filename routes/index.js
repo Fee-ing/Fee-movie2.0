@@ -15,151 +15,151 @@ router.get('/', function(req, res, next) {
 	      	if (!err) {
 	        	let $ = cheerio.load(sres.text, {decodeEntities: false});
 	      	
-		      	// $('.section-list.sl1 .list_mov').each(function (idx, element) {
-		       //  	let $element = $(element);
-			      //   movieHotData.push({
-			      //     	title: $element.find('.list_mov_title h4 a').html(),
-			      //     	subTitle: $element.find('.list_mov_title em').html(),
-			      //     	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
-			      //     	poster: $element.find('.list_mov_poster img').attr('data-original')
-			      //   });
-		      	// });
-		      	// $('.section-list.sl3 .list_mov').each(function (idx, element) {
-		       //  	let $element = $(element);
-			      //   tvHotData.push({
-			      //     	title: $element.find('.list_mov_title h4 a').html(),
-			      //     	subTitle: $element.find('.list_mov_title em').html(),
-			      //     	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
-			      //     	poster: $element.find('.list_mov_poster img').attr('data-original')
-			      //   });
-		      	// });
-		      	// $('.section-list.sl5 .list_mov').each(function (idx, element) {
-		       //  	let $element = $(element);
-			      //   varietyHotData.push({
-			      //     	title: $element.find('.list_mov_title h4 a').html(),
-			      //     	subTitle: $element.find('.list_mov_title em').html(),
-			      //     	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
-			      //     	poster: $element.find('.list_mov_poster img').attr('data-original')
-			      //   });
-		      	// });
-		      	// $('.section-list.sl7 .list_mov').each(function (idx, element) {
-		       //  	let $element = $(element);
-			      //   comicHotData.push({
-			      //     	title: $element.find('.list_mov_title h4 a').html(),
-			      //     	subTitle: $element.find('.list_mov_title em').html(),
-			      //     	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
-			      //     	poster: $element.find('.list_mov_poster img').attr('data-original')
-			      //   });
-		      	// });
-		      	// $('.section-list.sl2 .list_mov').each(function (idx, element) {
-		       //  	let $element = $(element);
-			      //   movieData.push({
-			      //     	title: $element.find('.list_mov_title h4 a').html(),
-			      //     	subTitle: $element.find('.list_mov_title em').html(),
-			      //     	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
-			      //     	poster: $element.find('.list_mov_poster img').attr('data-original')
-			      //   });
-		      	// });
-		      	// $('.section-list.sl4 .list_mov').each(function (idx, element) {
-		       //  	let $element = $(element);
-			      //   tvData.push({
-			      //     	title: $element.find('.list_mov_title h4 a').html(),
-			      //     	subTitle: $element.find('.list_mov_title em').html(),
-			      //     	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
-			      //     	poster: $element.find('.list_mov_poster img').attr('data-original')
-			      //   });
-		      	// });
-		      	// $('.section-list.sl6 .list_mov').each(function (idx, element) {
-		       //  	let $element = $(element);
-			      //   varietyData.push({
-			      //     	title: $element.find('.list_mov_title h4 a').html(),
-			      //     	subTitle: $element.find('.list_mov_title em').html(),
-			      //     	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
-			      //     	poster: $element.find('.list_mov_poster img').attr('data-original')
-			      //   });
-		      	// });
-		      	// $('.section-list.sl8 .list_mov').each(function (idx, element) {
-		       //  	let $element = $(element);
-			      //   comicData.push({
-			      //     	title: $element.find('.list_mov_title h4 a').html(),
-			      //     	subTitle: $element.find('.list_mov_title em').html(),
-			      //     	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
-			      //     	poster: $element.find('.list_mov_poster img').attr('data-original')
-			      //   });
-		      	// });
-
-		      	$('#tt1 .lpelmt2').each(function (idx, element) {
+		      	$('.section-list.sl1 .list_mov').each(function (idx, element) {
 		        	let $element = $(element);
 			        movieHotData.push({
-			          	title: $element.find('.h3 a').html(),
-			          	subTitle: $element.find('.tip').html(),
-			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
-			          	poster: $element.find('img').attr('_src')
+			          	title: $element.find('.list_mov_title h4 a').html(),
+			          	subTitle: $element.find('.list_mov_title em').html(),
+			          	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
+			          	poster: $element.find('.list_mov_poster img').attr('data-original')
 			        });
 		      	});
-		      	$('#tt2 .lpelmt2').each(function (idx, element) {
+		      	$('.section-list.sl3 .list_mov').each(function (idx, element) {
 		        	let $element = $(element);
 			        tvHotData.push({
-			          	title: $element.find('.h3 a').html(),
-			          	subTitle: $element.find('.tip').html(),
-			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
-			          	poster: $element.find('img').attr('_src')
+			          	title: $element.find('.list_mov_title h4 a').html(),
+			          	subTitle: $element.find('.list_mov_title em').html(),
+			          	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
+			          	poster: $element.find('.list_mov_poster img').attr('data-original')
 			        });
 		      	});
-		      	$('#tt3 .lpelmt2').each(function (idx, element) {
-		        	let $element = $(element);
-			        comicHotData.push({
-			          	title: $element.find('.h3 a').html(),
-			          	subTitle: $element.find('.tip').html(),
-			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
-			          	poster: $element.find('img').attr('_src')
-			        });
-		      	});
-		      	$('#tt4 .lpelmt2').each(function (idx, element) {
+		      	$('.section-list.sl5 .list_mov').each(function (idx, element) {
 		        	let $element = $(element);
 			        varietyHotData.push({
-			          	title: $element.find('.h3 a').html(),
-			          	subTitle: $element.find('.tip').html(),
-			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
-			          	poster: $element.find('img').attr('_src')
+			          	title: $element.find('.list_mov_title h4 a').html(),
+			          	subTitle: $element.find('.list_mov_title em').html(),
+			          	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
+			          	poster: $element.find('.list_mov_poster img').attr('data-original')
 			        });
 		      	});
-		      	$('.me1').eq(0).find('li').each(function (idx, element) {
+		      	$('.section-list.sl7 .list_mov').each(function (idx, element) {
+		        	let $element = $(element);
+			        comicHotData.push({
+			          	title: $element.find('.list_mov_title h4 a').html(),
+			          	subTitle: $element.find('.list_mov_title em').html(),
+			          	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
+			          	poster: $element.find('.list_mov_poster img').attr('data-original')
+			        });
+		      	});
+		      	$('.section-list.sl2 .list_mov').each(function (idx, element) {
 		        	let $element = $(element);
 			        movieData.push({
-			          	title: $element.find('.h3 a').html(),
-			          	subTitle: $element.find('.tip').html(),
-			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
-			          	poster: $element.find('img').attr('_src')
+			          	title: $element.find('.list_mov_title h4 a').html(),
+			          	subTitle: $element.find('.list_mov_title em').html(),
+			          	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
+			          	poster: $element.find('.list_mov_poster img').attr('data-original')
 			        });
 		      	});
-		      	$('.me1').eq(1).find('li').each(function (idx, element) {
+		      	$('.section-list.sl4 .list_mov').each(function (idx, element) {
 		        	let $element = $(element);
 			        tvData.push({
-			          	title: $element.find('.h3 a').html(),
-			          	subTitle: $element.find('.tip').html(),
-			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
-			          	poster: $element.find('img').attr('_src')
+			          	title: $element.find('.list_mov_title h4 a').html(),
+			          	subTitle: $element.find('.list_mov_title em').html(),
+			          	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
+			          	poster: $element.find('.list_mov_poster img').attr('data-original')
 			        });
 		      	});
-		      	$('.me1').eq(2).find('li').each(function (idx, element) {
+		      	$('.section-list.sl6 .list_mov').each(function (idx, element) {
 		        	let $element = $(element);
 			        varietyData.push({
-			          	title: $element.find('.h3 a').html(),
-			          	subTitle: $element.find('.tip').html(),
-			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
-			          	poster: $element.find('img').attr('_src')
+			          	title: $element.find('.list_mov_title h4 a').html(),
+			          	subTitle: $element.find('.list_mov_title em').html(),
+			          	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
+			          	poster: $element.find('.list_mov_poster img').attr('data-original')
 			        });
 		      	});
-		      	$('.me1').eq(3).find('li').each(function (idx, element) {
+		      	$('.section-list.sl8 .list_mov').each(function (idx, element) {
 		        	let $element = $(element);
 			        comicData.push({
-			          	title: $element.find('.h3 a').html(),
-			          	subTitle: $element.find('.tip').html(),
-			          	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
-			          	poster: $element.find('img').attr('_src')
+			          	title: $element.find('.list_mov_title h4 a').html(),
+			          	subTitle: $element.find('.list_mov_title em').html(),
+			          	id: $element.find('.list_mov_title h4 a').attr('href').replace(/\/movie\//g, ''),
+			          	poster: $element.find('.list_mov_poster img').attr('data-original')
 			        });
 		      	});
+
+		      	// $('#tt1 .lpelmt2').each(function (idx, element) {
+		        // 	let $element = $(element);
+			    //     movieHotData.push({
+			    //       	title: $element.find('.h3 a').html(),
+			    //       	subTitle: $element.find('.tip').html(),
+			    //       	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
+			    //       	poster: $element.find('img').attr('_src')
+			    //     });
+		      	// });
+		      	// $('#tt2 .lpelmt2').each(function (idx, element) {
+		        // 	let $element = $(element);
+			    //     tvHotData.push({
+			    //       	title: $element.find('.h3 a').html(),
+			    //       	subTitle: $element.find('.tip').html(),
+			    //       	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
+			    //       	poster: $element.find('img').attr('_src')
+			    //     });
+		      	// });
+		      	// $('#tt3 .lpelmt2').each(function (idx, element) {
+		        // 	let $element = $(element);
+			    //     comicHotData.push({
+			    //       	title: $element.find('.h3 a').html(),
+			    //       	subTitle: $element.find('.tip').html(),
+			    //       	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
+			    //       	poster: $element.find('img').attr('_src')
+			    //     });
+		      	// });
+		      	// $('#tt4 .lpelmt2').each(function (idx, element) {
+		        // 	let $element = $(element);
+			    //     varietyHotData.push({
+			    //       	title: $element.find('.h3 a').html(),
+			    //       	subTitle: $element.find('.tip').html(),
+			    //       	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
+			    //       	poster: $element.find('img').attr('_src')
+			    //     });
+		      	// });
+		      	// $('.me1').eq(0).find('li').each(function (idx, element) {
+		        // 	let $element = $(element);
+			    //     movieData.push({
+			    //       	title: $element.find('.h3 a').html(),
+			    //       	subTitle: $element.find('.tip').html(),
+			    //       	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
+			    //       	poster: $element.find('img').attr('_src')
+			    //     });
+		      	// });
+		      	// $('.me1').eq(1).find('li').each(function (idx, element) {
+		        // 	let $element = $(element);
+			    //     tvData.push({
+			    //       	title: $element.find('.h3 a').html(),
+			    //       	subTitle: $element.find('.tip').html(),
+			    //       	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
+			    //       	poster: $element.find('img').attr('_src')
+			    //     });
+		      	// });
+		      	// $('.me1').eq(2).find('li').each(function (idx, element) {
+		        // 	let $element = $(element);
+			    //     varietyData.push({
+			    //       	title: $element.find('.h3 a').html(),
+			    //       	subTitle: $element.find('.tip').html(),
+			    //       	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
+			    //       	poster: $element.find('img').attr('_src')
+			    //     });
+		      	// });
+		      	// $('.me1').eq(3).find('li').each(function (idx, element) {
+		        // 	let $element = $(element);
+			    //     comicData.push({
+			    //       	title: $element.find('.h3 a').html(),
+			    //       	subTitle: $element.find('.tip').html(),
+			    //       	id: URLCONFIG.one.href + $element.find('.h3 a').attr('href'),
+			    //       	poster: $element.find('img').attr('_src')
+			    //     });
+		      	// });
 	      	}
 	      	
 	      	let data = {
@@ -935,7 +935,6 @@ function searchOne(req){
 	    	.end(function (err, sres) {
 	      		if (!err) {
 	        		let $ = cheerio.load(sres.text, {decodeEntities: false});
-	        		console.log(sres.text)
 			      	$('.list-group-item').each(function (idx, element) {
 			        	let $element = $(element);
 				        searchData1.push({
@@ -1021,103 +1020,111 @@ function searchFour(req){
     return p;            
 }
 //DiggBT搜索
+function getFiveData(err, sres){
+	let searchData5 = {
+		data: [],
+		pageData: [],
+		totalPage: '1'
+	};
+	if (!err) {
+		let $ = cheerio.load(sres.text, {decodeEntities: false});
+		$('.list-area .item').each(function (idx, element) {
+			let $element = $(element);
+			searchData5.data.push({
+				title: $element.find('.item-title a').html(),
+				subTitle: $element.find('.item-title .category').html(),
+				href: $element.find('.item-title a').attr('href'),
+				download: $element.find('.item-detail span').eq(0).find('a').attr('href'),
+				downloadType: $element.find('.item-detail span').eq(0).find('a').html(),
+				time: $element.find('.item-detail span').eq(1).html().replace(/收录日期:/g, ''),
+				size: $element.find('.item-detail span').eq(2).html().replace(/大小:/g, ''),
+				num: $element.find('.item-detail span').eq(3).html().replace(/文件数:/g, ''),
+				speed: $element.find('.item-detail span').eq(4).html().replace(/速度:/g, '')
+			});
+		});
+		$('.pagination').children().each(function (idx, element) {
+			let $element = $(element);
+			if(idx === 0) {
+				searchData5.totalPage = $element.html();
+			}
+			if($element.is('a')) {
+				searchData5.pageData.push({
+					name: $element.html().replace(/»/g, '尾页'),
+					link: encodeURIComponent($element.attr('href').replace(/http:\/\/diggbt.fyi/g, '').replace(/\.html/g, '')),
+					isCurrent: false
+				});
+			}
+			if($element.is('strong')) {
+				searchData5.pageData.push({
+					name: $element.html(),
+					link: '',
+					isCurrent: true
+				});
+			}
+		});
+	}
+	return searchData5
+}
 function searchFive(req){
     let p = new Promise(function(resolve, reject){
-        let searchData5 = {
-        	data: [],
-        	pageData: [],
-        	totalPage: '1'
-        };
         superagent.post(URLCONFIG.dt.search)
 	    	.send({keyword: req.body.keyword} )
 	    	.type('form')
 	    	.end(function (err, sres) {
-	      		if (!err) {
-	        		let $ = cheerio.load(sres.text, {decodeEntities: false});
-			      	$('.list-area .item').each(function (idx, element) {
-			        	let $element = $(element);
-				        searchData5.data.push({
-				          	title: $element.find('.item-title a').html(),
-				          	subTitle: $element.find('.item-title .category').html(),
-				          	href: $element.find('.item-title a').attr('href'),
-				          	download: $element.find('.item-detail span').eq(0).find('a').attr('href'),
-				          	downloadType: $element.find('.item-detail span').eq(0).find('a').html(),
-				          	time: $element.find('.item-detail span').eq(1).html().replace(/收录日期:/g, ''),
-				          	size: $element.find('.item-detail span').eq(2).html().replace(/大小:/g, ''),
-				          	num: $element.find('.item-detail span').eq(3).html().replace(/文件数:/g, ''),
-				          	speed: $element.find('.item-detail span').eq(4).html().replace(/速度:/g, '')
-				        });
-			      	});
-			      	$('.pagination').children().each(function (idx, element) {
-			        	let $element = $(element);
-			        	if(idx === 0) {
-			        		searchData5.totalPage = $element.html();
-			        	}
-			        	if($element.is('a')) {
-			        		searchData5.pageData.push({
-					          	name: $element.html().replace(/»/g, '尾页'),
-					          	link: encodeURIComponent($element.attr('href').replace(/http:\/\/diggbt.fyi/g, '').replace(/\.html/g, '')),
-					          	isCurrent: false
-					        });
-			        	}
-				        if($element.is('strong')) {
-			        		searchData5.pageData.push({
-					          	name: $element.html(),
-					          	link: '',
-					          	isCurrent: true
-					        });
-			        	}
-			      	});
-	      		}
+	      		let searchData5 = getFiveData(err, sres)
 	      		resolve(searchData5);
 	      	});
     });
     return p;            
 }
 //韩饭网搜索
+function getSixData(err, sres){
+	let searchData6 = {
+		data: [],
+		pageData: [],
+		totalPage: '1'
+	};
+	if (!err) {
+		let $ = cheerio.load(sres.text, {decodeEntities: false});
+		$('.excerpt').each(function (idx, element) {
+			let $element = $(element);
+			searchData6.data.push({
+					title: $element.find('.focus img').attr('alt'),
+					subTitle: $element.find('.meta .pv').html(),
+					poster: $element.find('.focus img').attr('data-src'),
+					href: $element.find('.focus').attr('href')
+			});
+		});
+		$('.pagination li').each(function (idx, element) {
+			var $element = $(element);
+			if($element.hasClass('active')) {
+				searchData6.pageData.push({
+						page: $element.find('span').html(),
+						name: $element.find('span').html(),
+						isCurrent: true
+				});
+			}else {
+				if($element.children().is('a')) {
+					let page = $element.find('a').attr('href').replace(/http:\/\/www.hanfan.cc\//g, '').replace(/page\//g, '').replace(/\//g, '').replace(/\?.*/g, '');
+					page ? page : page = '1';
+					searchData6.pageData.push({
+							page: page,
+							name: $element.find('a').html(),
+							isCurrent: false
+					});
+				}
+			}
+		});
+		searchData6.totalPage = $('.pagination li').last().find('span').html();
+	}
+	return searchData6
+}
 function searchSix(req, c_page){
     let p = new Promise(function(resolve, reject){
-        let searchData6 = {
-        	data: [],
-        	pageData: [],
-        	totalPage: '1'
-        };
         superagent.get(URLCONFIG.eight.search)
 			.query({s: req.body.keyword})
 	    	.end(function (err, sres) {
-	      		if (!err) {
-	        		let $ = cheerio.load(sres.text, {decodeEntities: false});
-			      	$('.excerpt').each(function (idx, element) {
-		        		let $element = $(element);
-				        searchData6.data.push({
-				          	title: $element.find('.focus img').attr('alt'),
-				          	subTitle: $element.find('.meta .pv').html(),
-				          	poster: $element.find('.focus img').attr('data-src'),
-				          	href: $element.find('.focus').attr('href')
-				        });
-			      	});
-			      	$('.pagination li').each(function (idx, element) {
-			        	var $element = $(element);
-			        	if($element.hasClass('active')) {
-			        		searchData6.pageData.push({
-					          	page: $element.find('span').html(),
-					          	name: $element.find('span').html(),
-					          	isCurrent: true
-					        });
-			        	}else {
-			        		if($element.children().is('a')) {
-			        			let page = $element.find('a').attr('href').replace(/http:\/\/www.hanfan.cc\//g, '').replace(/page\//g, '').replace(/\//g, '').replace(/\?.*/g, '');
-			        			page ? page : page = '1';
-			        			searchData6.pageData.push({
-						          	page: page,
-						          	name: $element.find('a').html(),
-						          	isCurrent: false
-						        });
-			        		}
-			        	}
-			      	});
-			      	searchData6.totalPage = $('.pagination li').last().find('span').html();
-	      		}
+	      		let searchData6 = getSixData(err, sres)
 	      		resolve(searchData6);
 	      	});
     });
@@ -1151,6 +1158,64 @@ function searchSeven(req){
     });
     return p;            
 }
+//蚂蚁搜索
+function getEightData(err, sres){
+	let searchData8 = {
+		data: [],
+		pageData: []
+	};
+	if (!err) {
+		let $ = cheerio.load(sres.text, {decodeEntities: false});
+		$('.search-item').each(function (idx, element) {
+			let $element = $(element)
+			let arr = []
+			$element.find('.download').each(function (idx, ele) {
+				arr.push({
+					href: $(ele).attr('href'),
+					name: $(ele).html()
+				})
+			})
+			searchData8.data.push({
+				title: $element.find('.item-title a').html(),
+				subTitle: $element.find('.item-list p').html(),
+				download: arr,
+				time: $element.find('.item-bar span').eq(0).find('b').html(),
+				active: $element.find('.item-bar span').eq(1).find('b').html(),
+				last: $element.find('.item-bar span').eq(2).find('b').html(),
+				size: $element.find('.item-bar span').eq(3).find('b').html()        
+			})
+		})
+		$('.bottom-pager').children().each(function (idx, element) {
+			let $element = $(element)
+			if ($element.is('a')) {
+				searchData8.pageData.push({
+					name: $element.html(),
+					link: encodeURIComponent($element.attr('href').replace(/\/search\//, '')),
+					isCurrent: false
+				})
+			}
+			if ($element.is('span')) {
+				searchData8.pageData.push({
+					name: $element.html(),
+					link: '',
+					isCurrent: true
+				})
+			}
+		})
+	}
+	return searchData8
+}
+function searchEight(req){
+    let p = new Promise(function(resolve, reject){
+        superagent.get(URLCONFIG.btanv.search)
+			.query({kw: req.body.keyword})
+	    	.end(function (err, sres) {
+				let searchData8 = getEightData(err, sres)
+	      		resolve(searchData8);
+	      	});
+    });
+    return p;            
+}
 
 var searchObj = {};
 router.post('/search/:type/:page', function(req, res, next) {
@@ -1166,28 +1231,18 @@ router.post('/search/:type/:page', function(req, res, next) {
     	searchData4: [],
     	searchData5: null,
     	searchData6: null,
-    	searchData7: []
+		searchData7: [],
+		searchData8: null
     };
 	if(req.body.searchType === '1') {
 		Promise
-		.all([searchOne(req), searchTwo(req), searchThree(req), searchFour(req)])
+		.all([searchOne(req), searchFour(req)])
 		.then(function(results){
 			data.searchData1 = results[0];
-			data.searchData2 = results[1];
-			data.searchData3 = results[2];
-			data.searchData4 = results[3];
+			data.searchData4 = results[1];
 			searchObj = data;
 			res.render('search', data);
 		});
-		// Promise
-		// .all([searchTwo(req), searchThree(req), searchFour(req)])
-		// .then(function(results){
-		// 	data.searchData2 = results[0];
-		// 	data.searchData3 = results[1];
-		// 	data.searchData4 = results[2];
-		// 	searchObj = data;
-		// 	res.render('search', data);
-		// });
 	} else if(req.body.searchType === '2') {
 		searchFive(req).then(function(result){
 			data.searchData5 = result;
@@ -1197,6 +1252,12 @@ router.post('/search/:type/:page', function(req, res, next) {
 	}else if(req.body.searchType === '3') {
 		searchSix(req, req.params.page).then(function(result){
 			data.searchData6 = result;
+			searchObj = data;
+			res.render('search', data);
+		})
+	} else if(req.body.searchType === '4') {
+		searchEight(req).then(function(result){
+			data.searchData8 = result;
 			searchObj = data;
 			res.render('search', data);
 		})
@@ -1210,96 +1271,22 @@ router.get('/search/:searchType/:type/:page/:keyword', function(req, res, next) 
 	if(req.params.searchType === '2') {
 		superagent.get(URLCONFIG.dt.home + decodeURIComponent(req.params.page) + '.html')
 	    	.end(function (err, sres) {
-	    		let searchData5 = {
-		        	data: [],
-		        	pageData: [],
-		        	totalPage: '1'
-		        };
-	      		if (!err) {
-	        		let $ = cheerio.load(sres.text, {decodeEntities: false});
-			      	$('.list-area .item').each(function (idx, element) {
-			        	let $element = $(element);
-				        searchData5.data.push({
-				          	title: $element.find('.item-title a').html(),
-				          	subTitle: $element.find('.item-title .category').html(),
-				          	href: $element.find('.item-title a').attr('href'),
-				          	download: $element.find('.item-detail span').eq(0).find('a').attr('href'),
-				          	downloadType: $element.find('.item-detail span').eq(0).find('a').html(),
-				          	time: $element.find('.item-detail span').eq(1).html().replace(/收录日期:/g, ''),
-				          	size: $element.find('.item-detail span').eq(2).html().replace(/大小:/g, ''),
-				          	num: $element.find('.item-detail span').eq(3).html().replace(/文件数:/g, ''),
-				          	speed: $element.find('.item-detail span').eq(4).html().replace(/速度:/g, '')
-				        });
-			      	});
-			      	$('.pagination').children().each(function (idx, element) {
-			        	let $element = $(element);
-			        	if(idx === 0) {
-			        		searchData5.totalPage = $element.html();
-			        	}
-			        	if($element.is('a')) {
-			        		searchData5.pageData.push({
-					          	name: $element.html().replace(/»/g, '尾页').replace(/«/g, '首页'),
-					          	link: encodeURIComponent($element.attr('href').replace(/http:\/\/diggbt.fyi/g, '').replace(/\.html/g, '')),
-					          	isCurrent: false
-					        });
-			        	}
-				        if($element.is('strong')) {
-			        		searchData5.pageData.push({
-					          	name: $element.html(),
-					          	link: '',
-					          	isCurrent: true
-					        });
-			        	}
-			      	});
-	      		}
-		      	searchObj.searchData5 = searchData5;
+		      	searchObj.searchData5 = getFiveData(err, sres);
 		      	res.render('search', searchObj);
 	      	});
 	}else if(req.params.searchType === '3') {
 		superagent.get(URLCONFIG.eight.home + req.params.page+'/')
 			.query({s: req.params.keyword})
 	    	.end(function (err, sres) {
-	    		let searchData6 = {
-		        	data: [],
-		        	pageData: [],
-		        	totalPage: '1'
-		        };
-	      		if (!err) {
-	        		let $ = cheerio.load(sres.text, {decodeEntities: false});
-			      	$('.excerpt').each(function (idx, element) {
-		        		let $element = $(element);
-				        searchData6.data.push({
-				          	title: $element.find('.focus img').attr('alt'),
-				          	subTitle: $element.find('.meta .pv').html(),
-				          	poster: $element.find('.focus img').attr('data-src'),
-				          	href: $element.find('.focus').attr('href')
-				        });
-			      	});
-			      	$('.pagination li').each(function (idx, element) {
-			        	var $element = $(element);
-			        	if($element.hasClass('active')) {
-			        		searchData6.pageData.push({
-					          	page: $element.find('span').html(),
-					          	name: $element.find('span').html(),
-					          	isCurrent: true
-					        });
-			        	}else {
-			        		if($element.children().is('a')) {
-			        			let page = $element.find('a').attr('href').replace(/http:\/\/www.hanfan.cc\//g, '').replace(/page\//g, '').replace(/\//g, '').replace(/\?.*/g, '');
-			        			page ? page : page = '1';
-			        			searchData6.pageData.push({
-						          	page: page,
-						          	name: $element.find('a').html(),
-						          	isCurrent: false
-						        });
-			        		}
-			        	}
-			      	});
-			      	searchData6.totalPage = $('.pagination li').last().find('span').html();
-	      		}
-		      	searchObj.searchData6 = searchData6;
+		      	searchObj.searchData6 = getSixData(err, sres);
 		      	res.render('search', searchObj);
 	      	});
+	}else if(req.params.searchType === '4') {
+		superagent.get(encodeURI(URLCONFIG.btanv.home + decodeURIComponent(req.params.page)))
+		.end(function (err, sres) {
+			  searchObj.searchData8 = getEightData(err, sres);
+			  res.render('search', searchObj);
+		});
 	}
 });
 

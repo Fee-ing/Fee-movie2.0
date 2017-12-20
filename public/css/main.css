@@ -436,16 +436,16 @@ table tr input{
 table .width400{
   max-width: 400px;
   padding: 5px;
-  white-space:nowrap;
+  /* white-space:nowrap;
   overflow:hidden;
-  text-overflow:ellipsis;
+  text-overflow:ellipsis; */
 }
 table .width250{
   max-width: 250px;
   padding: 5px;
-  white-space:nowrap;
+  /* white-space:nowrap;
   overflow:hidden;
-  text-overflow:ellipsis;
+  text-overflow:ellipsis; */
 }
 table tr .btn:not(:first-child){
   margin-left: 10px;
