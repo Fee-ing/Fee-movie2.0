@@ -17,11 +17,11 @@
   				<form class="search-form flexbox" method="post" target="_blank" action="/search/<%= type %>/1">
   					<select class="search-select" name="searchType">
   						<option value="1" <%= searchType === '1' ? 'selected' : '' %>>默认</option>
-						<option value="2" <%= searchType === '2' ? 'selected' : '' %>>DiggBT</option>
-						<option value="4" <%= searchType === '4' ? 'selected' : '' %>>BTants</option>
+							<option value="2" <%= searchType === '2' ? 'selected' : '' %>>DiggBT</option>
+							<option value="4" <%= searchType === '4' ? 'selected' : '' %>>BTants</option>
   						<option value="3" <%= searchType === '3' ? 'selected' : '' %>>韩饭</option>
   					</select>
-					<input type="text" name="keyword" value="<%= keyword ? keyword : '' %>" class="search-input flex1" placeholder="想看什么就搜一搜吧">
+						<input type="text" name="keyword" value="<%= keyword ? keyword : '' %>" class="search-input flex1" placeholder="想看什么就搜一搜吧">
 	  				<button class="option-button search-btn" type="submit">搜索</button>
   				</form>
   			</div>
