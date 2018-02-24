@@ -43,8 +43,8 @@ const URLCONFIG = {
 		search: 'http://www.loldytit.com/e/search/index.php'
 	},
 	dt: {
-		home: 'http://diggbt.fyi',
-		search: 'http://diggbt.fyi/'
+		home: 'http://diggbts.com/search',
+		search: 'http://diggbts.com/'
 	},
 	btanv: {
 		home: 'http://www.btanv.com/search/',

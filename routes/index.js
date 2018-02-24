@@ -942,7 +942,7 @@ function getFiveData(err, sres){
 			if($element.is('a')) {
 				searchData5.pageData.push({
 					name: $element.html().replace(/»/g, '尾页'),
-					link: encodeURIComponent($element.attr('href').replace(/http:\/\/diggbt.fyi/g, '').replace(/\.html/g, '')),
+					link: encodeURIComponent($element.attr('href').replace(/http:\/\/diggbts.com\/search/g, '').replace(/\.html/g, '')),
 					isCurrent: false
 				})
 			}
@@ -959,7 +959,7 @@ function getFiveData(err, sres){
 }
 function searchFive(req){
 	let p = new Promise((resolve, reject) => {
-		superagent.post(URLCONFIG.dt.search).send({keyword: req.body.keyword} ).type('form').end((err, sres) => {
+		superagent.post(URLCONFIG.dt.search).send({keyword: req.body.keyword}).type('form').end((err, sres) => {
 			let searchData5 = getFiveData(err, sres)
 			resolve(searchData5)
 		})
@@ -1142,7 +1142,7 @@ router.post('/search/:type/:page', function(req, res, next) {
 		})
 	}
 })
-//韩饭网搜索详情
+//搜索结果翻页
 router.get('/search/:searchType/:type/:page/:keyword', function(req, res, next) {
 	searchObj.type = req.params.type
 	searchObj.page = req.params.page
