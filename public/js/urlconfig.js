@@ -1,8 +1,8 @@
 const URLCONFIG = {
 	one: {
-		home: 'https://www.80s.tt/',
-		detail: 'https://www.80s.tt/movie/',
-		search: 'https://www.80s.tt/search',
+		home: 'https://www.80s.ai/',
+		detail: 'https://www.80s.ai/movie/',
+		search: 'https://www.80s.ai/search',
 		href: 'http://www.80s.tw'
 	},
 	two: {
@@ -43,12 +43,12 @@ const URLCONFIG = {
 		search: 'http://www.loldytit.com/e/search/index.php'
 	},
 	dt: {
-		home: 'http://diggbts.com/search',
-		search: 'http://diggbts.com/'
+		home: 'http://diggbts.org/search',
+		search: 'http://diggbts.org/'
 	},
 	btanv: {
-		home: 'http://www.btanv.com/search/',
-		search: 'http://www.btanv.com/q'
+		home: 'http://www.btantt.com/search/',
+		search: 'http://www.btantt.com/q'
 	}
 }
 

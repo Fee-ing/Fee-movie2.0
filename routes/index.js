@@ -3,6 +3,9 @@ var cheerio = require('cheerio')
 var superagent = require('superagent')
 require('superagent-charset')(superagent)
 
+let process = require('process')
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+
 var URLCONFIG = require('../public/js/urlconfig')
 
 var router = express.Router()
@@ -112,13 +115,13 @@ router.get('/two', function(req, res, next) {
 			if (!err) {
 				let $ = cheerio.load(sres.text, {decodeEntities: false})
 			
-				$('.bd3r').eq(0).find('.bd3rl .co_area2').eq(0).find('ul').find('a').each((idx, element) => {
+				$('.bd3r').eq(0).find('.bd3rl .co_area2').eq(0).find('tr').each((idx, element) => {
 					let $element = $(element)
-					if(idx%2 !== 0) {
+					if(idx > 0) {
 						newData.push({
-							title: $element.html(),
-							href: encodeURIComponent($element.attr('href')),
-							time: $element.parent().next().find('font').html()
+							title: $element.find('td').first().find('a').last().html(),
+							href: encodeURIComponent($element.find('td').first().find('a').last().attr('href')),
+							time: $element.find('td').last().find('font').html()
 						})
 					}
 				})
@@ -1021,7 +1024,7 @@ function searchSix(req, c_page){
 function searchSeven(req){
 	let p = new Promise((resolve, reject) => {
 		let searchData7 = []
-		superagent.post(URLCONFIG.nine.search).charset('gbk').send({keyboard: req.body.keyword}).type('form').end((err, sres) => {
+		superagent.post(URLCONFIG.nine.search).charset('gbk').send({keyboard: req.body.keyword}).end((err, sres) => {
 			if (!err) {
 				let $ = cheerio.load(sres.text, {decodeEntities: false})
 
