@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  div.content-wrapper
+    h5.content-title-wrapper
+      a.content-title.link(href=pageData.webUrl target='_blank') 电影天堂
+    div.detail-wrapper
+      div.detail-html!= pageData.content

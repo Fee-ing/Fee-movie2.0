@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  div.content-wrapper
+    div.tip-wrapper
+      p.title 如果遇到迅雷下载因版权无法下载的情况，请参考以下建议：
+      p.words 1、若是迅雷链接，请先转换为真实链接地址；
+      p.words 2、可以复制真实链接地址后，尝试使用其他下载软件，比如IDM、μTorrent、比特彗星、Vuze等等；
+      p.words 3、可以复制真实链接地址后，使用百度网盘的离线下载功能，参考下面步骤图。
+      div.input-wrapper
+        input.flex1.input#thunderUrl(placeholder='请输入迅雷链接')
+        button.button#transformBtn(type='button') 转换
+      div.input-wrapper
+        input.flex1.input#realUrl(placeholder='真实链接地址' disabled)
+        button.button.copy-btn#copy-btn(type='button') 复制
+      img.step(src='/images/step1.jpg')
+      img.step(src='/images/step2.jpg')
+      img.step(src='/images/step3.jpg')
+      img.step(src='/images/step4.jpg')
+  script(src='/javascripts/transformUrl.js')

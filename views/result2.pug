@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  div.header-wrapper
+    include includes/search.pug
+  div.notice-wrapper
+    a(href='/tip' target='_blank') 提示：若下载遇到问题，请点击此处
+  div.content-wrapper
+    h5.content-title-wrapper
+      a.content-title.link(href=pageData.webUrl target='_blank') DiggBT
+      if pageData.total > 0
+        span.content-title-total= '（共'+pageData.total+'条搜索结果）'
+    if pageData.total > 0
+      div.table-wrapper
+        div.table-header
+          div.table-cell.table-cell1 标题
+          div.table-cell.table-cell2 文件类型
+          div.table-cell.table-cell2 大小
+          div.table-cell.table-cell2 文件数量
+          div.table-cell.table-cell2 下载速度
+          div.table-cell.table-cell3 操作
+        div.table-body
+          each movie in pageData.movieData
+            div.table-list
+              div.table-cell.table-cell1(title=movie.title)!= movie.title
+              div.table-cell.table-cell2= movie.type
+              div.table-cell.table-cell2= movie.size
+              div.table-cell.table-cell2= movie.num
+              div.table-cell.table-cell2= movie.speed
+              div.table-cell.table-cell3 
+                a.table-btn(href=movie.download) 下载
+                a.table-btn.copy-btn(data-clipboard-text=movie.download) 复制
+      if pageData.pages > 0
+        div.pagination-wrapper
+          if pageData.page > 1
+            a.pagination-item(href='/result/two/'+pageData.key+'/1') 首页
+            a.pagination-item(href='/result/two/'+pageData.key+'/'+(pageData.page-1)) 上一页
+          span.pagination-item.pagination-page= '第'+pageData.page+'页'
+          if pageData.page < pageData.pages
+            a.pagination-item(href='/result/two/'+pageData.key+'/'+(pageData.page+1)) 下一页
+            a.pagination-item(href='/result/two/'+pageData.key+'/'+pageData.pages) 尾页
+    else
+      div.no-data 很抱歉，没有找到您想要的

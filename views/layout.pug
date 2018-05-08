@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='shortcut icon' href='/images/fee.ico')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascripts/pace.min.js')
+  body
+    block content
+    script(src='/javascripts/actionEvent.js')
+    script(src='/javascripts/clipboard.min.js')
+    script.
+      var clipboard = new Clipboard('.copy-btn')
+      clipboard.on('success', (e) => {
+        e.trigger.innerHTML = '已复制'
+        e.clearSelection()
+      })
+      clipboard.on('error', (e) => {
+        e.trigger.innerHTML = '复制失败'
+      })

@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  div.header-wrapper
+    include includes/search.pug
+  div.notice-wrapper
+    a(href='/tip' target='_blank') 提示：若下载遇到问题，请点击此处
+  div.content-wrapper
+    h5.content-title-wrapper
+      a.content-title.link(href=pageData.webUrl target='_blank') 80s电影天堂
+      if pageData.total > 0
+        span.content-title-total= '（共'+pageData.total+'条搜索结果）'
+    if pageData.total > 0
+      div.movie-wrapper.active
+        each movie in pageData.movieData
+          a.movie-list(href='/one/detail/'+movie.id target='_blank')
+            div.movie-poster-wrapper(title=movie.title+' - '+movie.subTitle)
+              img.movie-poster(src=movie.poster)
+            div.movie-title(title=movie.title)= movie.title
+            div.movie-subTitle(title=movie.subTitle)= movie.subTitle
+            if movie.score
+              span.movie-score.theme-bg= movie.score
+    else
+      div.no-data 很抱歉，没有找到您想要的

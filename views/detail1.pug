@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  div.content-wrapper
+    h5.content-title-wrapper
+      a.content-title.link(href=pageData.webUrl target='_blank') 80s电影天堂
+    div.detail-wrapper
+      div.detail-header
+        span.detail-title= pageData.title
+        span.detail-subTitle= '('+pageData.subTitle+')'
+      div.detail-content
+        div.detail-poster
+          img(src=pageData.poster)
+        div.detail-info
+          div!= pageData.info1
+          div!= pageData.info2
+      if pageData.download.length > 0
+        div.detail-download
+          div.table-wrapper
+            div.table-header
+              div.table-cell.table-cell1 资源名称
+              div.table-cell.table-cell2 格式
+              div.table-cell.table-cell2 大小
+              div.table-cell.table-cell3 操作
+            div.table-body
+              each movie in pageData.download
+                div.table-list
+                  div.table-cell.table-cell1(title=movie.title)!= movie.title
+                  div.table-cell.table-cell2= movie.format
+                  div.table-cell.table-cell2= movie.size
+                  div.table-cell.table-cell3
+                    a.table-btn(href=movie.link) 下载
+                    a.table-btn.copy-btn(data-clipboard-text=movie.link) 复制
+      div.detail-description= pageData.description
+      div.detail-screenshot
+        img(src=pageData.screenshot)

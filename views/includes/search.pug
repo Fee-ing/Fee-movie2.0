@@ -1,0 +1,8 @@
+form.search-form(method='post' action='/result/'+searchType target="_blank")
+  select.search-form-select(name='searchType' value=searchType)
+    option(value='one' selected=searchType==='one' ? true : false) 80s
+    option(value='two' selected=searchType==='two' ? true : false) DiggBT
+    option(value='three' selected=searchType==='three' ? true : false) BT蚂蚁
+    option(value='four' selected=searchType==='four' ? true : false) 韩饭网
+  input.search-form-input(name='keywords' value=keywords placeholder='80s电影天堂搜索')
+  button.search-form-button(type='button') 搜一搜

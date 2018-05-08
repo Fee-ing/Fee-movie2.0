@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  div.content-wrapper
+    h5.content-title-wrapper
+      a.content-title.link(href=pageData.webUrl target='_blank') 韩饭网
+    div.detail-wrapper
+      div.detail-header
+        span.detail-title= pageData.title
+      div.detail-content
+        div.detail-poster
+          img(src=pageData.poster)
+        div.detail-info
+          div!= pageData.info
+      div.detail-video
+        iframe.detail-iframe(src=pageData.video frameborder='0')
+      if pageData.download.length > 0
+        div.detail-download
+          div.table-wrapper
+            div.table-header
+              div.table-cell.table-cell1 网盘链接
+              div.table-cell.table-cell2 密码
+              div.table-cell.table-cell3 操作
+            div.table-body
+              each movie in pageData.download
+                div.table-list
+                  div.table-cell.table-cell1(title=movie.title)!= movie.link
+                  div.table-cell.table-cell2= movie.password
+                  div.table-cell.table-cell3
+                    a.table-btn(href=movie.link target="_blank") 下载
+                    a.table-btn.copy-btn(data-clipboard-text=movie.link) 复制

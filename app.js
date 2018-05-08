@@ -1,49 +1,54 @@
-var express = require('express');
-var path = require('path');
-// var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const Koa = require('koa')
+const app = new Koa()
+const views = require('koa-views')
+const json = require('koa-json')
+const onerror = require('koa-onerror')
+const bodyparser = require('koa-bodyparser')
+const logger = require('koa-logger')
+const lessMiddleware = require('koa-less')
 
-var routes = require('./routes/index');
+const index = require('./routes/index')
+const one = require('./routes/one')
+const two = require('./routes/two')
+const three = require('./routes/three')
+const four = require('./routes/four')
+const result = require('./routes/result')
 
-var app = express();
+// error handler
+onerror(app)
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+// middlewares
+app.use(bodyparser({
+  enableTypes:['json', 'form', 'text']
+}))
+app.use(json())
+app.use(logger())
+app.use(lessMiddleware(__dirname + '/public'))
+app.use(require('koa-static')(__dirname + '/public'))
 
-// app.use(favicon(__dirname + '/public/fee.ico'));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(views(__dirname + '/views', {
+  extension: 'pug'
+}))
 
-app.use('/', routes);
+// logger
+app.use(async (ctx, next) => {
+  const start = new Date()
+  await next()
+  const ms = new Date() - start
+  // console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+})
 
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+// routes
+app.use(index.routes(), index.allowedMethods())
+app.use(one.routes(), one.allowedMethods())
+app.use(two.routes(), two.allowedMethods())
+app.use(three.routes(), three.allowedMethods())
+app.use(four.routes(), four.allowedMethods())
+app.use(result.routes(), result.allowedMethods())
+
+// error-handling
+app.on('error', (err, ctx) => {
+  console.error('server error', err, ctx)
 });
 
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
-
-
-module.exports = app;
+module.exports = app

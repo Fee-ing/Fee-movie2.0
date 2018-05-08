@@ -1,0 +1,4 @@
+div.router-wrapper
+  each item, key in router
+    if item.name
+      a(class=pageData.webType===key ? 'router-item active' : 'router-item' href='/'+key)= item.name

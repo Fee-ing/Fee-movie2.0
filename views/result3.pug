@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  div.header-wrapper
+    include includes/search.pug
+  div.notice-wrapper
+    a(href='/tip' target='_blank') 提示：若下载遇到问题，请点击此处
+  div.content-wrapper
+    h5.content-title-wrapper
+      a.content-title.link(href=pageData.webUrl target='_blank') BT蚂蚁
+    if pageData.movieData.length > 0
+      div.table-wrapper
+        div.table-header
+          div.table-cell.table-cell1 标题
+          div.table-cell.table-cell2 更新时间
+          div.table-cell.table-cell2 热度
+          div.table-cell.table-cell2 文件大小
+          div.table-cell.table-cell3 操作
+        div.table-body
+          each movie in pageData.movieData
+            div.table-list
+              div.table-cell.table-cell1(title=movie.title)!= movie.title
+              div.table-cell.table-cell2= movie.time
+              div.table-cell.table-cell2= movie.active
+              div.table-cell.table-cell2= movie.size
+              div.table-cell.table-cell3
+                each data in movie.download
+                  a.table-btn(href=data.href)= data.name
+                  a.table-btn.copy-btn(data-clipboard-text=data.href) 复制
+      if pageData.pages > 0
+        div.pagination-wrapper
+          if pageData.page > 1
+            a.pagination-item(href='/result/three/1') 首页
+            a.pagination-item(href='/result/three/'+(pageData.page-1)) 上一页
+          span.pagination-item.pagination-page= '第'+pageData.page+'页'
+          if pageData.page < pageData.pages
+            a.pagination-item(href='/result/three/'+(pageData.page+1)) 下一页
+            a.pagination-item(href='/result/three/'+pageData.pages) 尾页
+    else
+      div.no-data 很抱歉，没有找到您想要的

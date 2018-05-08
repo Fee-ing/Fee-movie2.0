@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  div.header-wrapper
+    include includes/search.pug
+    include includes/router.pug
+  div.notice-wrapper.mb
+    a(href='/tip' target='_blank') 提示：若下载遇到问题，请点击此处
+  div.content-wrapper
+    if pageData.movieData.length > 0
+      div.movie-wrapper.active
+        each movie in pageData.movieData
+          a.movie-list(href='/four/detail/'+movie.id target='_blank')
+            div.movie-poster-wrapper(title=movie.title+' - '+movie.subTitle)
+              img.movie-poster(src=movie.poster)
+            div.movie-title(title=movie.title)= movie.title
+            div.movie-subTitle(title=movie.subTitle)= movie.subTitle
+      if pageData.pages > 0
+        div.pagination-wrapper
+          if pageData.page > 1
+            a.pagination-item(href='/four/1') 首页
+            a.pagination-item(href='/four/'+(pageData.page-1)) 上一页
+          span.pagination-item.pagination-page= '第'+pageData.page+'页'
+          if pageData.page < pageData.pages
+            a.pagination-item(href='/four/'+(pageData.page+1)) 下一页
+            a.pagination-item(href='/four/'+pageData.pages) 尾页
+    else
+      div.no-data 很抱歉，获取数据失败
