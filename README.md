@@ -5,15 +5,6 @@
 ## 写在前面
 重构版Fee-movie，UI升级，[旧版Fee's Movie](https://github.com/Fee-ing/Fee-movie1.0)项目地址
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:3000
-npm start
-
 ## 预览图
 #### 首页
 ![80s](https://github.com/Fee-ing/previewImages/blob/master/Fee-movie2.0/home1.png)
@@ -35,3 +26,12 @@ npm start
 ![BT之家](https://github.com/Fee-ing/previewImages/blob/master/Fee-movie2.0/result5.png)
 #### 提示页
 ![提示页](https://github.com/Fee-ing/previewImages/blob/master/Fee-movie2.0/tip.png)
+
+## Build Setup
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:3000
+npm start
