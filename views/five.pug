@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  div.header-wrapper
+    include includes/search.pug
+    include includes/router.pug
+  div.notice-wrapper.mb
+    a(href='/tip' target='_blank') 提示：若下载遇到问题，请点击此处
+  div.content-wrapper
+    if pageData.movieData.length > 0
+      div.table-wrapper
+        div.table-header
+          div.table-cell.table-cell1 资源名称
+          div.table-cell.table-cell1 类型
+          div.table-cell.table-cell2 更新日期
+          div.table-cell.table-cell3 操作
+        div.table-body
+          each movie in pageData.movieData
+            div.table-list
+              div.table-cell.table-cell1(title=movie.title)!= movie.title
+              div.table-cell.table-cell1= movie.type
+              div.table-cell.table-cell2= movie.time
+              div.table-cell.table-cell3 
+                a.table-btn(href='/five/detail/'+movie.id target='_blank') 查看详情
+    else
+      div.no-data 很抱歉，获取数据失败
+  

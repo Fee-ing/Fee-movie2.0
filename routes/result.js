@@ -7,6 +7,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 const URLCONFIGS = require('../public/javascripts/config.js')
 const { getOneSearch } = require('../public/javascripts/getOneData.js')
 const { getFourSearch } = require('../public/javascripts/getFourData.js')
+const { getFiveSearch } = require('../public/javascripts/getFiveData.js')
 const { getDiggbtsSearch, getBtanttSearch } = require('../public/javascripts/getSearchData.js')
 
 var keywords = '', searchType = 'one'
@@ -189,6 +190,29 @@ router.get('/four/:page', async (ctx, next) => {
     ele.id = ele.id.replace(idReg, '')
   })
   await ctx.render('result4', {
+    title: `${keywords} - Fee-movie-search`,
+    keywords,
+    searchType,
+    pageData
+  })
+})
+
+router.post('/five', async (ctx, next) => {
+  keywords = ctx.request.body.keywords
+  searchType = ctx.request.body.searchType
+  let pageData = {
+    movieData: [],
+    webUrl: URLCONFIGS.five.url
+  }
+  let res = await request.post(URLCONFIGS.five.search).send({keyword: keywords}).type('form').timeout(3600*1000)
+  if (!res.error) {
+    pageData.movieData = getFiveSearch(res.text).data
+  }
+  let idReg = new RegExp(URLCONFIGS.five.url, 'g')
+  pageData.movieData.map(ele => {
+    ele.id = ele.id.replace(idReg, '')
+  })
+  await ctx.render('result5', {
     title: `${keywords} - Fee-movie-search`,
     keywords,
     searchType,

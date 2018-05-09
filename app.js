@@ -12,6 +12,7 @@ const one = require('./routes/one')
 const two = require('./routes/two')
 const three = require('./routes/three')
 const four = require('./routes/four')
+const five = require('./routes/five')
 const result = require('./routes/result')
 
 // error handler
@@ -44,6 +45,7 @@ app.use(one.routes(), one.allowedMethods())
 app.use(two.routes(), two.allowedMethods())
 app.use(three.routes(), three.allowedMethods())
 app.use(four.routes(), four.allowedMethods())
+app.use(five.routes(), five.allowedMethods())
 app.use(result.routes(), result.allowedMethods())
 
 // error-handling

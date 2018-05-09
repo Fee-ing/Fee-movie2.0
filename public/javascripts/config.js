@@ -21,6 +21,12 @@ module.exports = {
     search: 'http://www.hanfan.cc/',
     detail: 'http://www.hanfan.cc/'
   },
+  five: {
+    name: 'BT之家',
+    url: 'http://www.btbtt88.com/',
+    search: 'http://www.btbtt88.com/search-index.htm',
+    detail: 'http://www.btbtt88.com/'
+  },
   diggbts: {
     url: 'http://diggbts.org/',
     search: 'http://diggbts.org/',

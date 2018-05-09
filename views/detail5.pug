@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  div.content-wrapper
+    h5.content-title-wrapper
+      a.content-title.link(href=pageData.webUrl target='_blank') BT之家
+    div.detail-wrapper
+      div.detail-header
+        span.detail-title= pageData.title
+      div.detail-html.mt!= pageData.content
+      if pageData.download
+        div.detail-download
+          div.table-wrapper
+            div.table-header
+              div.table-cell.table-cell1 资源名称
+              div.table-cell.table-cell2 文件大小
+              div.table-cell.table-cell2 下载次数
+              div.table-cell.table-cell3 操作
+            div.table-body
+              div.table-list
+                div.table-cell.table-cell1(title=pageData.name)!= pageData.name
+                div.table-cell.table-cell2= pageData.size
+                div.table-cell.table-cell2= pageData.times
+                div.table-cell.table-cell3
+                  a.table-btn(href=pageData.download target='_blank') 点击下载
+      div.detail-tip 注意：若点击下载后打开的网页提示“由于碰撞到了审计规则，您的连接已经被阻断。”，请复制该网页的链接（此链接即是种子链接），再用迅雷或者其他下载软件打开。

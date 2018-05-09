@@ -52,6 +52,10 @@ window.onload = () => {
       'four': {
         action: '/result/four',
         placeholder: '韩饭网搜索，韩剧/韩综/韩国电影等'
+      },
+      'five': {
+        action: '/result/five',
+        placeholder: 'BT之家搜索'
       }
     }
     typeSelect.onchange = (e) => {
