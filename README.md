@@ -3,7 +3,7 @@
 >NodeJs爬虫项目
 
 ## 写在前面
-重构版Fee-movie，UI升级，[旧版Fee's Movie](https://github.com/Fee-ing/Fee-movie1.0)项目地址
+重构版Fee-movie，UI升级，[旧版Fee's Movie](https://github.com/Fee-ing/Fee-movie1.0)项目地址。 为了避免本项目本地运行时跟其他项目的端口重复，所以改成了3030端口。
 
 ## 预览图
 #### 首页
@@ -33,5 +33,5 @@
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:3000
+# serve with hot reload at localhost:3030
 npm start
