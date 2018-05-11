@@ -103,6 +103,13 @@ let getTwoDetail = (html) => {
       })
     })
   })
+  $('#bt li a').each((idx, element) => {
+    let $element = $(element)
+    detailData.download.push({
+      name: '[BT]' + $element.attr('title'),
+      link: $element.attr('href')
+    })
+  })
   return {
     data: detailData
   }
