@@ -9,13 +9,16 @@ block content
     h5.content-title-wrapper
       a.content-title.link(href=pageData.webUrl target='_blank') 韩饭网
     if pageData.movieData.length > 0
-      div.movie-wrapper.active
+      div.paragraph-wrapper
         each movie in pageData.movieData
-          a.movie-list(href='/four/detail/'+movie.id target='_blank')
-            div.movie-poster-wrapper(title=movie.title+' - '+movie.subTitle)
-              img.movie-poster(src=movie.poster)
-            div.movie-title(title=movie.title)= movie.title
-            div.movie-subTitle(title=movie.subTitle)= movie.subTitle
+          a.paragraph-list(href='/four/detail/'+movie.id target='_blank')
+            div.paragraph-poster-wrapper(title=movie.title+' - '+movie.subTitle)
+              img.paragraph-poster(src=movie.poster)
+            div.paragraph-info
+              div.paragraph-title(title=movie.title)= movie.title
+              div.paragraph-subTitle= movie.subTitle
+              div.paragraph-time= movie.time
+              div.paragraph-detail= movie.detail
       if pageData.pages > 0
         div.pagination-wrapper
           if pageData.page > 1

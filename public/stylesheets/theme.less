@@ -37,6 +37,9 @@ html, body{
 .theme-cl{
   color: #000;
 }
+.gray-cl{
+  color: #999;
+}
 .theme-bg{
   background-color: #000;
 }
@@ -123,6 +126,11 @@ html, body{
   -moz-flex-wrap: wrap;
   flex-wrap: wrap;
 }
+.text-overflow{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .pace{
   -webkit-pointer-events: none;
   pointer-events: none;
@@ -141,76 +149,4 @@ html, body{
   right: 100%;
   width: 100%;
   height: 2px;
-}
-.table-wrapper{
-  overflow: hidden;
-  .theme-bd;
-  .table-header{
-    font-size: 0.8rem;
-    border-bottom: 1px solid;
-    font-weight: bold;
-    .theme-bc;
-    .flexbox;
-  }
-  .table-body{
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-  .table-list{
-    font-size: 0.75rem;
-    transition: background-color 0.3s;
-    .theme-bc;
-    .flexbox;
-    &:hover{
-      background-color: rgba(0, 0, 0, 0.35);
-      color: #fff;
-    }
-    &:last-child{
-      border-bottom: none;
-    }
-  }
-  .table-cell{
-    height: 2rem;
-    line-height: 2rem;
-    text-align: center;
-    border-right: 1px solid;
-    overflow: hidden;
-    .theme-bc;
-    &:last-child{
-      border-right: none;
-    }
-    &.table-cell1{
-      width: 12rem;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      -o-text-overflow: ellipsis;
-      padding: 0 0.3rem;
-      box-sizing: border-box;
-    }
-    &.table-cell2{
-      width: 5rem;
-    }
-    &.table-cell3{
-      .flex1;
-    }
-  }
-  .table-btn{
-    color: inherit;
-    margin-left: 0.8rem;
-    .link;
-    &:first-child{
-      margin-left: 0;
-    }
-  }
-  .table-more{
-    display: block;
-    height: 2rem;
-    line-height: 2rem;
-    text-align: center;
-    color: inherit;
-    text-decoration: none;
-    font-size: 0.75rem;
-    border-top: 1px solid;
-    box-sizing:  border-box;
-  }
 }

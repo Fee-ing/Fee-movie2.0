@@ -107,6 +107,77 @@
   }
 }
 
+.table-wrapper{
+  overflow: hidden;
+  .theme-bd;
+  .table-header{
+    font-size: 0.8rem;
+    border-bottom: 1px solid;
+    font-weight: bold;
+    .theme-bc;
+    .flexbox;
+  }
+  .table-body{
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .table-list{
+    font-size: 0.75rem;
+    transition: background-color 0.3s;
+    .theme-bc;
+    .flexbox;
+    &:hover{
+      background-color: rgba(0, 0, 0, 0.35);
+      color: #fff;
+    }
+    &:last-child{
+      border-bottom: none;
+    }
+  }
+  .table-cell{
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    border-right: 1px solid;
+    overflow: hidden;
+    .theme-bc;
+    &:last-child{
+      border-right: none;
+    }
+    &.table-cell1{
+      width: 12rem;
+      padding: 0 0.3rem;
+      box-sizing: border-box;
+      .text-overflow;
+    }
+    &.table-cell2{
+      width: 5rem;
+    }
+    &.table-cell3{
+      .flex1;
+    }
+  }
+  .table-btn{
+    color: inherit;
+    margin-left: 0.8rem;
+    .link;
+    &:first-child{
+      margin-left: 0;
+    }
+  }
+  .table-more{
+    display: block;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.75rem;
+    border-top: 1px solid;
+    box-sizing:  border-box;
+  }
+}
+
 .movie-wrapper{
   height: 10rem;
   overflow: hidden;
@@ -145,9 +216,7 @@
       }
     }
     .movie-title, .movie-subTitle{
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+      .text-overflow;
     }
     .movie-title{
       font-size: 0.7rem;
@@ -172,6 +241,52 @@
   }
 }
 
+.paragraph-wrapper{
+  .paragraph-list{
+    margin-top: 1rem;
+    .flexbox;
+    &:first-child{
+      margin-top: 0;
+    }
+    .paragraph-poster-wrapper{
+      width: 12.5rem;
+      height: 8rem;
+      margin-right: 1rem;
+      .paragraph-poster{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .paragraph-info{
+      padding: 0.5rem 0;
+      overflow: hidden;
+      font-size: 0.75rem;
+      .flex1;
+      .paragraph-title{
+        font-size: 0.85rem;
+        font-weight: bold;
+        margin-bottom: 0.8rem;
+        .text-overflow;
+      }
+      .paragraph-subTitle{
+        display: inline-block;
+        vertical-align: middle;
+        .text-overflow;
+      }
+      .paragraph-time{
+        display: inline-block;
+        margin-left: 1rem;
+        vertical-align: bottom;
+        .gray-cl;
+      }
+      .paragraph-detail{
+        margin-top: 0.5rem;
+        .gray-cl;
+      }
+    }
+  }
+}
+
 .block-wrapper{
   list-style: none;
   .flexbox;
@@ -181,10 +296,8 @@
     height: 1.6rem;
     line-height: 1.6rem;
     font-size: 0.75rem;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
     cursor: pointer;
+    .text-overflow;
     &:hover{
       text-decoration: underline;
     }
@@ -224,7 +337,7 @@
     .flexbox;
   }
   .detail-poster{
-    width: 35%;
+    width: 16rem;
     height: 20rem;
     overflow: hidden;
     margin-right: 1rem;

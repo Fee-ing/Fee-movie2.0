@@ -9,6 +9,8 @@ let getFourHome = (html) => {
       title: $element.find('.focus img').attr('alt'),
       subTitle: $element.find('.meta .pv').html(),
       poster: $element.find('.focus img').attr('data-src'),
+      time: $element.find('time').html(),
+      detail: $element.find('.note').html(),
       id: $element.find('.focus').attr('href').replace(/\.html/g, '')
     })
   })
@@ -78,6 +80,8 @@ let getFourSearch = (html) => {
       title: $element.find('.focus img').attr('alt'),
       subTitle: $element.find('.meta .pv').html(),
       poster: $element.find('.focus img').attr('data-src'),
+      time: $element.find('time').html(),
+      detail: $element.find('.note').html(),
       id: $element.find('.focus').attr('href').replace(/\.html/g, '')
     })
   })
