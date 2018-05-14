@@ -12,8 +12,9 @@ block content
           img(src=pageData.poster)
         div.detail-info
           div!= pageData.info
-      div.detail-video
-        iframe.detail-iframe(src=pageData.video frameborder='0')
+      if pageData.video
+        div.detail-video
+          iframe.detail-iframe(src=pageData.video frameborder='0')
       if pageData.download.length > 0
         div.detail-download
           div.table-wrapper

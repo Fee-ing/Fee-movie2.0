@@ -1,3 +1,4 @@
+@baseColor: #000;
 *{
   padding: 0;
   margin: 0;
@@ -8,11 +9,9 @@ a{
   text-decoration: none;
 }
 html, body{
-  position: relative;
-  height: 100%;
   min-width: 45rem;
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: #000;
+  color: @baseColor;
   overflow-x: hidden;
   overflow-y: auto;
   background-color: #fff;
@@ -25,38 +24,34 @@ html, body{
   display: none;
 }
 ::-webkit-scrollbar-track{
-  background: #000;
+  background: @baseColor;
 }
 ::-webkit-scrollbar-track-piece{
   background: #fff;
 }
 ::-webkit-scrollbar-thumb{
-  background: #000;
+  background: @baseColor;
   border-radius: 0.25rem;
 }
 .theme-cl{
-  color: #000;
+  color: @baseColor;
 }
 .gray-cl{
   color: #999;
 }
 .theme-bg{
-  background-color: #000;
+  background-color: @baseColor;
 }
 .theme-bg-btn{
   color: #fff;
   cursor: pointer;
-  background-color: #000;
-  transition: background-color 0.3s;
-  &:hover{
-    background-color: #333;
-  }
+  background-color: @baseColor;
 }
 .theme-bc{
-  border-color: #000;
+  border-color: @baseColor;
 }
 .theme-bd{
-  border: 1px solid #000;
+  border: 1px solid @baseColor;
 }
 .clear-border{
   border: none;
@@ -142,7 +137,7 @@ html, body{
   display: none;
 }
 .pace .pace-progress{
-  background: #000;
+  background: @baseColor;
   position: fixed;
   z-index: 2000;
   top: 0;
