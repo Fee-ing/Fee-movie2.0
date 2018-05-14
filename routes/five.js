@@ -2,7 +2,7 @@ const router = require('koa-router')()
 const request = require('superagent')
 
 const URLCONFIGS = require('../public/javascripts/config.js')
-const { getFiveHome, getFiveDetail, getFiveDownload } = require('../public/javascripts/getFiveData.js')
+const { getFiveHome, getFiveDetail, getFiveDownload } = require('../public/javascripts/getData/getFiveData.js')
 
 router.prefix('/five')
 

@@ -3,7 +3,7 @@ const request = require('superagent')
 require('superagent-charset')(request)
 
 const URLCONFIGS = require('../public/javascripts/config.js')
-const { getTwoHome, getTwoDetail } = require('../public/javascripts/getTwoData.js')
+const { getTwoHome, getTwoDetail } = require('../public/javascripts/getData/getTwoData.js')
 
 router.prefix('/two')
 

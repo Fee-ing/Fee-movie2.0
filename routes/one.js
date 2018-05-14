@@ -5,7 +5,7 @@ let process = require('process')
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
 const URLCONFIGS = require('../public/javascripts/config.js')
-const { getOneHome, getOneDetail } = require('../public/javascripts/getOneData.js')
+const { getOneHome, getOneDetail } = require('../public/javascripts/getData/getOneData.js')
 
 router.prefix('/one')
 

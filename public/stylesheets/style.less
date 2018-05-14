@@ -10,9 +10,8 @@
     margin: 1rem auto;
     font-size: 0.8rem;
     flex-wrap: wrap;
-    border: 1px solid;
+    border: 1px solid @baseColor;
     .flexbox;
-    .theme-bc;
     .search-form-select{
       padding: 0 0.5rem;
       font-size: 0.75rem;
@@ -29,8 +28,8 @@
       color: #fff;
       padding: 0 1.5rem;
       cursor: pointer;
+      background-color: @baseColor;
       .clear-border;
-      .theme-bg;
     }
   }
   .router-wrapper{
@@ -40,15 +39,14 @@
     font-size: 0.8rem;
     text-align: center;
     margin: 1rem auto 0.5rem;
-    border: 1px solid;
-    .theme-bc;
+    border: 1px solid @baseColor;
     .flexbox;
     .router-item{
       display: block;
+      color: @baseColor;
       .flex1;
-      .theme-cl;
       &.active{
-        .theme-bg;
+        background-color: @baseColor;
         color: #fff;
       }
     }
@@ -79,8 +77,7 @@
   .content-title-wrapper{
     position: relative;
     margin: 1.5rem 0;
-    border-left: 0.4rem solid;
-    .theme-bc;
+    border-left: 0.4rem solid @baseColor;
     .content-title{
       margin-left: 0.6rem;
     }
@@ -109,12 +106,11 @@
 
 .table-wrapper{
   overflow: hidden;
-  .theme-bd;
+  border: 1px solid @baseColor;
   .table-header{
     font-size: 0.8rem;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid @baseColor;
     font-weight: bold;
-    .theme-bc;
     .flexbox;
   }
   .table-body{
@@ -124,7 +120,6 @@
   .table-list{
     font-size: 0.75rem;
     transition: background-color 0.3s;
-    .theme-bc;
     .flexbox;
     &:hover{
       background-color: rgba(0, 0, 0, 0.35);
@@ -138,9 +133,8 @@
     height: 2rem;
     line-height: 2rem;
     text-align: center;
-    border-right: 1px solid;
+    border-right: 1px solid @baseColor;
     overflow: hidden;
-    .theme-bc;
     &:last-child{
       border-right: none;
     }
@@ -255,6 +249,7 @@
       .paragraph-poster{
         width: 100%;
         height: 100%;
+        border-radius: 0.2rem;
       }
     }
     .paragraph-info{
@@ -277,11 +272,11 @@
         display: inline-block;
         margin-left: 1rem;
         vertical-align: bottom;
-        .gray-cl;
+        color: @grayColor;
       }
       .paragraph-detail{
         margin-top: 0.5rem;
-        .gray-cl;
+        color: @grayColor;
       }
     }
   }
@@ -390,13 +385,12 @@
     font-size: 0.8rem;
   }
   .input-wrapper{
-    border: 1px solid;
+    border: 1px solid @baseColor;
     height: 2.5rem;
     line-height: 2.5rem;
     font-size: 0.75rem;
     margin-top: 1rem;
     .flexbox;
-    .theme-bc;
   }
   .input{
     height: 100%;
@@ -412,7 +406,7 @@
     text-align: center;
     color: #fff;
     cursor: pointer;
-    .theme-bg;
+    background-color: @baseColor;
   }
   .step{
     display: block;
@@ -428,16 +422,15 @@
   margin: 1rem auto;
   overflow: hidden;
   text-align: center;
-  .theme-bd;
+  border: 1px solid @baseColor;
   .pagination-item{
     display: inline-block;
     width: 5rem;
     height: 100%;
     font-size: 0.75rem;
     text-align: center;
-    border-left: 1px solid;
-    .theme-cl;
-    .theme-bc;
+    color: @baseColor;
+    border-left: 1px solid @baseColor;
     &:first-child{
       border-left: none;
     }

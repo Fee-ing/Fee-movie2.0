@@ -3,7 +3,7 @@ const request = require('superagent')
 require('superagent-charset')(request)
 
 const URLCONFIGS = require('../public/javascripts/config.js')
-const { getThreeHome, getThreeDetail } = require('../public/javascripts/getThreeData.js')
+const { getThreeHome, getThreeDetail } = require('../public/javascripts/getData/getThreeData.js')
 
 router.prefix('/three')
 

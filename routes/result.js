@@ -5,10 +5,10 @@ let process = require('process')
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
 const URLCONFIGS = require('../public/javascripts/config.js')
-const { getOneSearch } = require('../public/javascripts/getOneData.js')
-const { getFourSearch } = require('../public/javascripts/getFourData.js')
-const { getFiveSearch } = require('../public/javascripts/getFiveData.js')
-const { getDiggbtsSearch, getBtanttSearch } = require('../public/javascripts/getSearchData.js')
+const { getOneSearch } = require('../public/javascripts/getData/getOneData.js')
+const { getFourSearch } = require('../public/javascripts/getData/getFourData.js')
+const { getFiveSearch } = require('../public/javascripts/getData/getFiveData.js')
+const { getDiggbtsSearch, getBtanttSearch } = require('../public/javascripts/getData/getSearchData.js')
 
 var keywords = '', searchType = 'one'
 
