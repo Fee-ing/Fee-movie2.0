@@ -27,6 +27,6 @@ block content
                   div.table-cell.table-cell3
                     a.table-btn(href=movie.link) 下载
                     a.table-btn.copy-btn(data-clipboard-text=movie.link) 复制
-      div.detail-description= pageData.description
+      div.detail-description!= pageData.description
       div.detail-screenshot
         img(src=pageData.screenshot)
