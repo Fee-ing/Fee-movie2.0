@@ -23,9 +23,9 @@ module.exports = {
   },
   five: {
     name: 'BT之家',
-    url: 'http://www.btbtt88.com/',
-    search: 'http://www.btbtt88.com/search-index.htm',
-    detail: 'http://www.btbtt88.com/'
+    url: 'http://www.btbtt55.com/',
+    search: 'http://www.btbtt55.com/search-index.htm',
+    detail: 'http://www.btbtt55.com/'
   },
   diggbts: {
     url: 'http://diggbts.org/',
