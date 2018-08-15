@@ -1,10 +1,10 @@
 module.exports = {
-  one: {
-    name: '80s',
-    url: 'https://www.80s.ai/',
-    search: 'https://www.80s.ai/search/',
-    detail: 'https://www.80s.ai/movie/'
-  },
+  // one: {
+  //   name: '80s',
+  //   url: 'https://www.80s.tw/',
+  //   search: 'https://www.80s.tw/search/',
+  //   detail: 'https://www.80s.tw/movie/'
+  // },
   two: {
     name: 'LOL',
     url: 'http://www.loldytit.com/',
@@ -23,9 +23,9 @@ module.exports = {
   },
   five: {
     name: 'BT之家',
-    url: 'http://www.btbtt55.com/',
-    search: 'http://www.btbtt55.com/search-index.htm',
-    detail: 'http://www.btbtt55.com/'
+    url: 'http://www.btbtt77.com/',
+    search: 'http://www.btbtt77.com/search-index.htm',
+    detail: 'http://www.btbtt77.com/'
   },
   diggbts: {
     url: 'http://diggbts.org/',

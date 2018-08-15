@@ -1,7 +1,7 @@
 const router = require('koa-router')()
 
 router.get('/', (ctx, next) => {
-  ctx.redirect('/one')
+  ctx.redirect('/two')
 })
 
 router.get('/tip', async (ctx, next) => {
